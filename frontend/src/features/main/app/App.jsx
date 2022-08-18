@@ -1,11 +1,20 @@
-import './App.css';
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+
+import './App.css';
+import Navbar from '../navbar/Navbar';
+import MainPage from '../MainPage';
 
 function App() {
   return (
-    <div className="App">
-      <p>Привет Киты!</p>
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+        <Route>
+          <Route path="/" element={<MainPage />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 
