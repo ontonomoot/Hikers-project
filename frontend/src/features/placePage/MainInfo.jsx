@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Text, Divider, Button } from '@geist-ui/core';
 import Star from '@geist-ui/icons/star';
+import './PlacePage.css';
 
 function MainInfo() {
   const description = 'Some text about this place. Interesting text, but not too big. Just some information';
