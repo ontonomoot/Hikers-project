@@ -5,6 +5,11 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
+      User.hasMany(models.Review, { foreignKey: 'user_id' });
+      User.hasMany(models.Favorite, { foreignKey: 'user_id' });
+      User.hasMany(models.Task, { foreignKey: 'user_id' });
+      User.hasMany(models.Friend, { foreignKey: 'user_id' });
+      User.hasMany(models.Friend, { foreignKey: 'friend_id' });
     }
   }
   User.init({
@@ -56,6 +61,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'User',
+    tableName: 'Users',
   });
   return User;
 };
