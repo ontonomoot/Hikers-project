@@ -5,7 +5,7 @@ import Star from '@geist-ui/icons/star';
 function MainInfo() {
   const description = 'Some text about this place. Interesting text, but not too big. Just some information';
   const title = 'Супер-кэмпинг';
-  const rating = 5;
+  const rating = 4;
 
   return (
     <div className="info-container">
