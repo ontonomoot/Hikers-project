@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid, Image } from '@geist-ui/core';
+import Carousel from 'react-bootstrap/Carousel';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function PlaceGallery() {
   const photos = [
@@ -13,9 +14,20 @@ function PlaceGallery() {
   ];
 
   return (
-    <Grid.Container gap={2} justify="center">
-      {photos.map((el) => <Grid xs><Image shadow width="100%" height="50px" src={el} /></Grid>)}
-    </Grid.Container>
+    // <Grid.Container id="gallery" gap={2} justify="center" height="100px">
+    //   {photos.map((el) => <Grid xs={6}><Image shadow width="100%" src={el} /></Grid>)}
+    // </Grid.Container>
+    <Carousel fade>
+      {photos.map((el) => (
+        <Carousel.Item>
+          <img
+            className="d-block carusel-img"
+            src={el}
+            alt="slide"
+          />
+        </Carousel.Item>
+      ))}
+    </Carousel>
   );
 }
 

@@ -3,7 +3,16 @@
   justify-content: space-evenly;
 }
 
-#rating{
+#rating {
   display: flex;
   justify-content: space-between;
+}
+
+.d-block {
+  margin: 2rem auto;
+}
+
+.carusel-img {
+  max-width: 70rem;
+  max-height: 30rem;
 }
