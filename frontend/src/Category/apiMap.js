@@ -19,7 +19,7 @@ export default async function init() {
     id
   } = document.querySelector('.category');
 
-  const response = await fetch(`category/${id}`);
+  const response = await fetch(`/${id}`);
 
   const placesDB = await response.json();
 

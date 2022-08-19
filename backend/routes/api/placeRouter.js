@@ -4,7 +4,7 @@ const {
   Place,
 } = require('../../db/models');
 
-placeRouter.get('/category/:id', async (req, res) => {
+placeRouter.get('/:id', async (req, res) => {
   try {
     const places = await Place.findAll({
       where: {
