@@ -5,13 +5,19 @@ module.exports = {
         category_id: '1',
         title: 'Тест1',
         description: 'Lorem ipsum',
-        geo: '59.943726528631416,30.360099730159867',
+        geo: '60.09631881459919,29.97108206132501',
       },
       {
         category_id: '1',
         title: 'Тест2',
         description: 'Lorem ipsum',
-        geo: '59.95026039009608,30.31757062401972',
+        geo: '59.943726528631416,30.360099730159867',
+      },
+      {
+        category_id: '1',
+        title: 'Тест3',
+        description: 'Lorem ipsum',
+        geo: '61.943726528631416,30.360099730159867',
       },
       {
         category_id: '2',
