@@ -45,7 +45,8 @@
       "jsx-a11y/label-has-associated-control": 0,
       "operator-linebreak": 0,
       "indent": 0,
-      "react/prop-types": 0
+      "react/prop-types": 0,
+      "no-unused-vars": "off"
     }
   },
   "browserslist": {

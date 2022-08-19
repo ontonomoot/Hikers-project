@@ -12,7 +12,8 @@ placeRouter.get('/category/:id', async (req, res) => {
       },
       raw: true,
     });
-    res.status(200).json(places);
+    // res.send(places)
+    res.send(places);
   } catch (err) {
     res.send(err.message);
   }

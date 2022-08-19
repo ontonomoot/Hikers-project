@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import init from './apiMap';
 
 export default function Category() {
+  // Функция ymaps.ready() будет вызвана, когда
+  // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
   useEffect(() => {
     async function winFunc() {
       await window.ymaps.ready(init);
