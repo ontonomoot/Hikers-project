@@ -3,7 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { Modal } from '@geist-ui/core';
 import css from './Login.module.css';
-import { selectorAuthLogin, selectorAuthLoginError, authLogin, booleanAuth, errorAuth } from '../auth';
+import {
+  selectorAuthLogin,
+  selectorAuthLoginError,
+  authLogin,
+  booleanAuthLogin,
+  errorAuthLogin
+} from '../auth';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -18,12 +24,12 @@ export default function Login() {
   };
 
   return (
-    <Modal visible={auth} onClose={() => dispatch(booleanAuth())}>
+    <Modal visible={auth} onClose={() => dispatch(booleanAuthLogin())}>
       <div className={authError ? css.authError : css.auth}>ntrcn</div>
-      {authError && <div>Неправильно, долбаеееб</div>}
+      {authError && <div>Неправильно</div>}
       <form onSubmit={handlerModal}>
-        <input type="email" name="email" onChange={() => dispatch(errorAuth())} />
-        <input type="password" name="password" onChange={() => dispatch(errorAuth())} />
+        <input type="email" name="email" onChange={() => dispatch(errorAuthLogin())} />
+        <input type="password" name="password" onChange={() => dispatch(errorAuthLogin())} />
         {/* <Modal.Action>Войти</Modal.Action> */}
         <button passive="true" type="submit">Войти</button>
       </form>

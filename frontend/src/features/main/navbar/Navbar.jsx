@@ -1,23 +1,47 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import css from './Navbar.module.css';
 
-import { selectorAuthLogin, booleanAuth } from '../auth';
+import {
+  selectorAuthLogin,
+  booleanAuthLogin,
+  authLogOut,
+  selectorUserSession,
+  auth,
+  selectorAuthReg,
+  booleanAuthReg
+} from '../auth';
 import Login from '../login/Login';
+import Registration from '../registration/Registration';
 
 export default function Navbar() {
   const dispatch = useDispatch();
 
+  const userSession = useSelector(selectorUserSession);
   const authLogin = useSelector(selectorAuthLogin);
+  const authRegistration = useSelector(selectorAuthReg);
 
-  const handlerModal = () => {
-    dispatch(booleanAuth(authLogin));
-  };
+  useEffect(() => {
+    dispatch(auth());
+  }, []);
 
   return (
-    <nav className={css.navbar}>
-      <button type="button" onClick={handlerModal}>Войти</button>
-      {authLogin && <Login />}
-    </nav>
+    <div>
+      {!userSession ? (
+        <nav className={css.navbar}>
+          <button type="button" onClick={() => dispatch(booleanAuthLogin())}>Войти</button>
+          {authLogin && <Login />}
+        </nav>
+    )
+    : (
+      <nav className={css.navbar}>
+        <button type="button" onClick={() => dispatch(booleanAuthLogin())}>Войти</button>
+        <button type="button" onClick={() => dispatch(booleanAuthReg())}>Регистрация</button>
+        <button type="button" onClick={() => dispatch(authLogOut())}>Выйти</button>
+        {authLogin && <Login />}
+        {authRegistration && <Registration />}
+      </nav>
+  )}
+    </div>
   );
 }
