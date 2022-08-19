@@ -25,7 +25,6 @@ export default async function init() {
 
   const geocoder = [];
   placesDB.forEach((place, i) => {
-    // console.log('place.geo', place.geo);
     geocoder[i] = [];
     geocoder[i].push(window.ymaps.geocode(place.geo));
     geocoder[i].push(place.title);
@@ -33,13 +32,10 @@ export default async function init() {
     geocoder[i].push(place.id);
   });
 
-  // console.log('asdasdasd', geocoder);
-
   let count = 0;
 
   geocoder.forEach((geo) => {
     geo[0].then((res) => {
-      console.log('ответ', res);
       // координаты объекта
       const coordinates = res.geoObjects.get(0).geometry.getCoordinates();
       // console.log('координаты', coordinates);
@@ -56,8 +52,6 @@ export default async function init() {
         // iconImageSize: [100, 100],
         // iconImageOffset: [0, 0]
       });
-      // console.log('placemark', placemark);
-      // console.log('MyMap', myMap);
       myMap.geoObjects.add(placemark);
       count += 1;
     });
