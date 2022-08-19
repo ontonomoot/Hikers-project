@@ -13,6 +13,7 @@ placeRouter.get('/:id', async (req, res) => {
       raw: true,
     });
     // res.send(places)
+    // console.log(places)
     res.send(places);
   } catch (err) {
     res.send(err.message);
