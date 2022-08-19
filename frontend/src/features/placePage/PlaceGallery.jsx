@@ -18,7 +18,7 @@ function PlaceGallery() {
       {photos.map((el) => (
         <Carousel.Item>
           <img
-            className="d-block carusel-img"
+            className="d-block carousel-img"
             src={el}
             alt="slide"
           />
