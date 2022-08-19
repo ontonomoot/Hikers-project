@@ -1,98 +1,13 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-p {
-  font-size: 1.6rem;
-}
-
-h1 {
-  font-size: 6rem;
-}
-
-.app {
-  width: 100%;
-  height: 1200px;
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: aliceblue;
-}
-
-.app::before {
-  content: '';
-  background-color: rgb(224, 224, 238);
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-.app .search {
-  text-align: center;
-  padding: 1rem;
-}
-
-.app input {
-  padding: .7rem 1.5rem;
-  font-size: 1.2rem;
-  border-radius: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  background:rgb(215, 193, 193);
-  color: aliceblue;
-}
-
-::placeholder {
-  color:antiquewhite;
-}
-
-.container {
-  max-width: 700px;
-  height: 500px;
-  margin: auto;
-  padding: 0 1rem;
-  position: relative;
-  top: 10%;
+.weather-days {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  margin: 50px;
 }
 
-.app .top {
-  width: 100%;
-  margin: 1rem auto;
+.weather-day {
+  margin: 20px;
 }
 
-.app .description {
-  position: relative;
-  right: -90%;
-  transform-origin: 0 0;
-  transform: rotate(270deg);
-}
-
-.app .bottom {
-  display: flex;
-  justify-content: space-evenly;
-  text-align: center;
-  width: 100%;
-  margin: 1rem auto;
-  padding: 1rem;
-  border-radius: 12px;
-  background-color: rgba(239, 218, 218);
-}
-
-.bold {
-  font-weight: 700;
+.weather-img {
+  width: 40px;
+  margin-left: 20px;
 }
