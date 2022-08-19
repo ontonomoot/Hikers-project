@@ -12,7 +12,11 @@
   margin: 2rem auto;
 }
 
-.carusel-img {
+.carousel-img {
   max-width: 70rem;
   max-height: 30rem;
+}
+
+.review-img {
+  max-width: 100px;
 }
