@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import navBarSlice from './features/main/navbar/auth';
+import navBarSlice from './features/main/auth';
 
 const store = configureStore(
   {

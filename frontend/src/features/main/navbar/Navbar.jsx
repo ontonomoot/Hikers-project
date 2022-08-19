@@ -1,26 +1,23 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import css from './Navbar.module.css';
 
-import { Modal } from '@geist-ui/core';
-import { selectorAuth, booleanAuth } from './auth';
+import { selectorAuthLogin, booleanAuth } from '../auth';
+import Login from '../login/Login';
 
 export default function Navbar() {
   const dispatch = useDispatch();
 
-  const auth = useSelector(selectorAuth);
+  const authLogin = useSelector(selectorAuthLogin);
 
   const handlerModal = () => {
-    dispatch(booleanAuth(auth));
+    dispatch(booleanAuth(authLogin));
   };
 
   return (
-    <nav>
+    <nav className={css.navbar}>
       <button type="button" onClick={handlerModal}>Войти</button>
-      <Modal visible={auth} onClose={handlerModal}>
-        <Modal.Title>ЭТО МОДАЛКА</Modal.Title>
-        <Modal.Action passive onClick={handlerModal}>Cancel</Modal.Action>
-        <Modal.Action>Submit</Modal.Action>
-      </Modal>
+      {authLogin && <Login />}
     </nav>
   );
 }
