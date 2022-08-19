@@ -5,6 +5,7 @@ import './App.css';
 import MainPage from '../MainPage';
 import Navbar from '../navbar/Navbar';
 import Login from '../login/Login';
+import Registration from '../registration/Registration';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route>
           <Route path="/" element={<MainPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/registration" element={<Registration />} />
         </Route>
       </Routes>
     </>
