@@ -4,7 +4,7 @@ import {
 } from '@reduxjs/toolkit';
 
 const initialState = {
-  category: [],
+  categoryState: [],
 };
 
 const categoryThunk = createAsyncThunk(
@@ -35,7 +35,7 @@ const categorySlice = createSlice({
     builder
       .addCase(categoryThunk.fulfilled, (state, action) => {
         console.log('payload', action.payload);
-        state.category = action.payload;
+        state.categoryState = action.payload;
       });
   }
 });
@@ -44,7 +44,7 @@ export {
   categoryThunk
 };
 
-export const selectorCategory = (state) => state.category.category;
+export const selectorCategory = (state) => state.category.categoryState;
 
 // экспорт reducer'a
 export default categorySlice.reducer;

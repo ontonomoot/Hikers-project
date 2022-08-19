@@ -29,10 +29,9 @@ export default function Category() {
 
   return (
     <>
-      {/* {categories && <h1 id={id} className="category">{categories[0].title}</h1>} */}
-      <h1 id={id} className="category">Категория</h1>
+      {categories && <h1 id={id} className="category">{categories.title}</h1>}
+      {/* <h1 id={id} className="category">Категория</h1> */}
       <div id="map" />
-
     </>
 
   );

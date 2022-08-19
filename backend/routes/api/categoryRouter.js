@@ -7,9 +7,9 @@ const {
 categoryRouter.get('/categories/:id', async (req, res) => {
   try {
     // console.log(req.p)
-    const categories = await Category.findAll({
+    const categories = await Category.findOne({
       where: {
-        id: Number(req.params.id),
+        id: req.params.id,
       },
       raw: true,
     });
