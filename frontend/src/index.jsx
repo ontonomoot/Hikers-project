@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+
 import App from './features/main/app/App';
-// import Category from './Category/Category';
+import store from './store';
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-  <>
-    <App />
-    {/* <Category /> */}
-  </>
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>
 );
