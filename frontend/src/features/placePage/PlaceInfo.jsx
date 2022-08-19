@@ -3,11 +3,10 @@ import { Card, Text, Divider, Button } from '@geist-ui/core';
 import Star from '@geist-ui/icons/star';
 import './PlacePage.css';
 
-function PlaceInfo() {
+function PlaceInfo({ user }) {
   const description = 'Some text about this place. Interesting text, but not too big. Just some information';
   const title = 'Супер-кэмпинг';
   const rating = 5;
-  const user = true;
 
   return (
     <div className="info-container">
