@@ -5,11 +5,21 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Place extends Model {
     static associate(models) {
-      Place.belongsTo(models.Category, { foreignKey: 'category_id' });
-      Place.hasMany(models.Rewiew, { foreignKey: 'place_id' });
-      Place.hasMany(models.Photo, { foreignKey: 'place_id' });
-      Place.hasMany(models.Favorite, { foreignKey: 'place_id' });
-      Place.hasMany(models.Task, { foreignKey: 'place_id' });
+      Place.belongsTo(models.Category, {
+        foreignKey: 'category_id'
+      });
+      Place.hasMany(models.Review, {
+        foreignKey: 'place_id'
+      });
+      Place.hasMany(models.Photo, {
+        foreignKey: 'place_id'
+      });
+      Place.hasMany(models.Favorite, {
+        foreignKey: 'place_id'
+      });
+      Place.hasMany(models.Task, {
+        foreignKey: 'place_id'
+      });
     }
   }
   Place.init({
@@ -35,6 +45,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     description: {
       allowNull: false,
+      type: DataTypes.TEXT,
+    },
+    geo: {
       type: DataTypes.TEXT,
     },
     createdAt: {

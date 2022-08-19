@@ -5,6 +5,10 @@ const express = require('express');
 
 const app = express();
 
+const placeRouter = require('./routes/api/placeRouter')
+
+app.use('/', placeRouter);
+
 const PORT = process.env.PORT ?? 4000;
 
 const config = require('./config/config');
