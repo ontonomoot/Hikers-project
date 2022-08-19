@@ -1,0 +1,13 @@
+.weather-days {
+  display: flex;
+  margin: 50px;
+}
+
+.weather-day {
+  margin: 20px;
+}
+
+.weather-img {
+  width: 40px;
+  margin-left: 20px;
+}
