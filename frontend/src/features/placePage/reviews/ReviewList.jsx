@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Grid, Card, Text, User, Divider } from '@geist-ui/core';
+import { Button, Card, Text, User, Divider } from '@geist-ui/core';
 import Star from '@geist-ui/icons/star';
 import { loadReview, selectReview } from './review';
 
-function ReviewList() {
+function ReviewList({ user }) {
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -22,26 +22,26 @@ function ReviewList() {
   ];
 
   return (
-    <>
-      <h3>Отзывы</h3>
+    <div className="reviews-container">
+      <Divider id="reviewTitle" h={5}>Отзывы</Divider>
+      {user && <Button id="reviewBtn">Добавить свой отзыв о месте</Button>}
       {review.map((el) => (
-        <Grid.Container gap={1.5}>
-          <Grid xs={12} justify="center">
-            <Card width="100%">
-              <User src={el['User.ava']} name={el['User.user_name']} />
-              <Text>{el.title}</Text>
-              <Text>{el.description}</Text>
-              <Text>Дата поездки: {el.date.slice(0, 10)}</Text>
-              <Divider />
-              {photos.map((image) => <img className="review-img" src={image} alt="some" />)}
-              <Card.Footer>
-                {Array.from({ length: el.rating }, (_, i) => <Star key={i} color="orange" size={32} />)}
-              </Card.Footer>
-            </Card>
-          </Grid>
-        </Grid.Container>
+        <Card width="700px">
+          <User src={el['User.ava']} name={el['User.user_name']} />
+          <Text>{el.title}</Text>
+          <Text>{el.description}</Text>
+          <Text>Дата поездки: {el.date.slice(0, 10)}</Text>
+          <Divider />
+          <div id="gallery">
+            {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+            {photos.map((image) => <img className="review-img" tabIndex="0" src={image} alt="some" />)}
+          </div>
+          <Card.Footer>
+            {Array.from({ length: el.rating }, (_, i) => <Star key={i} color="orange" size={32} />)}
+          </Card.Footer>
+        </Card>
       ))}
-    </>
+    </div>
   );
 }
 

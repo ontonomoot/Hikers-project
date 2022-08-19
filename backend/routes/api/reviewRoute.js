@@ -9,6 +9,7 @@ router.get('/place/:id/review', async (req, res) => {
       raw: true,
       where: { place_id: id },
       include: [{ model: User }, { model: Photo }],
+      order: [['createdAt', 'ASC']],
     });
     res.json(review);
   } catch (error) {
