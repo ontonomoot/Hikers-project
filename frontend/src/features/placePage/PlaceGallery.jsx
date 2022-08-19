@@ -14,9 +14,6 @@ function PlaceGallery() {
   ];
 
   return (
-    // <Grid.Container id="gallery" gap={2} justify="center" height="100px">
-    //   {photos.map((el) => <Grid xs={6}><Image shadow width="100%" src={el} /></Grid>)}
-    // </Grid.Container>
     <Carousel fade>
       {photos.map((el) => (
         <Carousel.Item>
