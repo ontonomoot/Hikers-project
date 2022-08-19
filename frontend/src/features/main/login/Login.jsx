@@ -20,7 +20,7 @@ export default function Login() {
   return (
     <Modal visible={auth} onClose={() => dispatch(booleanAuth())}>
       <div className={authError ? css.authError : css.auth}>ntrcn</div>
-      {authError && <div>Неправильно, долбаеееб</div>}
+      {authError && <div>Неправильно</div>}
       <form onSubmit={handlerModal}>
         <input type="email" name="email" onChange={() => dispatch(errorAuth())} />
         <input type="password" name="password" onChange={() => dispatch(errorAuth())} />
