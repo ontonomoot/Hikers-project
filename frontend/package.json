@@ -1,5 +1,6 @@
 {
   "name": "frontend",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:4000/",
@@ -18,7 +19,8 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "redux": "^4.2.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "ymaps": "^0.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -46,7 +48,8 @@
       "jsx-a11y/label-has-associated-control": 0,
       "operator-linebreak": 0,
       "indent": 0,
-      "react/prop-types": 0
+      "react/prop-types": 0,
+      "no-unused-vars": "off"
     }
   },
   "browserslist": {

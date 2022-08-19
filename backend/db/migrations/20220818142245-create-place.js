@@ -25,6 +25,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.TEXT,
       },
+      geo: {
+        type: Sequelize.TEXT,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
