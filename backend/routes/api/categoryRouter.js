@@ -4,13 +4,17 @@ const {
   Category,
 } = require('../../db/models');
 
-categoryRouter.get('/categories', async (req, res) => {
+categoryRouter.get('/categories/:id', async (req, res) => {
   try {
+    // console.log(req.p)
     const categories = await Category.findAll({
+      where: {
+        id: Number(req.params.id),
+      },
       raw: true,
     });
     // res.send(places)
-    console.log('категории сервер', categories)
+    // console.log('категории сервер', categories)
     res.send(categories);
   } catch (err) {
     res.send(err.message);

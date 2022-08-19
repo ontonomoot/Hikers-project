@@ -3,7 +3,7 @@ import {
   configureStore
 } from '@reduxjs/toolkit';
 import navBarSlice from './features/main/auth.js';
-import categorySlice from './Category/category.js';
+import categorySlice from './features/Category/category.js';
 
 const store = configureStore({
   reducer: {

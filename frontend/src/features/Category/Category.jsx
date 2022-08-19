@@ -10,25 +10,30 @@ import {
 export default function Category() {
   const { id } = useParams();
 
-  const category = useSelector(selectorCategory);
+  const categories = useSelector(selectorCategory);
+  console.log('+', categories);
   const dispatch = useDispatch();
   // Функция ymaps.ready() будет вызвана, когда
   // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
   useEffect(() => {
+    console.log('useEffect');
     async function winFunc() {
       await window.ymaps.ready(init);
     }
     winFunc();
-    dispatch(categoryThunk());
-  }, []);
+    dispatch(categoryThunk(id));
+  }, [dispatch, id]);
 
-  console.log('na glavnoi', category);
+  // console.log('test')
+  //  console.log('na glavnoi', categories[0]);
 
   return (
     <>
-      <h1 id={category.id} className="category">{category.title}</h1>
+      {/* {categories && <h1 id={id} className="category">{categories[0].title}</h1>} */}
+      <h1 id={id} className="category">Категория</h1>
       <div id="map" />
 
     </>
+
   );
 }
