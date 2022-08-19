@@ -10,13 +10,9 @@ export default function Navbar() {
 
   const authLogin = useSelector(selectorAuthLogin);
 
-  const handlerModal = () => {
-    dispatch(booleanAuth(authLogin));
-  };
-
   return (
     <nav className={css.navbar}>
-      <button type="button" onClick={handlerModal}>Войти</button>
+      <button type="button" onClick={() => dispatch(booleanAuth())}>Войти</button>
       {authLogin && <Login />}
     </nav>
   );
