@@ -10,7 +10,7 @@ const initialState = {
 const categoryThunk = createAsyncThunk(
   'choose/category',
   async (id) => {
-    const response = await fetch(`/api/categories/${id}`);
+    const response = await fetch(`/api/category/${id}`);
     const data = await response.json();
     // console.log('data', data);
     return data;

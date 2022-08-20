@@ -5,7 +5,7 @@ const {
   Photo,
 } = require('../../db/models');
 
-placeRouter.get('/:id', async (req, res) => {
+placeRouter.get('/places/:id', async (req, res) => {
   try {
     const places = await Place.findAll({
       where: {
