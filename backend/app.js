@@ -20,7 +20,7 @@ const weatherRouter = require('./routes/api/weatherRouter');
 
 // Подключаем use
 app.use('/api', authLoginApi);
-app.use('/', placeRouter);
+app.use('/api', placeRouter);
 app.use('/api', categoryRouter);
 app.use('/api', reviewRouter);
 app.use('/', weatherRouter);
