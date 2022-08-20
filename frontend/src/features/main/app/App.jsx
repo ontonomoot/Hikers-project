@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Category from '../../Category/Category.jsx';
+import Category from '../../Category/Category';
 // import Categories from '../../Category/Categories';
 import './App.css';
 import MainPage from '../MainPage';
