@@ -19,7 +19,7 @@ const reviewRouter = require('./routes/api/reviewRoute');
 
 // Подключаем use
 app.use('/api', authLoginApi);
-app.use('/', placeRouter);
+app.use('/api', placeRouter);
 app.use('/api', categoryRouter);
 app.use('/api', reviewRouter);
 

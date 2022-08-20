@@ -10,9 +10,9 @@ const initialState = {
 const categoryThunk = createAsyncThunk(
   'choose/category',
   async (id) => {
-    const response = await fetch(`/api/categories/${id}`);
+    const response = await fetch(`/api/category/${id}`);
     const data = await response.json();
-    console.log('data', data);
+    // console.log('data', data);
     return data;
     // if (data.status >= 400) {
     //   const {
@@ -34,7 +34,7 @@ const categorySlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(categoryThunk.fulfilled, (state, action) => {
-        console.log('payload', action.payload);
+        // console.log('payload', action.payload);
         state.categoryState = action.payload;
       });
   }
