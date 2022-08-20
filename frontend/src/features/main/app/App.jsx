@@ -8,7 +8,7 @@ import Navbar from '../navbar/Navbar';
 import PlacePage from '../../placePage/PlacePage';
 import Registration from '../registration/Registration';
 import Login from '../login/Login';
-import Weather from '../../weather/Weather.jsx';
+import Weather from '../../weather/Weather';
 
 function App() {
   return (
