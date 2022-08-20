@@ -5,7 +5,7 @@ export default async function init() {
     // Порядок по умолчанию: «широта, долгота».
     center: [59.93139123904442, 30.41594565054736],
     // Уровень масштабирования.
-    zoom: 10
+    zoom: 3
   });
 
   myMap.controls.remove('geolocationControl'); // удаляем геолокацию
@@ -23,35 +23,39 @@ export default async function init() {
 
   const placesDB = await response.json();
 
-  console.log(placesDB);
+  // console.log('apiMap', placesDB);
 
   const geocoder = [];
   placesDB.forEach((place, i) => {
+    // console.log(place['Photos.title'])
     geocoder[i] = [];
     geocoder[i].push(window.ymaps.geocode(place.geo));
     geocoder[i].push(place.title);
     geocoder[i].push(place.description);
     geocoder[i].push(place.id);
+    geocoder[i].push(place['Photos.title']);
   });
 
   let count = 0;
 
+  console.log(geocoder);
+
   geocoder.forEach((geo) => {
     geo[0].then((res) => {
+      // console.log(`${geo}`);
       // координаты объекта
       const coordinates = res.geoObjects.get(0).geometry.getCoordinates();
       // console.log('координаты', coordinates);
       // Добавление метки (Placemark) на карту
       const placemark = new window.ymaps.Placemark(coordinates, {
         hintContent: `${geo[1]}`,
-        balloonContentHeader: `<a href = "#">${geo[1]}</a><br>`,
-        balloonContentBody: `<p>${geo[2]}</p>`
+        balloonContentHeader: `<a href = '/places/${geo[3]}' class="yandexTitle">${geo[1]}</a><br>`,
+        balloonContentBody: `<img src=${geo[4]} id="yandexImage">`
       }, {
         // iconLayout: 'default#image',
         // // Своё изображение иконки метки.
-        // iconImageHref: '',
-        // Размеры метки.
-        // iconImageSize: [100, 100],
+        // iconImageHref: `${geo[4]}`,
+        // iconImageSize: [50, 50],
         // iconImageOffset: [0, 0]
       });
       myMap.geoObjects.add(placemark);
