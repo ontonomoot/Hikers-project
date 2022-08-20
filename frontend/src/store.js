@@ -10,8 +10,8 @@ import reviewSlice from './features/placePage/reviews/review.js';
 const store = configureStore({
   reducer: {
     auth: navBarSlice,
-    review: reviewSlice,
     category: categorySlice,
+    review: reviewSlice,
     weather: weatherSlice,
   }
 });

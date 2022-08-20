@@ -1,34 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectorCategory, categoryThunk } from '../Category/category';
 import { getCoordinate, selectorWeather } from './weather';
 import './Weather.css';
+import Category from '../Category/Category.jsx';
 
 function Weather() {
 const dispatch = useDispatch();
 const weatherSelector = useSelector(selectorWeather);
+const category = useSelector(selectorCategory);
+// eslint-disable-next-line no-console
+console.log(category, 'categoryyyyyyyyyyyyy');
 
 console.log(weatherSelector, 'weather');
 
 const searchLocation = async (event) => {
-  // if (event.key === 'Enter') {
-    dispatch(getCoordinate({ lat: 35.86878786, lon: 30.768668878 }));
-    // }
+  dispatch(getCoordinate({ lat: 35.86878786, lon: 30.768668878 }));
 };
 
 useEffect(() => {
   searchLocation();
+  dispatch(categoryThunk(2));
   console.log('useEffect');
 }, []);
 
 return (
   <div>
-    <div className="search">
-      <input
-        type="text"
-        onKeyPress={searchLocation}
-        placeholder="Ваш город"
-      />
-    </div>
     <div className="weather-days">
       {weatherSelector && weatherSelector.map((day) => (
         <div className="weather-day" key={day.id}>
@@ -44,7 +41,7 @@ return (
       )
       )}
     </div>
-
+    <Category />
   </div>
 );
 }
