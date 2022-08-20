@@ -11,9 +11,9 @@ import placeSlice from './features/Category/places.js';
 const store = configureStore({
   reducer: {
     auth: navBarSlice,
-    review: reviewSlice,
     category: categorySlice,
     places: placeSlice,
+    review: reviewSlice,
     weather: weatherSlice,
   }
 });
