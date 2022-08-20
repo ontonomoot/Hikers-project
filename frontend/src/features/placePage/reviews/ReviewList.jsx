@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Button, Card, Text, User, Divider } from '@geist-ui/core';
 import Star from '@geist-ui/icons/star';
 import { loadReview, selectReview } from './review';
+import ReviewForm from './ReviewForm';
 
 function ReviewList({ user }) {
   const { id } = useParams();
@@ -24,7 +25,7 @@ function ReviewList({ user }) {
   return (
     <div className="reviews-container">
       <Divider id="reviewTitle" h={5}>Отзывы</Divider>
-      {user && <Button id="reviewBtn">Добавить свой отзыв о месте</Button>}
+      {user && <ReviewForm />}
       {review.map((el) => (
         <Card width="700px">
           <User src={el['User.ava']} name={el['User.user_name']} />
