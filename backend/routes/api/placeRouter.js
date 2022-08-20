@@ -3,6 +3,7 @@ const placeRouter = require('express').Router();
 const {
   Place,
   Photo,
+  Review,
 } = require('../../db/models');
 
 placeRouter.get('/places/:id', async (req, res) => {
@@ -11,13 +12,10 @@ placeRouter.get('/places/:id', async (req, res) => {
       where: {
         category_id: req.params.id,
       },
-      include: {
-        model: Photo,
-      },
+      include: [{ model: Review }, { model: Photo }],
+      order: [['createdAt', 'ASC']],
       raw: true,
     });
-    // res.send(places)
-    // console.log(places)
     res.send(places);
   } catch (err) {
     res.send(err.message);
