@@ -23,6 +23,6 @@ app.use('/api', authLoginApi);
 app.use('/api', placeRouter);
 app.use('/api', categoryRouter);
 app.use('/api', reviewRouter);
-app.use('/', weatherRouter);
+app.use('/api', weatherRouter);
 
 app.listen(PORT, async () => console.log('\x1b[45m%s\x1b[0m', `Server started at ${PORT} port`));
