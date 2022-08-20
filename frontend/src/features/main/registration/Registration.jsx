@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Modal } from '@geist-ui/core';
+import { Modal, Card, Text } from '@geist-ui/core';
+import css from './Reg.module.css';
 import {
   authRegistration,
   booleanAuthReg,
@@ -29,16 +30,23 @@ export default function Registration() {
 
     dispatch(authRegistration(form));
   };
+
   return (
     <Modal visible={auth} onClose={() => dispatch(booleanAuthReg())}>
-      {authError && <div>Неправильно</div>}
-      <form onSubmit={handlerModal}>
-        <input type="text" name="login" onChange={() => dispatch(errorAuthReg())} />
-        <input type="email" name="email" onChange={() => dispatch(errorAuthReg())} />
-        <input type="password" name="password" onChange={() => dispatch(errorAuthReg())} />
-        <input type="password" name="password2" onChange={() => dispatch(errorAuthReg())} />
+      <form id={css.form} onSubmit={handlerModal}>
+        <div className={css.href}>Есть учетная запись? Войти</div>
+        <div className={authError ? css.authError : css.auth}>Регистрация</div>
+        {authError && (
+          <Card width="100%" type={`${'error'}`} className={css.error}>
+            <Text>{authError}</Text>
+          </Card>
+      )}
+        <input type="text" name="login" defaultValue={`${''}`} placeholder="Введите имя" onChange={() => dispatch(errorAuthReg())} required />
+        <input type="email" name="email" placeholder="Введите почту" onChange={() => dispatch(errorAuthReg())} required />
+        <input type="password" name="password" placeholder="Введите пароль" onChange={() => dispatch(errorAuthReg())} required />
+        <input type="password" name="password2" placeholder="Подтвердите пароль" onChange={() => dispatch(errorAuthReg())} required />
         {/* <Modal.Action>Войти</Modal.Action> */}
-        <button passive="true" type="submit">Войти</button>
+        <button className={css.button} passive="true" type="submit">Регистрация</button>
       </form>
     </Modal>
   );
