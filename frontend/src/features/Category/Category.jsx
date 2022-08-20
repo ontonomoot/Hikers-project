@@ -8,6 +8,9 @@ import init from './apiMap';
 import {
   categoryThunk, selectorCategory
 } from './category';
+import {
+  placeThunk, selectorPlaces
+} from './places';
 
 import './category.css';
 
@@ -15,7 +18,10 @@ export default function Category() {
   const { id } = useParams();
 
   const categories = useSelector(selectorCategory);
-  // console.log('+', categories);
+  // console.log(categories);
+  const places = useSelector(selectorPlaces);
+
+  console.log('+', places);
   const dispatch = useDispatch();
   // Функция ymaps.ready() будет вызвана, когда
   // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
@@ -24,7 +30,9 @@ export default function Category() {
       await window.ymaps.ready(init);
     }
     winFunc();
+    // console.log('effect');
     dispatch(categoryThunk(id));
+    dispatch(placeThunk(id));
   }, [dispatch, id]);
 
   // console.log('test')
@@ -36,28 +44,9 @@ export default function Category() {
       {/* <h1 id={id} className="category">Категория</h1> */}
       <div>
         <div id="map" />
-        <div id="placeFilter">
-
-          <span>
-            <span className="ratingNum">1</span>
-            <Star color="orange" size={50} value={5} icon={<Text>1</Text>} type="secondary" />
-          </span>
-          <span>
-            <span className="ratingNum">2</span>
-            <Star color="orange" size={50} value={5} icon={<Text>1</Text>} type="secondary" />
-          </span>
-          <span>
-            <span className="ratingNum">3</span>
-            <Star color="orange" size={50} value={5} icon={<Text>1</Text>} type="secondary" />
-          </span>
-          <span>
-            <span className="ratingNum">4</span>
-            <Star color="orange" size={50} value={5} icon={<Text>1</Text>} type="secondary" />
-          </span>
-          <span>
-            <span className="ratingNum">5</span>
-            <Star color="orange" size={50} value={5} icon={<Text>1</Text>} type="secondary" />
-          </span>
+        <div id="placeFilter" />
+        <div className="placesContainer">
+          <p>Категория {categories.title} </p>
         </div>
       </div>
 

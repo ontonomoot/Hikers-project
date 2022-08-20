@@ -4,7 +4,7 @@ const {
   Category,
 } = require('../../db/models');
 
-categoryRouter.get('/category/:id', async (req, res) => {
+categoryRouter.get('/categories/:id', async (req, res) => {
   try {
     // console.log(req.p)
     const categories = await Category.findOne({
