@@ -15,7 +15,7 @@ console.log(category, 'categoryyyyyyyyyyyyy');
 console.log(weatherSelector, 'weather');
 
 const searchLocation = async (event) => {
-  dispatch(getCoordinate({ lat: 35.86878786, lon: 30.768668878 }));
+  dispatch(getCoordinate({ lat: 59.57, lon: 30.18 }));
 };
 
 useEffect(() => {
