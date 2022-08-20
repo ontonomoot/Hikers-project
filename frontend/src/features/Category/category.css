@@ -1,0 +1,41 @@
+#map {
+  width: 600px;
+  height: 450px;
+  /* background-color:antiquewhite; */
+}
+
+.categoriesBox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.categoriesBox > div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+#placeFilter {
+  margin:0 auto;
+}
+
+.ratingNum {
+  font-size: 22px;
+}
+
+#yandexImage {
+  width: 100px;
+  height: 100px;
+}
+
+.yandexTitle {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+
+
+

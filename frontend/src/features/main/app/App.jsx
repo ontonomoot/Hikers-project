@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Category from '../../../Category/Category';
+import Category from '../../Category/Category.jsx';
+// import Categories from '../../Category/Categories';
 import './App.css';
 import MainPage from '../MainPage';
 import Navbar from '../navbar/Navbar';
@@ -17,8 +18,8 @@ function App() {
         <Route>
           <Route path="/" element={<MainPage />} />
           <Route path="/login" element={<Login />} />
-          <Route path="category/:id" element={<Category />} />
-          <Route path="/places" element={<PlacePage />} />
+          <Route path="/categories/:id" element={<Category />} />
+          <Route path="/places/:id" element={<PlacePage />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/weather" element={<Weather />} />
         </Route>
