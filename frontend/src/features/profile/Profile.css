@@ -1,0 +1,15 @@
+.profile-page {
+  width: auto;
+  display: flex;
+  /* direction: row; */
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-info {
+  margin-left: 50px;
+}
+
+.profile-string {
+  margin-bottom: 30px;
+}
