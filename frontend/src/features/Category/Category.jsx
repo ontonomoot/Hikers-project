@@ -19,10 +19,7 @@ export default function Category() {
   const { id } = useParams();
 
   const categories = useSelector(selectorCategory);
-  // console.log(categories);
   const places = useSelector(selectorPlaces);
-
-  // console.log('+', places);
   const dispatch = useDispatch();
   // Функция ymaps.ready() будет вызвана, когда
   // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
@@ -45,11 +42,15 @@ export default function Category() {
       {/* <h1 id={id} className="category">Категория</h1> */}
       <div>
         <div id="map" />
-        <div id="placeFilter" />
-        <div className="placesContainer">
-          <p>Категория {categories.title} </p>
-          {places &&
-            places.map((place, i) => <Place key={`${i + 1}`} place={place} />)}
+        <div id="placeFilter">
+          <div className="placesContainer">
+            <p>Категория {categories.title} </p>
+            {
+
+              places &&
+              places.map((place, i) => <Place key={`${i + 1}`} place={place} />)
+            }
+          </div>
         </div>
       </div>
 

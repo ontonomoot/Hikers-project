@@ -38,7 +38,7 @@ export default async function init() {
 
   let count = 0;
 
-  console.log(geocoder);
+  // console.log('YandexGeocoder', geocoder);
 
   geocoder.forEach((geo) => {
     geo[0].then((res) => {

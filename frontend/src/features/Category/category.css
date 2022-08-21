@@ -22,6 +22,11 @@
   margin:0 auto;
 }
 
+.placesContainer{
+  max-height: 700px;
+  overflow: hidden;
+}
+
 .ratingNum {
   font-size: 22px;
 }
