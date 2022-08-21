@@ -11,6 +11,7 @@ import {
 import {
   placeThunk, selectorPlaces
 } from './places';
+import Place from './Place';
 
 import './category.css';
 
@@ -47,6 +48,8 @@ export default function Category() {
         <div id="placeFilter" />
         <div className="placesContainer">
           <p>Категория {categories.title} </p>
+          {places &&
+            places.map((place, i) => <Place key={`${i + 1}`} place={place} />)}
         </div>
       </div>
 

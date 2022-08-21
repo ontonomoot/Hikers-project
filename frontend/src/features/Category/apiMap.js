@@ -49,8 +49,9 @@ export default async function init() {
       // Добавление метки (Placemark) на карту
       const placemark = new window.ymaps.Placemark(coordinates, {
         hintContent: `${geo[1]}`,
-        balloonContentHeader: `<a href = '/places/${geo[3]}' class="yandexTitle">${geo[1]}</a><br>`,
-        balloonContentBody: `<img src=${geo[4]} id="yandexImage">`
+        balloonContentHeader: `<img src=${geo[4]} id="yandexImage">`,
+        balloonContentBody: `<span>${geo[1]}</span><br>
+        <button><a href = '/places/${geo[3]}' class="yandexTitle">Подробнее</a></button>`
       }, {
         // iconLayout: 'default#image',
         // // Своё изображение иконки метки.
