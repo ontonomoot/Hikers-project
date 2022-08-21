@@ -36,13 +36,13 @@ const authLogin = createAsyncThunk(
     });
     const data = await response.json();
     if (!data.auth) {
-      throw data.auth;
+      throw data.text;
     }
     return data;
   }
 );
 
-// Санки логин
+// Санки регистрация
 const authRegistration = createAsyncThunk(
   'auth/registration',
   async (form) => {
@@ -56,9 +56,19 @@ const authRegistration = createAsyncThunk(
       })
     });
     const data = await response.json();
-    if (!data.auth) {
-      throw data.auth;
+
+    if (!data.registration) {
+      throw data.text;
     }
+
+    if (!data.registrationLength) {
+      throw data.text;
+    }
+
+    if (!data.registrationAuth) {
+      throw data.text;
+    }
+
     return data;
   }
 );
@@ -102,8 +112,16 @@ const authSlice = createSlice({
         state.login = !state.login;
         state.userSession = action.payload.session;
       })
-      .addCase(authLogin.rejected, (state) => {
-        state.loginError = true;
+      .addCase(authLogin.rejected, (state, action) => {
+        state.loginError = action.error.message;
+      })
+      .addCase(authRegistration.fulfilled, (state, action) => {
+        state.registartionError = false;
+        state.registartion = !state.registartion;
+        state.userSession = action.payload.session;
+      })
+      .addCase(authRegistration.rejected, (state, action) => {
+        state.registartionError = action.error.message;
       })
       .addCase(authLogOut.fulfilled, (state) => {
         state.userSession = null;

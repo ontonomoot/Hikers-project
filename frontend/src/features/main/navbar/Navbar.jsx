@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import css from './Navbar.module.css';
 
+import { Breadcrumbs } from '@geist-ui/core';
+import css from './Navbar.module.css';
 import {
   selectorAuthLogin,
   booleanAuthLogin,
@@ -23,23 +24,36 @@ export default function Navbar() {
 
   useEffect(() => {
     dispatch(auth());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
-      {!userSession ? (
-        <nav className={css.navbar}>
-          <button type="button" onClick={() => dispatch(booleanAuthLogin())}>Войти</button>
-          {authLogin && <Login />}
+      {userSession ? (
+        <nav id={css.navbar}>
+          <div className={css.left}>
+            <div>logo</div>
+          </div>
+          <div className={css.right}>
+            <button className={css.button} type="button" onClick={() => dispatch(authLogOut())}>Выйти</button>
+          </div>
         </nav>
     )
     : (
-      <nav className={css.navbar}>
-        <button type="button" onClick={() => dispatch(booleanAuthLogin())}>Войти</button>
-        <button type="button" onClick={() => dispatch(booleanAuthReg())}>Регистрация</button>
-        <button type="button" onClick={() => dispatch(authLogOut())}>Выйти</button>
-        {authLogin && <Login />}
-        {authRegistration && <Registration />}
+      <nav id={css.navbar}>
+        <div className={css.left}>
+          <div>logo</div>
+        </div>
+        <div className={css.marqueeAll}>
+          <p className={css.marquee}>
+            {' '}СНОУБОРД - РАФТИНГ - КЕМПИНГ - ДАУНХИЛЛ - АЛЬПИНИЗМ - ХАЙКИНГ
+          </p>
+        </div>
+        <div className={css.right}>
+          <button className={css.button} type="button" onClick={() => dispatch(booleanAuthLogin())}>Войти</button>
+          <button className={css.button} type="button" onClick={() => dispatch(booleanAuthReg())}>Регистрация</button>
+          {authLogin && <Login />}
+          {authRegistration && <Registration />}
+        </div>
       </nav>
   )}
     </div>
