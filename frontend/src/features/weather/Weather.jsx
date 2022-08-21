@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectorCategory, categoryThunk } from '../Category/category';
 import { getCoordinate, selectorWeather } from './weather';
 import './Weather.css';
-import Category from '../Category/Category.jsx';
+import Category from '../Category/Category';
 
 function Weather() {
 const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Category from '../../Category/Category.jsx';
+import Category from '../../Category/Category';
 // import Categories from '../../Category/Categories';
 import './App.css';
 import MainPage from '../MainPage';
@@ -8,7 +8,7 @@ import Navbar from '../navbar/Navbar';
 import PlacePage from '../../placePage/PlacePage';
 import Registration from '../registration/Registration';
 import Login from '../login/Login';
-import Weather from '../../weather/Weather.jsx';
+import Weather from '../../weather/Weather';
 
 function App() {
   return (
