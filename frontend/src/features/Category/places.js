@@ -13,7 +13,7 @@ const placeThunk = createAsyncThunk(
     try {
       const response = await fetch(`/api/places/${id}`);
       const data = await response.json();
-      console.log('data', data);
+      // console.log('data', data);
       return data;
     } catch (err) {
       return err.message;

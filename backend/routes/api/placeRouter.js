@@ -39,12 +39,20 @@ placeRouter.get('/places/:id', async (req, res) => {
     });
 
     const newPlaces = await Place.findAll({
-      order: [['rating', 'DESC']],
+      where: {
+        category_id: req.params.id,
+      },
+      include: {
+        model: Photo,
+      },
+      order: [
+        ['rating', 'DESC'],
+      ],
       raw: true,
     });
 
-    console.log(newPlaces);
-    res.send(places);
+    // console.log(newPlaces);
+    res.send(newPlaces);
   } catch (err) {
     res.send(err.message);
   }
