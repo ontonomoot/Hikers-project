@@ -21,7 +21,7 @@ export default function Category() {
   const categories = useSelector(selectorCategory);
   const places = useSelector(selectorPlaces);
 
-  // console.log('places', sortedPlaces);
+  console.log('places', places);
   const dispatch = useDispatch();
   // Функция ymaps.ready() будет вызвана, когда
   // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
@@ -35,20 +35,17 @@ export default function Category() {
     dispatch(placeThunk(id));
   }, [dispatch, id]);
 
-  // console.log('test')
-  //  console.log('na glavnoi', categories[0]);
-
   return (
     <div className="categoriesBox">
-      {categories && <h1 id={id} className="category">{categories.title}</h1>}
-      {/* <h1 id={id} className="category">Категория</h1> */}
+      <div className="placeTitleBox">
+        {categories && <h1 id={id} className="category">{categories.title}</h1>}
+        <p className="placesListTitle">Список мест для <span className="placesPlusListTitle">{categories.title}а </span></p>
+      </div>
       <div>
         <div id="map" />
         <div id="placeFilter">
-          <div className="placesContainer">
-            <p>Категория {categories.title} </p>
+          <div className="placesContainer" id="placesContainer">
             {
-
               places &&
               places.map((place, i) => <Place key={`${i + 1}`} place={place} />)
             }
