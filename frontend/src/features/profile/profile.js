@@ -2,16 +2,18 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   edit: false,
-  profiles: []
+  profile: []
 };
 
-const editProfileThunk = createAsyncThunk(
+const getProfileThunk = createAsyncThunk(
   'profile/edit',
   async (id) => {
+    console.log('zdes');
     const response = await fetch(`/api/profile/${id}`, {
       method: 'POST',
     });
     const data = await response.json();
+    console.log(data);
     return data;
   }
   );
@@ -23,24 +25,28 @@ const editProfileSlice = createSlice({
     editProfile: (state) => {
       state.edit = !state.edit;
     },
+    newProfile: (state, action) => {
+      state.profile = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
-      .addCase(editProfileThunk.fulfilled, (state, action) => {
+      .addCase(getProfileThunk.fulfilled, (state, action) => {
         state.profile = action.payload;
       });
   }
 });
 
 export {
-  editProfileThunk
+  getProfileThunk
 };
 
 export const selectorEditProfile = (state) => state.profile.edit;
 export const selectorProfile = (state) => state.profile.profile;
 
 export const {
-  editProfile
+  editProfile,
+  newProfile
 } = editProfileSlice.actions;
 
 export default editProfileSlice.reducer;

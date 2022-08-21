@@ -4,7 +4,6 @@ const { User } = require('../../db/models');
 
 router.post('/profile/:id', async (req, res) => {
   const { id } = req.params;
-  console.log(id);
   try {
     const user = await User.findOne({
       where: { id },
@@ -15,6 +14,26 @@ router.post('/profile/:id', async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+router.put('/profile', async (req, res) => {
+  const {
+    id, name, email, city, favorite,
+  } = req.body.form;
+  // console.log(name, email, city, favorite);
+  const updatedUser = await User.update(
+    {
+      user_name: name, email, city, favorite,
+    },
+    {
+      where: { id },
+      returning: true,
+      raw: true,
+    },
+  );
+  const [, [user]] = updatedUser;
+  req.session.user = user;
+  res.json(updatedUser[1][0]);
 });
 
 module.exports = router;
