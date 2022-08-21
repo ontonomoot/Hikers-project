@@ -28,6 +28,10 @@ module.exports = {
       geo: {
         type: Sequelize.TEXT,
       },
+      rating: {
+        defaultValue: 0,
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

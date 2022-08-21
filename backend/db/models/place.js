@@ -40,6 +40,10 @@ module.exports = (sequelize, DataTypes) => {
     geo: {
       type: DataTypes.TEXT,
     },
+    rating: {
+      defaultValue: 0,
+      type: DataTypes.INTEGER,
+    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
