@@ -21,7 +21,7 @@ function App() {
           <Route path="/categories/:id" element={<Category />} />
           <Route path="/places/:id" element={<PlacePage />} />
           <Route path="/registration" element={<Registration />} />
-          <Route path="/weather/:id" element={<Weather />} />
+          <Route path="/weather" element={<Weather />} />
         </Route>
       </Routes>
     </>

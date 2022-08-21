@@ -12,10 +12,16 @@ placeRouter.get('/places/:id', async (req, res) => {
       where: {
         category_id: req.params.id,
       },
-      include: [{ model: Review }, { model: Photo }],
-      order: [['createdAt', 'ASC']],
+      include: {
+        model: Photo,
+      },
       raw: true,
     });
+
+    const reviews = await Review.findAll({
+      raw: true,
+    });
+    console.log(reviews);
     res.send(places);
   } catch (err) {
     res.send(err.message);
