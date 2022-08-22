@@ -21,7 +21,7 @@ export default function Category() {
   const categories = useSelector(selectorCategory);
   const places = useSelector(selectorPlaces);
 
-  console.log('places', places);
+  // console.log('places', places);
   const dispatch = useDispatch();
   // Функция ymaps.ready() будет вызвана, когда
   // загрузятся все компоненты API, а также когда будет готово DOM-дерево.

@@ -85,6 +85,23 @@ const authLogOut = createAsyncThunk(
   }
 );
 
+const editProfileThunk = createAsyncThunk(
+  'auth/edit',
+  async (form) => {
+    const response = await fetch('/api/profile', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      body: JSON.stringify({
+        form,
+      })
+    });
+    const data = await response.json();
+    return data;
+  }
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -125,6 +142,9 @@ const authSlice = createSlice({
       })
       .addCase(authLogOut.fulfilled, (state) => {
         state.userSession = null;
+      })
+      .addCase(editProfileThunk.fulfilled, (state, action) => {
+        state.userSession = action.payload;
       });
   }
 });
@@ -134,7 +154,8 @@ export {
   auth,
   authLogin,
   authRegistration,
-  authLogOut
+  authLogOut,
+  editProfileThunk
 };
 
 // экспорт функции-селекторов
