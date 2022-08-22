@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Button, Card, Text, User, Divider } from '@geist-ui/core';
+import { Card, Text, User, Divider } from '@geist-ui/core';
 import Star from '@geist-ui/icons/star';
+import { selectorUserSession } from '../../main/auth';
 import { loadReview, selectReview } from './review';
 import ReviewForm from './ReviewForm';
 
-function ReviewList({ user }) {
+function ReviewList() {
+  const user = useSelector(selectorUserSession);
   const { id } = useParams();
   const dispatch = useDispatch();
 
