@@ -8,6 +8,7 @@ import weatherSlice from './features/weather/weather.js';
 import reviewSlice from './features/placePage/reviews/review.js';
 import placeSlice from './features/Category/places.js';
 import editProfileSlice from './features/profile/profile.js';
+import favouritesSlice from './features/Favourites/favourites.js';
 
 const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ const store = configureStore({
     review: reviewSlice,
     weather: weatherSlice,
     profile: editProfileSlice,
+    favourites: favouritesSlice,
   }
 });
 
