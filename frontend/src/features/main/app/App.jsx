@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 // eslint-disable-next-line import/extensions
@@ -9,7 +10,8 @@ import Navbar from '../navbar/Navbar';
 import PlacePage from '../../placePage/PlacePage';
 import Registration from '../registration/Registration';
 import Login from '../login/Login';
-import Profile from '../../profile/Profile.jsx';
+import Profile from '../../profile/Profile';
+import Favourites from '../../Favourites/Favourites';
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
           <Route path="/places/:id" element={<PlacePage />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/favourites" element={<Favourites />} />
         </Route>
       </Routes>
     </>
