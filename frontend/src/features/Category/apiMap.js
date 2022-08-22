@@ -25,7 +25,7 @@ export default async function init() {
 
   const placesDB = await response.json();
 
-  // console.log('apiMap', placesDB);
+  console.log('apiMap', placesDB);
 
   const geocoder = [];
   placesDB.forEach((place, i) => {
@@ -60,7 +60,7 @@ export default async function init() {
       }, {
         iconLayout: 'default#image',
         // Своё изображение иконки метки.
-        iconImageHref: `/images/categories/icon/${geo[6]}.png`,
+        iconImageHref: `/images/icon/${geo[6]}.png`,
         iconImageSize: [30, 30],
         iconImageOffset: [0, 0]
       });

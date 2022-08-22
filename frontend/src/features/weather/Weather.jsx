@@ -21,11 +21,11 @@ return (
       {weatherSelector && weatherSelector.map((day) => (
         <div className="weather-day" key={day.dt}>
           <div>
-            <h4>{day.dt_txt.slice(5, 10).split('-').reverse().join('.')}</h4>
+            <h5>{day.dt_txt.slice(5, 10).split('-').reverse().join('.')}</h5>
           </div>
           <div>
             {`${day.main.temp.toFixed(1)} °C`}
-            <img className="weather-img" src={`/images/categories/weather/${day.weather[0].main.toLowerCase()}.png`} alt="img" />
+            <img className="weather-img" src={`/images/weather/${day.weather[0].main.toLowerCase()}.png`} alt="img" />
             <p>
               {`Ветер ${day.wind.speed.toFixed(1)} м/с`}
             </p>

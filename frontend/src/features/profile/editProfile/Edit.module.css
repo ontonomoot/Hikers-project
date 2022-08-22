@@ -60,3 +60,7 @@
 	border: 1px solid #5e6771;
 	color: black;
 }
+
+h5, h6 {
+  margin: 10px;
+}

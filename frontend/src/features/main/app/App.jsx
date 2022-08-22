@@ -1,7 +1,8 @@
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Category from '../../Category/Category';
+// eslint-disable-next-line import/extensions
+import Category from '../../Category/Category.jsx';
 // import Categories from '../../Category/Categories';
 import './App.css';
 import MainPage from '../MainPage';

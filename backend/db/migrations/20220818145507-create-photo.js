@@ -8,7 +8,6 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       review_id: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Reviews',
@@ -18,7 +17,6 @@ module.exports = {
         onUpdate: 'cascade',
       },
       place_id: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: {
           model: 'Places',
