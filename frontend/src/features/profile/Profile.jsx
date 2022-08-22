@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Input } from '@geist-ui/core';
+import Form from 'react-bootstrap/Form';
 
-import { selectorEditProfile, editProfile, getProfileThunk, selectorProfile } from './profile';
+import { selectorEditProfile, editProfile, getProfileThunk, selectorProfile, addPhotoProfile } from './profile';
 import EditProfile from './editProfile/editProfile';
 import { editProfileThunk, selectorUserSession } from '../main/auth';
 import './Profile.css';
@@ -17,15 +18,26 @@ function Profile() {
   useEffect(() => {
     dispatch(getProfileThunk(id));
   }, [userSession]);
+
+  const sendFiles = async (e) => {
+    try {
+      // console.log(pictureData);
+      const picturesData = [...e.target.files];
+      const data = new FormData();
+      picturesData.forEach((img) => {
+        data.append('profileImg', img);
+      });
+      dispatch(addPhotoProfile(data));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="profile-page">
       <div className="profile-photo">
-        <img src="/images/categories/profile/1.png" alt="" />
-        {/* <UploadButton uploader={uploader} />
-        <button type="submit">
-          Upload a file
-        </button> */}
-        {/* <input type="file" onChange={uploadFile} /> */}
+        <img src={`/images/${profile.ava}`} alt="img" id="profile-img" />
+        <Form.Control type="file" name="photos" onChange={sendFiles} autoComplete="off" />
       </div>
       <div className="profile-info">
         {profile && (

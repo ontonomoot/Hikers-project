@@ -11,7 +11,7 @@ const storage = async (file) => {
   if (size > 5000000) throw 'File must be less than 5MB';
 
   const { md5 } = file;
-  const URL = `/photo/${md5}${extension}`;
+  const URL = `/profile/${md5}${extension}`;
   await util.promisify(file.mv)(`./public/images${URL}`);
   return URL;
 };
