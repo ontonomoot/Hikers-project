@@ -19,25 +19,24 @@ function Profile() {
     dispatch(getProfileThunk(id));
   }, [userSession]);
 
-  const sendFiles = async (e) => {
-    try {
-      // console.log(pictureData);
-      const picturesData = [...e.target.files];
-      const data = new FormData();
-      picturesData.forEach((img) => {
-        data.append('profileImg', img);
-      });
-      dispatch(addPhotoProfile(data));
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const sendFiles = async (e) => {
+  //   try {
+  //     const picturesData = [...e.target.files];
+  //     const data = new FormData();
+  //     picturesData.forEach((img) => {
+  //       data.append('profileImg', img);
+  //     });
+  //     dispatch(addPhotoProfile(data));
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   return (
     <div className="profile-page">
       <div className="profile-photo">
         <img src={`/images/${profile.ava}`} alt="img" id="profile-img" />
-        <Form.Control type="file" name="photos" onChange={sendFiles} autoComplete="off" />
+        {/* <Form.Control type="file" name="photos" onChange={sendFiles} autoComplete="off" /> */}
       </div>
       <div className="profile-info">
         {profile && (
