@@ -34,6 +34,7 @@ export default async function init() {
     geocoder[i].push(place.description);
     geocoder[i].push(place.id);
     geocoder[i].push(place['Photos.title']);
+    geocoder[i].push(place.rating);
   });
 
   let count = 0;
@@ -50,8 +51,9 @@ export default async function init() {
       const placemark = new window.ymaps.Placemark(coordinates, {
         hintContent: `${geo[1]}`,
         balloonContentHeader: `<img src=${geo[4]} id="yandexImage">`,
-        balloonContentBody: `<span>${geo[1]}</span><br>
-        <button><a href = '/places/${geo[3]}' class="yandexTitle">Подробнее</a></button>`
+        balloonContentBody: `<span class="yandexPlaceTitle">${geo[1]}</span><br>
+        <span class="yandexStar">${'★'.repeat(geo[5])}</span><br>
+        <button class="yandexButton"><a href = '/places/${geo[3]}' class="yandexTitle">Подробнее</a></button>`
       }, {
         // iconLayout: 'default#image',
         // // Своё изображение иконки метки.
