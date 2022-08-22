@@ -22,7 +22,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
     review_id: {
-      allowNull: false,
       type: DataTypes.INTEGER,
       references: {
         model: 'Reviews',
@@ -32,7 +31,6 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: 'cascade',
     },
     place_id: {
-      allowNull: false,
       type: DataTypes.INTEGER,
       references: {
         model: 'Places',
