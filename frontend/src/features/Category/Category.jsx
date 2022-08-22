@@ -33,7 +33,7 @@ export default function Category() {
     // console.log('effect');
     dispatch(categoryThunk(id));
     dispatch(placeThunk(id));
-  }, []);
+  }, [dispatch, id]);
 
   return (
     <div className="categoriesBox">
