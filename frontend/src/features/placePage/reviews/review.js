@@ -2,7 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   reviewList: [],
-  error: null,
+  photo: [],
+  error: [],
 };
 
 // экспорт санок для загрузки списка всех отзывов
@@ -37,6 +38,19 @@ export const addReview = createAsyncThunk(
   }
 );
 
+// санки для отправки фото
+export const addPhoto = createAsyncThunk(
+  'review/addPhotoReview',
+  async (photos) => {
+    const response = await fetch('/api/place/photo', {
+      method: 'POST',
+      body: photos
+    });
+    const data = await response.json();
+    return data;
+  }
+);
+
 const reviewSlice = createSlice({
   name: 'review',
   initialState,
@@ -56,13 +70,16 @@ const reviewSlice = createSlice({
       })
       .addCase(addReview.fulfilled, (state, action) => {
         state.reviewList.unshift(action.payload);
-        // state.reviewList = action.payload;
+      })
+      .addCase(addPhoto.fulfilled, (state, action) => {
+        state.photo = action.payload;
       });
   }
 });
 
 // экспорт функции селектора
 export const selectReview = (state) => state.review.reviewList;
+export const selectPhoto = (state) => state.review.photo;
 
 // экспорт функции редьюсера
 export default reviewSlice.reducer;

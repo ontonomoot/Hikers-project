@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   edit: false,
-  profile: []
+  profile: [],
 };
 
 const getProfileThunk = createAsyncThunk(
@@ -14,6 +14,19 @@ const getProfileThunk = createAsyncThunk(
     const data = await response.json();
     return data;
   }
+  );
+
+  // отправка фото
+  export const addPhotoProfile = createAsyncThunk(
+    'profile/addPhotoProfile',
+    async (photos) => {
+      const response = await fetch('/api/profile/photo', {
+        method: 'PUT',
+        body: photos
+      });
+      const data = await response.json();
+      return data;
+    }
   );
 
 const editProfileSlice = createSlice({
@@ -31,12 +44,15 @@ const editProfileSlice = createSlice({
     builder
       .addCase(getProfileThunk.fulfilled, (state, action) => {
         state.profile = action.payload;
+      })
+      .addCase(addPhotoProfile.fulfilled, (state, action) => {
+        state.profile = action.payload;
       });
   }
 });
 
 export {
-  getProfileThunk
+  getProfileThunk,
 };
 
 export const selectorEditProfile = (state) => state.profile.edit;
