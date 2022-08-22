@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Modal, Select } from '@geist-ui/core';
+import Form from 'react-bootstrap/Form';
 import css from './Edit.module.css';
 import { editProfile, newProfile, selectorEditProfile, selectorProfile } from '../profile';
 import { editProfileThunk, selectorUserSession } from '../../main/auth';
@@ -11,8 +12,7 @@ export default function EditProfile({ id }) {
   const profileData = useSelector(selectorEditProfile);
   const profile = useSelector(selectorProfile);
   const userSession = useSelector(selectorUserSession);
-
-  const handleEdit = (event) => {
+  const handleEdit = async (event) => {
     event.preventDefault();
     const { name, email, city, favorite, link } = event.target;
     const form = {
@@ -21,7 +21,8 @@ export default function EditProfile({ id }) {
       email: email.value,
       city: city.value,
       favorite: favorite.value,
-      link: link.value };
+      link: link.value
+    };
       dispatch(editProfileThunk(form));
       dispatch(newProfile(userSession));
       dispatch(editProfile());
@@ -37,13 +38,18 @@ export default function EditProfile({ id }) {
         <p>Город:</p>
         <input type="text" defaultValue={profile.city} name="city" required />
         <p>Активность:</p>
-        <input type="text" defaultValue={profile.favorite} name="favorite" />
+        <Form.Select name="favorite" aria-label="Default select example">
+          <option>{profile.favorite_cat}</option>
+          <option value="Сноуборд">Сноуборд</option>
+          <option value="Рафтинг">Рафтинг</option>
+          <option value="Кемпинг">Кемпинг</option>
+          <option value="Альпинизм">Альпинизм</option>
+          <option value="Хайкинг">Хайкинг</option>
+          <option value="Даунхилл">Даунхилл</option>
+        </Form.Select>
+        {/* <input type="text" defaultValue={profile.favorite_cat} name="favorite" /> */}
         <p>Соцсеть:</p>
         <input type="select" defaultValue={profile.link} name="link" />
-        <Select placeholder="Choose one">
-          <Select.Option value="1">Option 1</Select.Option>
-          <Select.Option value="2">Option 2</Select.Option>
-        </Select>
         <button className={css.button} passive="true" type="submit">Изменить</button>
       </form>
     </Modal>
