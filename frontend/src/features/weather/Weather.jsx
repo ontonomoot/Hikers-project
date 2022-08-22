@@ -19,7 +19,7 @@ useEffect(() => {
   searchLocation();
   dispatch(categoryThunk());
   dispatch(placeThunk(2));
-  console.log('места', places);
+  // console.log('места', places);
 }, [dispatch]);
 // console.log(weatherSelector, 'вот он');
 return (
