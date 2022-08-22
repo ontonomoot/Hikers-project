@@ -1,13 +1,11 @@
 .profile-page {
   width: auto;
   display: flex;
-  /* direction: row; */
   align-items: center;
   justify-content: center;
 }
 
 .profile-info {
-  margin-left: 50px;
 }
 
 .profile-string {
@@ -22,4 +20,9 @@
 
 #profile-img {
   width: 300px;
+}
+
+.profile-block-btn{
+  display: flex;
+  flex-direction: column;
 }
