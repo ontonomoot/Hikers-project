@@ -6,6 +6,8 @@ export default async function init() {
     center: [59.93139123904442, 30.41594565054736],
     // Уровень масштабирования.
     zoom: 3
+  }, {
+    suppressMapOpenBlock: true
   });
 
   myMap.controls.remove('geolocationControl'); // удаляем геолокацию
@@ -35,6 +37,7 @@ export default async function init() {
     geocoder[i].push(place.id);
     geocoder[i].push(place['Photos.title']);
     geocoder[i].push(place.rating);
+    geocoder[i].push(place.category_id);
   });
 
   let count = 0;
@@ -55,11 +58,11 @@ export default async function init() {
         <span class="yandexStar">${'★'.repeat(geo[5])}</span><br>
         <button class="yandexButton"><a href = '/places/${geo[3]}' class="yandexTitle">Подробнее</a></button>`
       }, {
-        // iconLayout: 'default#image',
-        // // Своё изображение иконки метки.
-        // iconImageHref: `${geo[4]}`,
-        // iconImageSize: [50, 50],
-        // iconImageOffset: [0, 0]
+        iconLayout: 'default#image',
+        // Своё изображение иконки метки.
+        iconImageHref: `/images/categories/icon/${geo[6]}.png`,
+        iconImageSize: [30, 30],
+        iconImageOffset: [0, 0]
       });
       myMap.geoObjects.add(placemark);
       count += 1;
