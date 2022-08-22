@@ -19,6 +19,8 @@ function Profile() {
     dispatch(getProfileThunk(id));
   }, [userSession]);
 
+  console.log(userSession);
+
   return (
     <div className="profile-page">
       <div className="profile-photo">

@@ -8,6 +8,7 @@ import init from './apiMap';
 import {
   categoryThunk, selectorCategory
 } from './category';
+import { selectorCategories } from '../main/mainPage';
 import {
   placeThunk, selectorPlaces
 } from './places';
@@ -18,10 +19,10 @@ import './category.css';
 export default function Category() {
   const { id } = useParams();
 
-  const categories = useSelector(selectorCategory);
   const places = useSelector(selectorPlaces);
+  const allCategories = useSelector(selectorCategories);
+  const categories = allCategories ? allCategories.find((el) => el.id === Number(id)) : null;
 
-  // console.log('places', places);
   const dispatch = useDispatch();
   // Функция ymaps.ready() будет вызвана, когда
   // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
@@ -30,30 +31,31 @@ export default function Category() {
       await window.ymaps.ready(init);
     }
     winFunc();
-    // console.log('effect');
-    dispatch(categoryThunk(id));
+    // dispatch(categoryThunk(id));
     dispatch(placeThunk(id));
   }, [dispatch, id]);
 
-  return (
-    <div className="categoriesBox">
-      <div className="placeTitleBox">
-        {categories && <h1 id={id} className="category">{categories.title}</h1>}
-        <p className="placesListTitle">Список мест для <span className="placesPlusListTitle">{categories.title}а </span></p>
-      </div>
-      <div>
-        <div id="map" />
-        <div id="placeFilter">
-          <div className="placesContainer" id="placesContainer">
-            {
+  if (!categories) return <div>Loading</div>;
+
+ return (
+   <div className="categoriesBox">
+     <div className="placeTitleBox">
+       {categories && <h1 id={id} className="category">{categories.title}</h1>}
+       <p className="placesListTitle">Список мест для <span className="placesPlusListTitle">{categories.title}а </span></p>
+     </div>
+     <div>
+       <div id="map" />
+       <div id="placeFilter">
+         <div className="placesContainer" id="placesContainer">
+           {
               places &&
               places.map((place, i) => <Place key={`${i + 1}`} place={place} placeID={place.id} />)
             }
-          </div>
-        </div>
-      </div>
+         </div>
+       </div>
+     </div>
 
-    </div>
+   </div>
 
-  );
+ );
 }
