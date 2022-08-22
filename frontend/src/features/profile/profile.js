@@ -8,12 +8,10 @@ const initialState = {
 const getProfileThunk = createAsyncThunk(
   'profile/edit',
   async (id) => {
-    console.log('zdes');
     const response = await fetch(`/api/profile/${id}`, {
       method: 'POST',
     });
     const data = await response.json();
-    console.log(data);
     return data;
   }
   );
