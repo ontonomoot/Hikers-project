@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectorCategory, categoryThunk } from '../Category/category';
 import { getCoordinate, selectorWeather } from './weather';
 import './Weather.css';
-import { placeThunk, selectorPlaces } from '../Category/places';
 
 function Weather() {
 const dispatch = useDispatch();
@@ -16,7 +14,7 @@ const searchLocation = async (event) => {
 useEffect(() => {
   searchLocation();
 }, [dispatch]);
-console.log(weatherSelector, 'вот он');
+
 return (
   <div>
     <div className="weather-days">
