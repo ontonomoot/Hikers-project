@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const storageProfileUpload = require('../../middleware/storageProfileUpload');
 
 const { User } = require('../../db/models');
 
@@ -35,7 +36,28 @@ router.put('/profile', async (req, res) => {
   );
   const [, [user]] = updatedUser;
   req.session.user = user;
-  console.log(user);
+  res.json(updatedUser[1][0]);
+});
+
+router.put('/profile/photo', async (req, res) => {
+  const photos = req.files.profileImg;
+  const { id } = req.session.user;
+  // console.log(photos, 'photos');
+  const url = await Promise.all(await storageProfileUpload(photos));
+  console.log(url, 'url');
+  const updatedUser = await User.update(
+    {
+      ava: url.join(''),
+    },
+    {
+      where: { id },
+      returning: true,
+      raw: true,
+    },
+  );
+  const [, [user]] = updatedUser;
+  req.session.user = user;
+  // console.log(updatedUser, 'updUSER');
   res.json(updatedUser[1][0]);
 });
 

@@ -10,7 +10,7 @@ const ssr = require('../middleware/ssr');
 
 module.exports = function config(app) {
   app.use(express.urlencoded({
-    extended: true
+    extended: true,
   }));
   app.use(express.json());
   app.use(morgan('dev'));
