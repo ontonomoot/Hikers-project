@@ -9,6 +9,7 @@ import Navbar from '../navbar/Navbar';
 import PlacePage from '../../placePage/PlacePage';
 import Registration from '../registration/Registration';
 import Login from '../login/Login';
+// eslint-disable-next-line import/extensions
 import Profile from '../../profile/Profile.jsx';
 
 function App() {

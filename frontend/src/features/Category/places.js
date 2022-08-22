@@ -4,7 +4,7 @@ import {
 } from '@reduxjs/toolkit';
 
 const initialState = {
-  placeState: null,
+  placeState: [],
 };
 
 const placeThunk = createAsyncThunk(
