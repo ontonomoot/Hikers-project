@@ -10,7 +10,7 @@ export default function Place({ place }) {
   const { id } = useParams();
 
   return (
-    <Card style={{ border: ' 1px solid #0d071c' }} className="cardPlace">
+    <Card className="cardPlace" id="cardPlace">
       <p>{place.title}</p>
       {
         place.rating ? Array.from({ length: place.rating }, (_, i) => <Star key={i} color="orange" size={22} />) : <p>У места нет отзывов</p>
