@@ -47,7 +47,7 @@ export default function Category() {
           <div className="placesContainer" id="placesContainer">
             {
               places &&
-              places.map((place, i) => <Place key={`${i + 1}`} place={place} />)
+              places.map((place, i) => <Place key={`${i + 1}`} place={place} placeID={place.id} />)
             }
           </div>
         </div>
