@@ -1,22 +1,19 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Button } from '@geist-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button, Input } from '@geist-ui/core';
+
 import { selectorEditProfile, editProfile, getProfileThunk, selectorProfile } from './profile';
 import EditProfile from './editProfile/editProfile';
-import { selectorUserSession } from '../main/auth';
+import { editProfileThunk, selectorUserSession } from '../main/auth';
 import './Profile.css';
 
 function Profile() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log('id', id);
   const profileData = useSelector(selectorEditProfile);
   const userSession = useSelector(selectorUserSession);
   const profile = useSelector(selectorProfile);
-
-  console.log(profile);
-  console.log(userSession, 'session');
   useEffect(() => {
     dispatch(getProfileThunk(id));
   }, [userSession]);
@@ -24,6 +21,11 @@ function Profile() {
     <div className="profile-page">
       <div className="profile-photo">
         <img src="/images/categories/profile/1.png" alt="" />
+        {/* <UploadButton uploader={uploader} />
+        <button type="submit">
+          Upload a file
+        </button> */}
+        {/* <input type="file" onChange={uploadFile} /> */}
       </div>
       <div className="profile-info">
         {profile && (
@@ -43,9 +45,11 @@ function Profile() {
         )}
         <div className="profile-string">
           <h6>Активность:</h6>
-          {
-            profile && profile.favorite && <h6> {profile.favorite}</h6>
-          }
+          <div>
+            {
+              profile && profile.favorite_cat && <h6> {profile.favorite_cat}</h6>
+            }
+          </div>
         </div>
         <div className="profile-string">
           {profile && <h6>{profile.link}</h6>}

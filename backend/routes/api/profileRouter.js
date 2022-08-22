@@ -11,7 +11,7 @@ router.post('/profile/:id', async (req, res) => {
     });
     res.json(user);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 });
 
@@ -21,7 +21,11 @@ router.put('/profile', async (req, res) => {
   } = req.body.form;
   const updatedUser = await User.update(
     {
-      user_name: name, email, city, favorite, link,
+      user_name: name,
+      email,
+      city,
+      favorite_cat: favorite,
+      link,
     },
     {
       where: { id },
@@ -31,6 +35,7 @@ router.put('/profile', async (req, res) => {
   );
   const [, [user]] = updatedUser;
   req.session.user = user;
+  console.log(user);
   res.json(updatedUser[1][0]);
 });
 
