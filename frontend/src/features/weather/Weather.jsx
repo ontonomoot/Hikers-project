@@ -16,7 +16,6 @@ const searchLocation = async (event) => {
 useEffect(() => {
   searchLocation();
 }, [dispatch]);
-console.log(weatherSelector, 'вот он');
 return (
   <div>
     <div className="weather-days">
