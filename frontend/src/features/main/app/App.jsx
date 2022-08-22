@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Provider, useDispatch } from 'react-redux';
 import Category from '../../Category/Category';
 // import Categories from '../../Category/Categories';
 import './App.css';
@@ -9,10 +10,20 @@ import PlacePage from '../../placePage/PlacePage';
 import Registration from '../registration/Registration';
 import Login from '../login/Login';
 import Weather from '../../weather/Weather';
+import { categoriesThunk } from '../mainPage';
+import { auth } from '../auth';
+import store from '../../../store';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(categoriesThunk());
+    dispatch(auth());
+  }, [dispatch]);
+
   return (
-    <>
+    <Provider store={store}>
       <Navbar />
       <Routes>
         <Route>
@@ -24,7 +35,7 @@ function App() {
           <Route path="/weather" element={<Weather />} />
         </Route>
       </Routes>
-    </>
+    </Provider>
   );
 }
 

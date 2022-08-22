@@ -8,7 +8,6 @@ import {
   booleanAuthLogin,
   authLogOut,
   selectorUserSession,
-  auth,
   selectorAuthReg,
   booleanAuthReg
 } from '../auth';
@@ -21,10 +20,6 @@ export default function Navbar() {
   const userSession = useSelector(selectorUserSession);
   const authLogin = useSelector(selectorAuthLogin);
   const authRegistration = useSelector(selectorAuthReg);
-
-  useEffect(() => {
-    dispatch(auth());
-  }, [dispatch]);
 
   return (
     <div>
