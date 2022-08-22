@@ -29,14 +29,14 @@ function Profile() {
       });
       dispatch(addPhotoProfile(data));
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
   return (
     <div className="profile-page">
       <div className="profile-photo">
-        <img src="/images/profile/1.png" alt="" />
+        <img src={`/images/${profile.ava}`} alt="img" id="profile-img" />
         <Form.Control type="file" name="photos" onChange={sendFiles} autoComplete="off" />
       </div>
       <div className="profile-info">

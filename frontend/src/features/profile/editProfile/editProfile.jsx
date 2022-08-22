@@ -39,7 +39,7 @@ export default function EditProfile({ id }) {
         <input type="text" defaultValue={profile.city} name="city" required />
         <p>Активность:</p>
         <Form.Select name="favorite" aria-label="Default select example">
-          <option>Выберите категорию</option>
+          <option>{profile.favorite_cat}</option>
           <option value="Сноуборд">Сноуборд</option>
           <option value="Рафтинг">Рафтинг</option>
           <option value="Кемпинг">Кемпинг</option>
