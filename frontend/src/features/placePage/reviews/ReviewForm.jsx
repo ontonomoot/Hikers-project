@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Button, Modal, Grid, Rating, Text } from '@geist-ui/core';
 import Form from 'react-bootstrap/Form';
+import { useDispatch } from 'react-redux';
+import { addReview } from './review';
 
 function ReviewForm() {
   const [state, setState] = useState(false);
@@ -9,24 +12,27 @@ function ReviewForm() {
   const closeHandler = (event) => {
     setState(false);
   };
+  const { id } = useParams();
+  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const placeId = Number(id);
     const form = event.target;
     const valueForm = {
-      title: event.target.title.value,
-      description: event.target.description.value,
-      date: event.target.date.value,
-      photos: event.target.photos.value,
-      rating: value
+      title: form.title.value,
+      description: form.description.value,
+      date: form.date.value,
+      photos: form.photos.value,
+      rating: value,
+      placeId,
     };
-    // eslint-disable-next-line no-console
-    console.log(valueForm);
+    dispatch(addReview(valueForm));
   };
 
   return (
     <>
-      <Button id="reviewBtn" onClick={handler}>Добавить свой отзыв о месте Modal</Button>
+      <Button id="reviewBtn" onClick={handler}>Добавить свой отзыв о месте</Button>
       <Modal visible={state} onClose={closeHandler}>
         <Text h5>Добавить свой отзыв о месте</Text>
         <Modal.Content>
@@ -53,7 +59,7 @@ function ReviewForm() {
             </Form.Group>
             <div id="modalBtns">
               <Button type="error" ghost onClick={() => setState(false)}>Отмена</Button>
-              <Button htmlType="submit">Отправить</Button>
+              <Button htmlType="submit" onClick={() => setState(false)}>Отправить</Button>
             </div>
           </Form>
         </Modal.Content>
