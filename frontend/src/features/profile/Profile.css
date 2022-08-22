@@ -12,4 +12,10 @@
 
 .profile-string {
   margin-bottom: 30px;
+  display: flex;
+}
+
+.profile-photo {
+  display: flex;
+  flex-direction: column ;
 }
