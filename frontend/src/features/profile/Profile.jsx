@@ -42,8 +42,9 @@ function Profile() {
         </div>
         )}
         <div className="profile-string">
+          <h6>Активность:</h6>
           {
-            profile && profile.favorite && <h6>Предпочтение: {profile.favorite}</h6>
+            profile && profile.favorite && <h6> {profile.favorite}</h6>
           }
         </div>
         <div className="profile-string">
