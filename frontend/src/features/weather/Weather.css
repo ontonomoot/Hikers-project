@@ -1,6 +1,9 @@
 .weather-days {
+  width: auto;
   display: flex;
-  margin: 50px;
+  /* margin-left: 100px;
+  margin-right: 100px; */
+  justify-content: space-evenly;
 }
 
 .weather-day {

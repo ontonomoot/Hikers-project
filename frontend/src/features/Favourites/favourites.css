@@ -1,0 +1,37 @@
+.favouritesBox{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.favouritesBox > div {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+#favPhoto {
+  width: 340px;
+  border: 1px solid #0d071c;
+  margin-bottom: 20px;
+}
+
+#favDescription {
+  margin-left: 20px;
+  width: 640px;
+  margin-bottom: 20px;
+  border: 1px solid #0d071c;
+}
+
+.favPlaceTitle {
+  font-size: 30px;
+}
+
+.favPlaceBtn {
+  border-radius: 5px;
+  background-color: green;
+  height: 45px;
+  width: 150px;
+}

@@ -29,12 +29,12 @@ export default function MainPage() {
           {trueCssUp && (
           <img
             className={trueCssUp ? `${css.photo} ${css.photoUpAnimation}` : css.photo}
-            src={`/images/categories/photo/${categories[getUpCat].photo}`}
+            src={`/images/photo/${categories[getUpCat].photo}`}
             alt={categories[getUpCat].photo}
           />
           )}
           <img
-            onClick={() => navigate(`/categories/${categories[getUpCat].id}`)}
+            onClick={() => navigate(`/${categories[getUpCat].id}`)}
             className={trueCssUp
               ? `${css.photo} ${css.photoUpMainA}`
               : trueCssDown
@@ -43,17 +43,17 @@ export default function MainPage() {
             key={categories[getUpCat].id + categories[getUpCat].photo}
             src={
               trueCssUp ?
-              `/images/categories/photo/${categories[getDownCat].photo}`
+              `/images/photo/${categories[getDownCat].photo}`
               : trueCssDown ?
-              `/images/categories/photo/${categories[getUpCat].photo}`
-              : `/images/categories/photo/${categories[getUpCat].photo}`
+              `/images/photo/${categories[getUpCat].photo}`
+              : `/images/photo/${categories[getUpCat].photo}`
             }
             alt={categories[getUpCat].photo}
           />
           {trueCssDown && (
           <img
             className={trueCssDown ? `${css.photo} ${css.photoDownAnimation}` : css.photo}
-            src={`/images/categories/photo/${categories[titleUp].photo}`}
+            src={`/images/photo/${categories[titleUp].photo}`}
             alt={categories[getUpCat].photo}
           />
           )}
@@ -99,7 +99,7 @@ export default function MainPage() {
             >Назад
             </button>
             {categories.map((icon, i) =>
-              <img onClick={() => setGetUpCat(i)} className={i === getUpCat ? `${css.iconCategory} ${css.iconCategoryTake}` : css.iconCategory} src={`/images/categories/icon/${icon.icon}`} alt={icon.icon} />
+              <img onClick={() => setGetUpCat(i)} className={i === getUpCat ? `${css.iconCategory} ${css.iconCategoryTake}` : css.iconCategory} src={`/images/icon/${icon.icon}`} alt={icon.icon} />
             )}
             <button
               className={css.buttonNext}
@@ -136,12 +136,12 @@ export default function MainPage() {
 
 /* <span id={css.main}>
 {categories && categories.map((category) => (
-  <a href={`/categories/${category.id}`} key={category.id}>
+  <a href={`/${category.id}`} key={category.id}>
     <Carousel>
       {category.photo.map((photo) => (
         <Carousel.Item>
           <img className={css.photo}
-          key={category.id + photo} src={`/images/categories/photo/${photo}`} alt={photo} />
+          key={category.id + photo} src={`/images/photo/${photo}`} alt={photo} />
         </Carousel.Item>
       ))}
     </Carousel>
@@ -162,19 +162,19 @@ export default function MainPage() {
     <img
       className={css.photo}
       key={categories[getUpCat].id + photo}
-      src={`/images/categories/photo/${photo}`}
+      src={`/images/photo/${photo}`}
       alt={photo}
     />
   </Carousel.Item>
 ))}
 </Carousel> */
 
-// trueCssUp ? (`/images/categories/photo/${categories[getDownCat].photo}` :
-// `/images/categories/photo/${categories[getUpCat].photo}`)
+// trueCssUp ? (`/images/photo/${categories[getDownCat].photo}` :
+// `/images/photo/${categories[getUpCat].photo}`)
 
 /* <button className={i === getUpCat ? `${css.iconCategory} ${css.iconCategoryTake}`
 : css.iconCategory} type="button" onClick={() => setGetUpCat(i)}>
 <img className={i === getUpCat ? `${css.iconCategory} ${css.iconCategoryTake}`
-: css.iconCategory} src={`/images/categories/icon/${icon.icon}`} alt={icon.icon} />
+: css.iconCategory} src={`/images/icon/${icon.icon}`} alt={icon.icon} />
 </button>
 ) */

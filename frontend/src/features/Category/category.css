@@ -14,12 +14,32 @@
 
 .categoriesBox > div {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
+}
+
+.placeTitleBox {
+  display: flex;
+  gap: 490px;
+}
+
+.placesListTitle {
+  font-size: 1.0rem;
+  width: 300px;
+  overflow:hidden;
+}
+
+.placesPlusListTitle{
+  font-size: 1.8rem;
 }
 
 #placeFilter {
   margin:0 auto;
+}
+
+#placesContainer{
+  max-height: 450px;
+  width: 300px;
+  overflow: scroll;
 }
 
 .ratingNum {
@@ -29,12 +49,49 @@
 #yandexImage {
   width: 100px;
   height: 100px;
+  border: 1px solid #0d071c;
 }
 
 .yandexTitle {
   text-decoration: none;
   font-size: 20px;
 }
+
+.yandexButton {
+  border: 1px solid #0d071c;
+  border-radius: 25px;
+  background-color: #0d071c;
+}
+
+.yandexButton > a {
+  color: white;
+  font-size: 15px;
+}
+
+.yandexButton > a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.yandexPlaceTitle {
+  font-size: 1.2rem;
+}
+
+.yandexStar {
+  color: #ffc107;
+  width: 30px;
+  height: 40px;
+  font-size: 25px;
+}
+
+#cardPlace:hover {
+  border: 1px solid #0d071c;
+  transition: 0.5s;
+  background-color: rgb(241, 241, 241);
+  cursor: pointer;
+}
+
+
 
 
 

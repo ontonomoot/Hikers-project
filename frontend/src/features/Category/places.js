@@ -4,7 +4,7 @@ import {
 } from '@reduxjs/toolkit';
 
 const initialState = {
-  placeState: null,
+  placeState: [],
 };
 
 const placeThunk = createAsyncThunk(
@@ -13,7 +13,7 @@ const placeThunk = createAsyncThunk(
     try {
       const response = await fetch(`/api/places/${id}`);
       const data = await response.json();
-      console.log('data', data);
+      // console.log('data', data);
       return data;
     } catch (err) {
       return err.message;

@@ -1,0 +1,28 @@
+.profile-page {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-info {
+}
+
+.profile-string {
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.profile-photo {
+  display: flex;
+  flex-direction: column ;
+}
+
+#profile-img {
+  width: 300px;
+}
+
+.profile-block-btn{
+  display: flex;
+  flex-direction: column;
+}

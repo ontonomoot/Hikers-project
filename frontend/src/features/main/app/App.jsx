@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Provider, useDispatch } from 'react-redux';
-import Category from '../../Category/Category';
+// eslint-disable-next-line import/extensions
+import Category from '../../Category/Category.jsx';
 // import Categories from '../../Category/Categories';
 import './App.css';
 import MainPage from '../MainPage';
@@ -13,6 +14,8 @@ import Weather from '../../weather/Weather';
 import { categoriesThunk } from '../mainPage';
 import { auth } from '../auth';
 import store from '../../../store';
+import Profile from '../../profile/Profile';
+import Favourites from '../../Favourites/Favourites';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +35,8 @@ function App() {
           <Route path="/categories/:id" element={<Category />} />
           <Route path="/places/:id" element={<PlacePage />} />
           <Route path="/registration" element={<Registration />} />
-          <Route path="/weather" element={<Weather />} />
+          <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/favourites" element={<Favourites />} />
         </Route>
       </Routes>
     </Provider>
