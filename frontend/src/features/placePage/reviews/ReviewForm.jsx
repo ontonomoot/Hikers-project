@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button, Modal, Grid, Rating, Text } from '@geist-ui/core';
 import Form from 'react-bootstrap/Form';
-import { useDispatch } from 'react-redux';
-import { addReview } from './review';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPhoto, addReview, selectPhoto } from './review';
 
 function ReviewForm() {
   const [state, setState] = useState(false);
@@ -15,6 +15,21 @@ function ReviewForm() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
+  const photo = useSelector(selectPhoto);
+
+  const sendFiles = async (e) => {
+    try {
+      const picturesData = [...e.target.files];
+      const data = new FormData();
+      picturesData.forEach((img) => {
+        data.append('homesImg', img);
+      });
+      dispatch(addPhoto(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const placeId = Number(id);
@@ -23,7 +38,7 @@ function ReviewForm() {
       title: form.title.value,
       description: form.description.value,
       date: form.date.value,
-      photos: form.photos.value,
+      photo,
       rating: value,
       placeId,
     };
@@ -51,7 +66,7 @@ function ReviewForm() {
             </Form.Group>
             <Form.Group controlId="formFileMultiple" className="mb-3">
               <Form.Label>Прикрепить фото:</Form.Label>
-              <Form.Control type="file" name="photos" multiple />
+              <Form.Control type="file" name="photos" multiple onChange={sendFiles} autoComplete="off" />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Ваша оценка:</Form.Label>
