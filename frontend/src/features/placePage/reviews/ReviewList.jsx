@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Button, Card, Text, User, Divider } from '@geist-ui/core';
+import { Card, Text, User, Divider } from '@geist-ui/core';
 import Star from '@geist-ui/icons/star';
+import { selectorUserSession } from '../../main/auth';
 import { loadReview, selectReview } from './review';
+import ReviewForm from './ReviewForm';
 
-function ReviewList({ user }) {
+function ReviewList() {
+  const user = useSelector(selectorUserSession);
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -24,7 +27,7 @@ function ReviewList({ user }) {
   return (
     <div className="reviews-container">
       <Divider id="reviewTitle" h={5}>Отзывы</Divider>
-      {user && <Button id="reviewBtn">Добавить свой отзыв о месте</Button>}
+      {user && <ReviewForm />}
       {review.map((el) => (
         <Card width="700px">
           <User src={el['User.ava']} name={el['User.user_name']} />

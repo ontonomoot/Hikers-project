@@ -5,13 +5,11 @@ import PlaceGallery from './PlaceGallery';
 import ReviewList from './reviews/ReviewList';
 
 function PlacePage() {
-  const user = true;
-
   return (
     <Page>
-      <PlaceInfo user={user} />
+      <PlaceInfo />
       <PlaceGallery />
-      <ReviewList user={user} />
+      <ReviewList />
     </Page>
   );
 }

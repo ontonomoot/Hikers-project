@@ -1,9 +1,12 @@
 import React from 'react';
 import { Card, Text, Divider, Button } from '@geist-ui/core';
+import { useSelector } from 'react-redux';
 import Star from '@geist-ui/icons/star';
+import { selectorUserSession } from '../main/auth';
 import './PlacePage.css';
 
-function PlaceInfo({ user }) {
+function PlaceInfo() {
+  const user = useSelector(selectorUserSession);
   const description = 'Some text about this place. Interesting text, but not too big. Just some information';
   const title = 'Супер-кэмпинг';
   const rating = 5;
