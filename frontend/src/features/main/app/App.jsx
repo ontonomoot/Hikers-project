@@ -1,6 +1,6 @@
-/* eslint-disable import/no-named-as-default */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Provider, useDispatch } from 'react-redux';
 // eslint-disable-next-line import/extensions
 import Category from '../../Category/Category.jsx';
 // import Categories from '../../Category/Categories';
@@ -10,13 +10,23 @@ import Navbar from '../navbar/Navbar';
 import PlacePage from '../../placePage/PlacePage';
 import Registration from '../registration/Registration';
 import Login from '../login/Login';
-
+import Weather from '../../weather/Weather';
+import { categoriesThunk } from '../mainPage';
+import { auth } from '../auth';
+import store from '../../../store';
 import Profile from '../../profile/Profile';
 import Favourites from '../../Favourites/Favourites';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(categoriesThunk());
+    dispatch(auth());
+  }, [dispatch]);
+
   return (
-    <>
+    <Provider store={store}>
       <Navbar />
       <Routes>
         <Route>
@@ -29,7 +39,7 @@ function App() {
           <Route path="/favourites" element={<Favourites />} />
         </Route>
       </Routes>
-    </>
+    </Provider>
   );
 }
 

@@ -1,0 +1,159 @@
+.mainTitle {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  font-size: 34px;
+}
+
+#main {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: auto;
+  height: 700px;
+  display: flex;
+  overflow: hidden
+}
+
+.photo {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  object-fit: cover;
+  position: relative;
+  animation-duration: 1s;
+}
+
+.mainRight {
+  width: 30%;
+  margin-right: 10px;
+  border: 1px solid black;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  display: flex;
+  justify-content: space-between;
+  border-left: 0px solid;
+}
+
+#main .buttonCategory {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.categoryChange {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 100%;
+  margin-right: 10px;
+}
+
+.iconCategory {
+  padding: 10px;
+  width: 90%;
+  height: auto;
+  border-radius: 50px;
+  opacity: 0.3;
+}
+
+.iconCategory:hover{
+  opacity: 1;
+}
+
+.iconCategoryTake {
+  opacity: 1;
+}
+
+.buttonNext {
+  transition: 0.5s;
+  padding: 3px 15px 3px 15px;
+  border: 1px solid #0d071c;
+  border-radius: 25px;
+  background-color: white;
+  color: #0d071c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 90%;
+  height: 30px;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+}
+
+.buttonBack {
+  transition: 0.5s;
+  padding: 3px 15px 3px 15px;
+  border: 1px solid #0d071c;
+  border-radius: 25px;
+  background-color: white;
+  color: #0d071c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 90%;
+  height: 30px;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.buttonBack:hover, .buttonNext:hover {
+  padding: 3px 15px 3px 15px;
+  border: 1px solid #0d071c;
+  border-radius: 25px;
+  background-color: #0d071c;
+  color: white;
+}
+
+.photoUpAnimation {
+  position: relative;
+  animation-name: example1;
+  animation-duration: 1s;
+}
+
+.photoUpMainA {
+  position: relative;
+  animation-name: mainPos1;
+  animation-duration: 1s;
+}
+
+.photoDownAnimation {
+  position: relative;
+  animation-name: example2;
+  animation-duration: 1s;
+}
+
+.photoDownMainA {
+  position: relative;
+  animation-name: mainPos2;
+  animation-duration: 1s;
+}
+
+@keyframes example1 {
+  from {top: -600px;}
+  to {top: 0px;}
+}
+
+@keyframes mainPos1 {
+  from {top: -600px;}
+  to {top: 0px;}
+}
+
+@keyframes example2 {
+  from {bottom: 700px;}
+  to {bottom: 1400px;}
+}
+
+@keyframes mainPos2 {
+  from {bottom: -700px;}
+  to {bottom: 0px;}
+}

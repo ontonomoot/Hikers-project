@@ -14,6 +14,7 @@ config(app);
 
 // Подключаем роуты
 const authLoginApi = require('./routes/api/authLoginApi');
+const mainPageRouterApi = require('./routes/api/mainPageRouterApi');
 const placeRouter = require('./routes/api/placeRouter');
 const categoryRouter = require('./routes/api/categoryRouter');
 const reviewRouter = require('./routes/api/reviewRoute');
@@ -22,6 +23,7 @@ const favouritesRouter = require('./routes/api/favouritesRouter');
 
 // Подключаем use
 app.use('/api', authLoginApi);
+app.use('/api', mainPageRouterApi);
 app.use('/api', placeRouter);
 app.use('/api', categoryRouter);
 app.use('/api', reviewRouter);
