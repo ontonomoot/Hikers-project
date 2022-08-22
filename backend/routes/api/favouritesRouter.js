@@ -1,7 +1,6 @@
 const router = require('express').Router();
 
 const {
-  User,
   Photo,
   Place,
   Favorite,
@@ -31,8 +30,7 @@ router
 
       res.json(favPlaces);
     } catch (error) {
-      console.log(error);
-      // res.status(404).json(error);
+      res.status(404).json(error);
     }
   });
 

@@ -1,0 +1,25 @@
+.favouritesBox{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.favouritesBox > div {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+#favPhoto {
+  width: 300px;
+  border: 1px solid #0d071c;
+  margin-bottom: 20px;
+}
+
+#favDescription {
+  margin-left: 30px;
+  width: 600px;
+  margin-bottom: 20px;
+}

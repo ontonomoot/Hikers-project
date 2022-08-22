@@ -13,7 +13,7 @@ const favouritesThunk = createAsyncThunk(
     try {
       const response = await fetch('/api/favourites');
       const data = await response.json();
-      console.log('favouritePlaces', data);
+      // console.log('favouritePlaces', data);
       return data;
     } catch (err) {
       return err.message;

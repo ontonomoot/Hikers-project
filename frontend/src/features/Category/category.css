@@ -91,12 +91,6 @@
   cursor: pointer;
 }
 
-.favouritesBox{
-  display: flex;
-  flex-wrap: wrap;
-  width: 1000px;
-  margin: 0 auto;
-}
 
 
 
