@@ -6,6 +6,8 @@ export default async function init() {
     center: [59.93139123904442, 30.41594565054736],
     // Уровень масштабирования.
     zoom: 3
+  }, {
+    suppressMapOpenBlock: true
   });
 
   myMap.controls.remove('geolocationControl'); // удаляем геолокацию
