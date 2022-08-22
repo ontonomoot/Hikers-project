@@ -9,7 +9,6 @@ router.post('/profile/:id', async (req, res) => {
       where: { id },
       raw: true,
     });
-    console.log(user);
     res.json(user);
   } catch (error) {
     console.log(error);
@@ -18,12 +17,11 @@ router.post('/profile/:id', async (req, res) => {
 
 router.put('/profile', async (req, res) => {
   const {
-    id, name, email, city, favorite,
+    id, name, email, city, favorite, link,
   } = req.body.form;
-  // console.log(name, email, city, favorite);
   const updatedUser = await User.update(
     {
-      user_name: name, email, city, favorite,
+      user_name: name, email, city, favorite, link,
     },
     {
       where: { id },

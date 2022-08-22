@@ -3,13 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectorCategory, categoryThunk } from '../Category/category';
 import { getCoordinate, selectorWeather } from './weather';
 import './Weather.css';
-import Category from '../Category/Category.jsx';
 import { placeThunk, selectorPlaces } from '../Category/places';
 
 function Weather() {
 const dispatch = useDispatch();
 const weatherSelector = useSelector(selectorWeather);
-const places = useSelector(selectorPlaces);
 
 const searchLocation = async (event) => {
   dispatch(getCoordinate({ lat: 59.57, lon: 30.18 }));
@@ -17,11 +15,8 @@ const searchLocation = async (event) => {
 
 useEffect(() => {
   searchLocation();
-  dispatch(categoryThunk());
-  dispatch(placeThunk(2));
-  // console.log('места', places);
 }, [dispatch]);
-// console.log(weatherSelector, 'вот он');
+console.log(weatherSelector, 'вот он');
 return (
   <div>
     <div className="weather-days">
@@ -41,7 +36,6 @@ return (
       )
       )}
     </div>
-    <Category />
   </div>
 );
 }
