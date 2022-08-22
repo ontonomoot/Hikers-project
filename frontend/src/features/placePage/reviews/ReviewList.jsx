@@ -18,11 +18,11 @@ function ReviewList() {
 
   const review = useSelector(selectReview);
 
-  const photos = [
-    'https://cdn.hswstatic.com/gif/snowboarding-update.jpg',
-    'https://www.lutsen.com/sites/default/files/styles/scale_1440/public/2021-10/5%20DS-morning-groomer.jpg?itok=Z0OvcQ7S',
-    'https://www.blacksheepsnowboardschool.com/img/rickards.jpg'
-  ];
+  // const photos = [
+  //   'https://cdn.hswstatic.com/gif/snowboarding-update.jpg',
+  //   'https://www.lutsen.com/sites/default/files/styles/scale_1440/public/2021-10/5%20DS-morning-groomer.jpg?itok=Z0OvcQ7S',
+  //   'https://www.blacksheepsnowboardschool.com/img/rickards.jpg'
+  // ];
 
   return (
     <div className="reviews-container">
@@ -36,8 +36,10 @@ function ReviewList() {
           <Text>Дата поездки: {el.date.slice(0, 10)}</Text>
           <Divider />
           <div id="gallery">
+            {/* eslint-disable-next-line max-len */}
+            {/* {photos.map((image) => <img className="review-img" tabIndex="0" src={image} alt="some" />)} */}
             {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-            {photos.map((image) => <img className="review-img" tabIndex="0" src={image} alt="some" />)}
+            <img className="review-img" tabIndex="0" src={el['Photos.title']} alt="some" />
           </div>
           <Card.Footer>
             {Array.from({ length: el.rating }, (_, i) => <Star key={i} color="orange" size={32} />)}

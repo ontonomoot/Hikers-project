@@ -10,6 +10,7 @@ import Navbar from '../navbar/Navbar';
 import PlacePage from '../../placePage/PlacePage';
 import Registration from '../registration/Registration';
 import Login from '../login/Login';
+
 import Profile from '../../profile/Profile';
 import Favourites from '../../Favourites/Favourites';
 
