@@ -1,5 +1,8 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { Breadcrumbs } from '@geist-ui/core';
 import css from './Navbar.module.css';
@@ -16,6 +19,7 @@ import Registration from '../registration/Registration';
 
 export default function Navbar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const userSession = useSelector(selectorUserSession);
   const authLogin = useSelector(selectorAuthLogin);
@@ -26,9 +30,18 @@ export default function Navbar() {
       {userSession ? (
         <nav id={css.navbar}>
           <div className={css.left}>
-            <div>logo</div>
+            <div
+              style={{ cursor: 'pointer' }}
+              onClick={() => navigate('/')}
+            >logo
+            </div>
           </div>
           <div className={css.right}>
+            <div
+              className={css.userName}
+              onClick={() => navigate(`/profile/${userSession.id}`)}
+            >Личный кабинет, <b>{userSession.user_name}</b>
+            </div>
             <button className={css.button} type="button" onClick={() => dispatch(authLogOut())}>Выйти</button>
           </div>
         </nav>

@@ -24,6 +24,7 @@
   object-fit: cover;
   position: relative;
   animation-duration: 1s;
+  cursor: pointer;
 }
 
 .mainRight {
@@ -37,13 +38,57 @@
   border-left: 0px solid;
 }
 
-#main .buttonCategory {
+/* #main .buttonCategory {
   height: 100%;
   width: 70%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+} */
+
+.categoryDistraction {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.categoryDistractionTitle {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.categoryDistractionTitleDis {
+  margin-bottom: 25px;
+}
+
+.categoryDistractionButton {
+  transition: 0.5s;
+  padding: 3px 15px 3px 15px;
+  border: 1px solid ;
+  border-radius: 25px;
+  background-color: #0d071c;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%;
+  height: 45px;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+}
+
+.categoryDistractionButton:hover {
+  padding: 3px 15px 3px 15px;
+  border: 1px solid #0d071c;
+  border-radius: 25px;
+  background-color: white;
+  color: #0d071c;
 }
 
 .categoryChange {
@@ -53,65 +98,68 @@
   align-content: center;
   align-items: center;
   height: 100%;
-  margin-right: 10px;
+  margin-left: 20px;
 }
 
 .iconCategory {
   padding: 10px;
-  width: 90%;
+  width: 70px;
   height: auto;
-  border-radius: 50px;
   opacity: 0.3;
 }
 
 .iconCategory:hover{
+  width: 80px;
   opacity: 1;
+  cursor: pointer;
 }
 
 .iconCategoryTake {
+  width: 80px;
   opacity: 1;
+  cursor: pointer;
+}
+
+.iconMainUpDown {
+  width: 30px;
+  cursor: pointer;
 }
 
 .buttonNext {
   transition: 0.5s;
   padding: 3px 15px 3px 15px;
   border: 1px solid #0d071c;
-  border-radius: 25px;
+  border-radius: 100px;
   background-color: white;
   color: #0d071c;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-  width: 90%;
-  height: 30px;
-  border-top-right-radius: 25px;
-  border-top-left-radius: 25px;
+  width: 50px;
+  height: 50px;
+  opacity: 0.3;
 }
 
 .buttonBack {
   transition: 0.5s;
   padding: 3px 15px 3px 15px;
   border: 1px solid #0d071c;
-  border-radius: 25px;
+  border-radius: 100px;
   background-color: white;
   color: #0d071c;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
-  width: 90%;
-  height: 30px;
-  border-bottom-right-radius: 25px;
-  border-bottom-left-radius: 25px;
+  width: 50px;
+  height: 50px;
+  opacity: 0.3;
 }
 
 .buttonBack:hover, .buttonNext:hover {
-  padding: 3px 15px 3px 15px;
-  border: 1px solid #0d071c;
-  border-radius: 25px;
-  background-color: #0d071c;
-  color: white;
+  opacity: 1;
+  width: 60px;
 }
 
 .photoUpAnimation {

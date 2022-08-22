@@ -58,6 +58,11 @@
   align-items: center;
 }
 
+.userName {
+  cursor: pointer;
+  margin-right: 20px;
+}
+
 .marquee{
   display: flex;
   align-items: center;

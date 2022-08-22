@@ -16,13 +16,14 @@ import { auth } from '../auth';
 import store from '../../../store';
 import Profile from '../../profile/Profile';
 import Favourites from '../../Favourites/Favourites';
+import Footer from '../footer/Footer';
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(categoriesThunk());
     dispatch(auth());
+    dispatch(categoriesThunk());
   }, [dispatch]);
 
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/favourites" element={<Favourites />} />
         </Route>
       </Routes>
+      <Footer />
     </Provider>
   );
 }
