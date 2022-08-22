@@ -34,7 +34,7 @@ export default function MainPage() {
           />
           )}
           <img
-            onClick={() => navigate(`/${categories[getUpCat].id}`)}
+            onClick={() => navigate(`/categories/${categories[getUpCat].id}`)}
             className={trueCssUp
               ? `${css.photo} ${css.photoUpMainA}`
               : trueCssDown
