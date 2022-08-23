@@ -17,7 +17,6 @@ export const loadReview = createAsyncThunk(
       const { error } = await data.json();
       throw error;
     } else {
-      console.log(data);
       return data;
     }
   }
