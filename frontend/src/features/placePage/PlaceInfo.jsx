@@ -47,13 +47,7 @@ function PlaceInfo() {
         </Card.Content>
         <Divider h="1px" my={0} />
         <Card.Content>
-          <Text>{place && place.description}</Text>
-          {/* <Text>Крупнейший курорт в Сибири, в 160 км от Новокузнецка
-            <br />Общая длина трасс: 35 км
-            Высота: 670—1270 метров над уровнем моря
-            Сезон: ноябрь — май
-            Ски-пасс на три дня: 1500—3950 Р
-          </Text> */}
+          {place && place.description.split('\n').map((el) => <Text>{el}<br /></Text>)}
         </Card.Content>
         <Card.Footer id="rating">
           <div>
