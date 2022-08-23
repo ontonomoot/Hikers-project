@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const initialState = {
   edit: false,
   profile: [],
+  friends: [],
 };
 
 const getProfileThunk = createAsyncThunk(
@@ -14,6 +15,26 @@ const getProfileThunk = createAsyncThunk(
     const data = await response.json();
     return data;
   }
+  );
+
+  // добавление друзей
+  const subscribeThunk = createAsyncThunk(
+    'profile/friends',
+    async ({ userId, friendId }) => {
+      const response = await fetch('/api/profile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'Application/json'
+        },
+        body: JSON.stringify({
+          userId,
+          friendId,
+        })
+
+      });
+      const data = await response.json();
+      return data;
+    }
   );
 
   // отправка фото
@@ -38,7 +59,7 @@ const editProfileSlice = createSlice({
     },
     newProfile: (state, action) => {
       state.profile = action.payload;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -53,14 +74,17 @@ const editProfileSlice = createSlice({
 
 export {
   getProfileThunk,
+  subscribeThunk,
 };
 
 export const selectorEditProfile = (state) => state.profile.edit;
 export const selectorProfile = (state) => state.profile.profile;
+export const selectorFriends = (state) => state.profile.friends;
 
 export const {
   editProfile,
-  newProfile
+  newProfile,
+  subscribe,
 } = editProfileSlice.actions;
 
 export default editProfileSlice.reducer;

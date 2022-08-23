@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Input } from '@geist-ui/core';
-import Form from 'react-bootstrap/Form';
+import { Button } from '@geist-ui/core';
 
-import { selectorEditProfile, editProfile, getProfileThunk, selectorProfile, addPhotoProfile } from './profile';
+import { selectorEditProfile, editProfile, getProfileThunk, selectorProfile, subscribeThunk } from './profile';
 import EditProfile from './editProfile/editProfile';
-import { editProfileThunk, selectorUserSession } from '../main/auth';
+import { selectorUserSession } from '../main/auth';
 import './Profile.css';
 
 function Profile() {
@@ -18,9 +17,7 @@ function Profile() {
   useEffect(() => {
     dispatch(getProfileThunk(id));
   }, [userSession]);
-
-  console.log(userSession);
-
+  console.log(profile.id);
   return (
     <div className="profile-page">
       <div className="profile-photo">
@@ -58,8 +55,9 @@ function Profile() {
           <div className="profile-edit-btn" />
         </div>
         <div className="edit-btn">
-          {profile && userSession && profile.id === userSession.id &&
-          <Button type="button" onClick={() => dispatch(editProfile())}>Редактировать</Button>}
+          {profile && userSession && (profile.id === userSession.id) ?
+            <Button type="button" onClick={() => dispatch(editProfile())}>Редактировать</Button> :
+            <Button type="button" onClick={() => dispatch(subscribeThunk({ userId: userSession.id, friendId: profile.id }))}>Подписаться</Button>}
         </div>
       </div>
       {profileData && <EditProfile id={id} />}
