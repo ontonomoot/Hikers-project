@@ -43,16 +43,23 @@ router.put('/profile', async (req, res) => {
 router.post('/profile', async (req, res) => {
   const { userId, friendId } = req.body;
   try {
-    const newFriend = await Friend.create({
-      user_id: userId,
-      friend_id: friendId,
+    const subscribe = await Friend.findOne({
+      where: {
+        user_id: userId,
+        friend_id: friendId,
+      },
+      raw: true,
     });
-    console.log(newFriend);
-    res.json(newFriend);
+    if (!subscribe) {
+      const newFriend = await Friend.create({
+        user_id: userId,
+        friend_id: friendId,
+      });
+      res.json(newFriend);
+    }
   } catch (error) {
     res.status(404).json(error);
   }
-  // console.log(userId, friendId, 'friends');
 });
 
 // обновление фото user'a
