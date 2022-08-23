@@ -26,7 +26,6 @@ const getSubscribeThunk = createAsyncThunk(
   async () => {
     const response = await fetch('/api/profile/subscribe', { method: 'GET' });
     const data = await response.json();
-    console.log(data, 'все подписки THUNK');
     return data;
   }
   );
@@ -47,7 +46,6 @@ const getSubscribeThunk = createAsyncThunk(
         })
       });
       const data = await response.json();
-    console.log(data, 'подписаться');
     return data;
   }
 );

@@ -21,22 +21,8 @@ function Profile() {
   const userSession = useSelector(selectorUserSession);
   const profile = useSelector(selectorProfile);
   const friends = useSelector(selectorFriends);
-  console.log(friends, 'подписчики в компоненте');
-
-  console.log();
-
   const follow = userSession && friends && friends.filter((el) => (el.user_id === userSession.id))
   .filter((el) => el.friend_id === Number(id))[0];
-  // console.log('useparams', id);
-  console.log('follow', follow);
-  // console.log('follow[0].user_id', follow[0].user_id);
-  // console.log('follow[0].friend_id', follow[0].friend_id);
-  // const subscriber = userSession && follow.filter((el) => el.friend_id === Number(id));
-    // console.log('subscriber', subscriber);
-
-  // console.log(friends, 'friends');
-  // console.log(id, 'params');
-  // console.log(userSession, 'session');
   useEffect(() => {
     dispatch(getProfileThunk(id));
     dispatch(getSubscribeThunk());
