@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const storageProfileUpload = require('../../middleware/storageProfileUpload');
 
-const { User } = require('../../db/models');
+const { User, Friend } = require('../../db/models');
 
 router.post('/profile/:id', async (req, res) => {
   const { id } = req.params;
@@ -39,12 +39,27 @@ router.put('/profile', async (req, res) => {
   res.json(updatedUser[1][0]);
 });
 
+// добавление друзей
+router.post('/profile', async (req, res) => {
+  const { userId, friendId } = req.body;
+  try {
+    const newFriend = await Friend.create({
+      user_id: userId,
+      friend_id: friendId,
+    });
+    console.log(newFriend);
+    res.json(newFriend);
+  } catch (error) {
+    res.status(404).json(error);
+  }
+  // console.log(userId, friendId, 'friends');
+});
+
+// обновление фото user'a
 router.put('/profile/photo', async (req, res) => {
   const photos = req.files.profileImg;
   const { id } = req.session.user;
-  // console.log(photos, 'photos');
   const url = await Promise.all(await storageProfileUpload(photos));
-  console.log(url, 'url');
   const updatedUser = await User.update(
     {
       ava: url.join(''),
@@ -57,7 +72,6 @@ router.put('/profile/photo', async (req, res) => {
   );
   const [, [user]] = updatedUser;
   req.session.user = user;
-  // console.log(updatedUser, 'updUSER');
   res.json(updatedUser[1][0]);
 });
 
