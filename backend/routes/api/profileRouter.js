@@ -3,6 +3,8 @@ const storageProfileUpload = require('../../middleware/storageProfileUpload');
 
 const { User, Friend } = require('../../db/models');
 
+// получение данных пользователя
+
 router.post('/profile/:id', async (req, res) => {
   const { id } = req.params;
   try {
@@ -15,6 +17,8 @@ router.post('/profile/:id', async (req, res) => {
     console.error(error);
   }
 });
+
+// обновление данных пользователя
 
 router.put('/profile', async (req, res) => {
   const {
@@ -39,7 +43,20 @@ router.put('/profile', async (req, res) => {
   res.json(updatedUser[1][0]);
 });
 
-// добавление друзей
+// получение списка всех подписок/подписчиков
+
+router.get('/profile/subscribe', async (req, res) => {
+  try {
+    const subscribers = await Friend.findAll({ raw: true });
+    console.log('route', subscribers);
+    res.json(subscribers);
+  } catch (error) {
+    res.status(404).json(error);
+  }
+});
+
+// подписка
+
 router.post('/profile', async (req, res) => {
   const { userId, friendId } = req.body;
   try {
@@ -50,12 +67,40 @@ router.post('/profile', async (req, res) => {
       },
       raw: true,
     });
+
     if (!subscribe) {
-      const newFriend = await Friend.create({
+      console.log('ya tut');
+      await Friend.create({
         user_id: userId,
         friend_id: friendId,
       });
-      res.json(newFriend);
+      const friends = await Friend.findAll({ raw: true });
+      return res.json(friends);
+    }
+    if (subscribe.status) {
+      await Friend.update(
+        { status: false },
+        {
+          where: {
+            user_id: userId,
+            friend_id: friendId,
+          },
+        },
+      );
+      const friends = await Friend.findAll();
+      res.json(friends);
+    } else {
+      await Friend.update(
+        { status: true },
+        {
+          where: {
+            user_id: userId,
+            friend_id: friendId,
+          },
+        },
+      );
+      const friends = await Friend.findAll();
+      res.json(friends);
     }
   } catch (error) {
     res.status(404).json(error);
@@ -63,6 +108,7 @@ router.post('/profile', async (req, res) => {
 });
 
 // обновление фото user'a
+
 router.put('/profile/photo', async (req, res) => {
   const photos = req.files.profileImg;
   const { id } = req.session.user;

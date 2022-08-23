@@ -14,6 +14,7 @@ import { categoriesThunk } from '../mainPage';
 import { auth } from '../auth';
 import store from '../../../store';
 import Profile from '../../profile/Profile.jsx';
+import { subscribeThunk } from '../../profile/profile';
 import Favourites from '../../Favourites/Favourites.jsx';
 import Footer from '../footer/Footer';
 
@@ -23,6 +24,7 @@ function App() {
   useEffect(() => {
     dispatch(auth());
     dispatch(categoriesThunk());
+    // dispatch(subscribeThunk());
   }, [dispatch]);
 
   return (
