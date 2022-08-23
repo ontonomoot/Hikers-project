@@ -14,24 +14,26 @@
 
 #favPhoto {
   width: 340px;
-  border: 1px solid #0d071c;
+  border: 1px solid #cecece;
   margin-bottom: 20px;
   cursor: pointer;
 }
 
 #favPhoto:hover {
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  /* box-shadow: 0 0 10px rgba(0,0,0,0.5); */
+  border: 1px solid #090909;
 }
 
 #favDescription {
   margin-left: 20px;
   width: 640px;
   margin-bottom: 20px;
-  border: 1px solid #0d071c;
+  border: 1px solid #cecece;;
 }
 
 #favDescription:hover {
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  /* box-shadow: 0 0 10px rgba(0,0,0,0.5); */
+  border: 1px solid #0d071c;
 }
 
 .favPlaceTitle {
@@ -46,14 +48,6 @@ border-radius: 15px;
  .delPlaceBtn{
   border-radius: 15px;
 } 
-
-
-.close {
-    width: 1.5em;
-    height: 1.5em;
-    background-color: #4a4a4a;
-    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
-}
 
 .close:hover {
   background-color: #0d071c;

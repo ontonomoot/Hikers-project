@@ -86,7 +86,10 @@ router.route('/favourites')
       raw: true,
     });
 
-    if (checkFav === null) {
+    // console.log(checkFav)
+
+    if (!checkFav) {
+      console.log('test')
       await Favorite.create({
         user_id: userId,
         place_id: placeid,

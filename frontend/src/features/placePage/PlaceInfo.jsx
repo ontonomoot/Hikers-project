@@ -10,7 +10,7 @@ import './PlacePage.css';
 import Weather from '../weather/Weather.jsx';
 import { placeThunk, selectorPlaces } from '../Category/places';
 import {
-  addFavPlaceThunk, selectorFavourites
+  addFavPlaceThunk, selectorFavourites, selectorAddFavourites
   // eslint-disable-next-line import/no-useless-path-segments
 } from '../Favourites/favourites';
 
@@ -20,8 +20,8 @@ function PlaceInfo() {
 
   const user = useSelector(selectorUserSession);
   const arrPlaces = useSelector(selectorPlaces);
+  const checkAddedPlace = useSelector(selectorAddFavourites);
   const { id, placeid } = useParams();
-  // console.log(arrPlaces);
   const place = arrPlaces && arrPlaces.find((el) => el.id === Number(placeid));
 
   // console.log('place', place);
