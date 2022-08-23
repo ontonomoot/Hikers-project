@@ -39,35 +39,24 @@
 }
 
 .favPlaceBtn {
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  background-color: green;
-  color: white;
-  height: 45px;
-  width: 150px;
+margin-right: 20px;
+border-radius: 15px;
 }
 
-.favPlaceBtn:hover {
-  transition: 0.5s;
-  background-color: rgb(3, 179, 3);
-}
+ .delPlaceBtn{
+  border-radius: 15px;
+} 
 
-.favCardTop {
- display: flex;
- flex-direction: row;
- justify-content: space-between;
-}
 
 .close {
     width: 1.5em;
     height: 1.5em;
-    background-color: red;
+    background-color: #4a4a4a;
     clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
 }
 
 .close:hover {
-  background-color: rgb(125, 0, 0);
+  background-color: #0d071c;
   cursor: pointer;
 }
 
