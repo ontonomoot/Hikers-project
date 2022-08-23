@@ -10,6 +10,7 @@ import reviewSlice from './features/placePage/reviews/review.js';
 import placeSlice from './features/Category/places.js';
 import editProfileSlice from './features/profile/profile.js';
 import favouritesSlice from './features/Favourites/favourites.js';
+import chatSlice from './features/chat/chatReducer.js';
 
 const store = configureStore({
   reducer: {
@@ -21,6 +22,7 @@ const store = configureStore({
     weather: weatherSlice,
     profile: editProfileSlice,
     favourites: favouritesSlice,
+    chat: chatSlice,
   }
 });
 

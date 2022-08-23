@@ -36,11 +36,31 @@ export default function Navbar() {
             >logo
             </div>
           </div>
+          <div className={css.navbarCategory}>
+            <div
+              onClick={() => navigate('/favourites')}
+              className={css.navbarCategoryClass}
+            >
+              Избранное
+            </div>
+            <div className={css.navbarCategoryClass}>
+              Мои подписки
+            </div>
+            <div className={css.navbarCategoryClass}>
+              Мои подписчики
+            </div>
+            <div
+              onClick={() => navigate(`/profile/${userSession.id}/chat`)}
+              className={css.navbarCategoryClass}
+            >
+              Сообщения
+            </div>
+          </div>
           <div className={css.right}>
             <div
               className={css.userName}
               onClick={() => navigate(`/profile/${userSession.id}`)}
-            >Личный кабинет, <b>{userSession.user_name}</b>
+            >Личный кабинет
             </div>
             <button className={css.button} type="button" onClick={() => dispatch(authLogOut())}>Выйти</button>
           </div>
@@ -49,7 +69,11 @@ export default function Navbar() {
     : (
       <nav id={css.navbar}>
         <div className={css.left}>
-          <div>logo</div>
+          <div
+            style={{ cursor: 'pointer' }}
+            onClick={() => navigate('/')}
+          >logo
+          </div>
         </div>
         <div className={css.marqueeAll}>
           <p className={css.marquee}>

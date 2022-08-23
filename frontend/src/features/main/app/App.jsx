@@ -17,6 +17,8 @@ import store from '../../../store';
 import Profile from '../../profile/Profile';
 import Favourites from '../../Favourites/Favourites';
 import Footer from '../footer/Footer';
+import Chat from '../../chat/Chat';
+import { chatsThunk } from '../../chat/chatReducer';
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +26,7 @@ function App() {
   useEffect(() => {
     dispatch(auth());
     dispatch(categoriesThunk());
+    dispatch(chatsThunk());
   }, [dispatch]);
 
   return (
@@ -38,9 +41,10 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/favourites" element={<Favourites />} />
+          <Route path="/profile/:id/chat" element={<Chat />} />
         </Route>
       </Routes>
-      <Footer />
+      <Footer style={{ }} />
     </Provider>
   );
 }
