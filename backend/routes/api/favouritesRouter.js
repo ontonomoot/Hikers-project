@@ -40,7 +40,7 @@ router.route('/favourites')
         id,
       } = req.body.placeID;
 
-      const fav = await Favorite.destroy({
+      await Favorite.destroy({
         raw: true,
         where: {
           user_id: userId,
@@ -48,12 +48,22 @@ router.route('/favourites')
         },
       });
 
-      const changedFavPlaces = await Favorite.findAll({
+      const fav = await Favorite.findAll({
         raw: true,
         where: {
           user_id: userId,
         },
       });
+
+      const places = await Place.findAll({
+        include: {
+          model: Photo,
+        },
+        raw: true,
+      });
+
+      const changedFavPlaces = fav.map((fav) => places.filter((place) => place.id === fav.place_id))
+        .flat();
 
       res.json(changedFavPlaces);
     } catch (error) {

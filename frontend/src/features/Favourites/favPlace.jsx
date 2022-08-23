@@ -13,7 +13,7 @@ export default function FavPlaces({ favPlace }) {
   // const favPlaces = useSelector(selectorFavourites);
   const dispatch = useDispatch();
   const favPlaces = useSelector(selectorFavourites);
-  // console.log('selector', favPlaces)
+  // console.log('selector', favPlaces);
 
   function handleClick(event) {
     // console.log(event.target.id);
@@ -24,20 +24,19 @@ export default function FavPlaces({ favPlace }) {
     dispatch(deleteFavPlaceThunk(placeID));
   }
 
-  console.log('favPlace', favPlace);
+  // console.log('favPlace', favPlace);
 
   return (
     <div>
       <Card className="favDescription" id="favPhoto"><img src={`${favPlace['Photos.title']}`} alt="" /></Card>
       <Card className="favDescription" id="favDescription">
         <div className="favCardTop">
-          <p className="favPlaceTitle">{favPlace.title}</p>
+          <p className="favPlaceTitle">{favPlace && favPlace.title}</p>
           <div className="close" id={favPlace.id} onClick={handleClick} />
-          {/* <button type="button" className="delFavPlaceBtn">Удалить</button> */}
         </div>
-        <p className="favPlaceDesc">{`${favPlace.description.slice(0, 200)}......`}</p>
+        <p className="favPlaceDesc">{favPlace && `${favPlace.description.slice(100)}......`}</p>
         <p className="favPlaceDesc">
-          Рейтинг: {favPlace.rating ? Array.from({ length: favPlace.rating }, (_, i) => <Star key={i} color="orange" size={22} />) : <p>У места нет отзывов</p>}
+          Рейтинг: {favPlace && favPlace.rating ? Array.from({ length: favPlace.rating }, (_, i) => <Star key={i} color="orange" size={22} />) : <p>У места нет отзывов</p>}
         </p>
         <button type="button" className="favPlaceBtn">Собраться!</button>
       </Card>

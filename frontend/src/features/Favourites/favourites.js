@@ -13,7 +13,7 @@ const favouritesThunk = createAsyncThunk(
     try {
       const response = await fetch('/api/favourites');
       const data = await response.json();
-      // console.log('favouritePlaces', data);
+      console.log('favPlaces - SANKI', data);
       return data;
     } catch (err) {
       return err.message;
@@ -51,8 +51,8 @@ const favouritesSlice = createSlice({
         state.favouritesState = action.payload;
       })
       .addCase(deleteFavPlaceThunk.fulfilled, (state, action) => {
-        // console.log('payload', action.payload);
         state.delFavouritesState = action.payload;
+        state.favouritesState = action.payload;
       });
   }
 });
