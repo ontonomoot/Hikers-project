@@ -11,7 +11,7 @@ export default function Place({ place, placeID }) {
   const navigate = useNavigate();
 
   return (
-    <Card className="cardPlace" id="cardPlace" onClick={() => navigate(`/places/${placeID}`)}>
+    <Card className="cardPlace" id="cardPlace" onClick={() => navigate(`/categories/${id}/places/${placeID}`)}>
       <p>{place.title}</p>
       {
         place.rating ? Array.from({ length: place.rating }, (_, i) => <Star key={i} color="orange" size={22} />) : <p>У места нет отзывов</p>
