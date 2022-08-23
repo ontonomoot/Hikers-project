@@ -22,6 +22,11 @@ export default function MainPage() {
 
   return (
     <>
+      <div className={css.categoryMain}>
+        {categories.map((icon, i) =>
+          <img onClick={() => setGetUpCat(i)} className={i === getUpCat ? `${css.iconCategory} ${css.iconCategoryTake}` : css.iconCategory} src={`/images/icon/${icon.icon}`} alt={icon.icon} />
+            )}
+      </div>
       <div className={css.mainTitle}>{categories[getUpCat].title}</div>
       <div id={css.main}>
         <span className={css.photo}>
@@ -91,9 +96,6 @@ export default function MainPage() {
               alt="up"
             />
             </button>
-            {categories.map((icon, i) =>
-              <img onClick={() => setGetUpCat(i)} className={i === getUpCat ? `${css.iconCategory} ${css.iconCategoryTake}` : css.iconCategory} src={`/images/icon/${icon.icon}`} alt={icon.icon} />
-            )}
             <button
               className={css.buttonNext}
               key={`buttonkey${categories[0].id}`}

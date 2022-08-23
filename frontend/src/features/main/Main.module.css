@@ -98,24 +98,29 @@
   align-content: center;
   align-items: center;
   height: 100%;
+  width: 10%;
   margin-left: 20px;
 }
 
 .iconCategory {
   padding: 10px;
   width: 70px;
-  height: auto;
+  height: 70px;
   opacity: 0.3;
+  margin-left: 20px;
 }
 
 .iconCategory:hover{
+  transition: 0.5s;
   width: 80px;
+  height: 80px;
   opacity: 1;
   cursor: pointer;
 }
 
 .iconCategoryTake {
   width: 80px;
+  height: 80px;
   opacity: 1;
   cursor: pointer;
 }
@@ -204,4 +209,9 @@
 @keyframes mainPos2 {
   from {bottom: -700px;}
   to {bottom: 0px;}
+}
+
+.categoryMain {
+  display: flex;
+  justify-content: center;
 }
