@@ -42,11 +42,11 @@ export default async function init() {
 
   let count = 0;
 
-  // console.log('YandexGeocoder', geocoder);
+  console.log('YandexGeocoder', geocoder);
 
   geocoder.forEach((geo) => {
     geo[0].then((res) => {
-      // console.log(`${geo}`);
+      console.log(` check ${geo[6]}`);
       // координаты объекта
       const coordinates = res.geoObjects.get(0).geometry.getCoordinates();
       // console.log('координаты', coordinates);
@@ -56,7 +56,7 @@ export default async function init() {
         balloonContentHeader: `<img src=${geo[4]} id="yandexImage">`,
         balloonContentBody: `<span class="yandexPlaceTitle">${geo[1]}</span><br>
         <span class="yandexStar">${'★'.repeat(geo[5])}</span><br>
-        <button class="yandexButton"><a href = '/places/${geo[3]}' class="yandexTitle">Подробнее</a></button>`
+        <button class="yandexButton"><a href = '/categories/${geo[6]}/places/${geo[3]}' class="yandexTitle">Подробнее</a></button>`
       }, {
         iconLayout: 'default#image',
         // Своё изображение иконки метки.
