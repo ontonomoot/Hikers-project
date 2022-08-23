@@ -30,6 +30,36 @@ module.exports = {
       review_id: 8,
       title: '/images/review/dc700dec8f50ce55f7ddaa49ac2445a61661255956856.jpg',
     },
+    {
+      place_id: 1,
+      title: '/images/photo/1.jpeg',
+    }, {
+      place_id: 2,
+      title: '/images/photo/1.jpeg',
+    }, {
+      place_id: 3,
+      title: '/images/photo/1.jpeg',
+    },
+    {
+      place_id: 4,
+      title: '/images/photo/1.jpeg',
+    },
+    {
+      place_id: 5,
+      title: '/images/photo/1.jpeg',
+    },
+    {
+      place_id: 6,
+      title: '/images/photo/1.jpeg',
+    },
+    {
+      place_id: 7,
+      title: '/images/photo/1.jpeg',
+    },
+    {
+      place_id: 8,
+      title: '/images/photo/1.jpeg',
+    },
     ], {});
   },
 
