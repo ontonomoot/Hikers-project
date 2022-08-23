@@ -33,9 +33,18 @@
   justify-content: space-between;
 }
 
-.reviews-container {
+#reviews-container {
   display: flex;
   flex-direction: column;
+}
+
+.reviews-list-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  max-height: 900px;
+  width: 800px;
+  overflow-y: scroll;
 }
 
 .jsx-76380760.card {

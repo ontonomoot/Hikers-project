@@ -16,9 +16,7 @@ function PlaceInfo() {
   const user = useSelector(selectorUserSession);
   const arrPlaces = useSelector(selectorPlaces);
   const { id, placeid } = useParams();
-  console.log(arrPlaces);
   const place = arrPlaces && arrPlaces.find((el) => el.id === Number(placeid));
-  console.log(place);
 
   useEffect(() => {
     dispatch(placeThunk(id));
