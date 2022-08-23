@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Text, Divider, Button } from '@geist-ui/core';
 import Star from '@geist-ui/icons/star';
@@ -45,7 +45,7 @@ export default function Category() {
         <p className="placesListTitle">Список мест для <span className="placesPlusListTitle">{categories.title}а </span></p>
       </div>
       <div>
-        <div id="map" />
+        <div id="map" style={{ width: 600, height: 400 }} />
         <div id="placeFilter">
           <div className="placesContainer" id="placesContainer">
             {
