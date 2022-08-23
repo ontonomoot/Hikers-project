@@ -69,6 +69,36 @@ router.route('/favourites')
     } catch (error) {
       res.status(404).json(error);
     }
+  }).post(async (req, res) => {
+    const userId = req.session.user.id;
+
+    const {
+      placeid,
+    } = req.body;
+    // console.log(placeid)
+
+    // console.log(favPlaceID);
+    const checkFav = await Favorite.findOne({
+      where: {
+        user_id: userId,
+        place_id: placeid,
+      },
+      raw: true,
+    });
+
+    if (checkFav === null) {
+      await Favorite.create({
+        user_id: userId,
+        place_id: placeid,
+      });
+      res.json({
+        message: 'Успешно',
+      });
+    } else {
+      res.json({
+        message: 'Вы уже добавили в избранное',
+      });
+    }
   });
 
 module.exports = router;
