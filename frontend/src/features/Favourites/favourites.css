@@ -67,7 +67,7 @@
   flex-direction: row;
 }
 
-/* .delFavPlace>span:hover {
-  text-decoration: underline;
-  cursor: pointer;
-} */
+.favPlaceTitle:hover {
+ cursor: pointer;
+ text-decoration: underline;
+}

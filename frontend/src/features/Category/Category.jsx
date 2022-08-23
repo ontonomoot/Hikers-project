@@ -30,7 +30,9 @@ export default function Category() {
     async function winFunc() {
       await window.ymaps.ready(init);
     }
-    winFunc();
+    setTimeout(() => {
+      winFunc();
+    }, 1000);
     dispatch(categoriesThunk());
     dispatch(placeThunk(id));
   }, [dispatch, id]);

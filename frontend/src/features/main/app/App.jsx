@@ -17,6 +17,7 @@ import store from '../../../store';
 import Profile from '../../profile/Profile';
 import Favourites from '../../Favourites/Favourites';
 import Footer from '../footer/Footer';
+import init from '../../Category/apiMap';
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,14 @@ function App() {
     dispatch(auth());
     dispatch(categoriesThunk());
   }, [dispatch]);
+
+  useEffect(() => {
+    async function winFunc() {
+      await window.ymaps.ready(init);
+    }
+    winFunc();
+    dispatch(categoriesThunk());
+  }, []);
 
   return (
     <Provider store={store}>
