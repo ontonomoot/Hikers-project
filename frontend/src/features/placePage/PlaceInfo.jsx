@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Text, Divider, Button, Drawer } from '@geist-ui/core';
@@ -8,6 +9,10 @@ import './PlacePage.css';
 // eslint-disable-next-line import/extensions
 import Weather from '../weather/Weather.jsx';
 import { placeThunk, selectorPlaces } from '../Category/places';
+import {
+  addFavPlaceThunk, selectorFavourites
+  // eslint-disable-next-line import/no-useless-path-segments
+} from '../Favourites/favourites';
 
 function PlaceInfo() {
   const [state, setState] = React.useState(false);
@@ -16,9 +21,16 @@ function PlaceInfo() {
   const user = useSelector(selectorUserSession);
   const arrPlaces = useSelector(selectorPlaces);
   const { id, placeid } = useParams();
-  console.log(arrPlaces);
+  // console.log(arrPlaces);
   const place = arrPlaces && arrPlaces.find((el) => el.id === Number(placeid));
-  console.log(place);
+
+  // console.log('place', place);
+  // console.log(place);
+
+  function handleFavourite(event) {
+    event.preventDefault();
+    dispatch(addFavPlaceThunk(placeid));
+  }
 
   useEffect(() => {
     dispatch(placeThunk(id));
@@ -43,7 +55,7 @@ function PlaceInfo() {
           <Drawer visible={state} onClose={() => setState(false)} placement="top">
             <Weather />
           </Drawer>
-          {user && <Button>В избранное</Button>}
+          {user && <Button onClick={handleFavourite} className="favPlaceBtn">В избранное</Button>}
         </Card.Footer>
       </Card>
     </div>

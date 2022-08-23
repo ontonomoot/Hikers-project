@@ -29,7 +29,6 @@ export default async function init() {
 
   const geocoder = [];
   placesDB.forEach((place, i) => {
-    // console.log(place['Photos.title'])
     geocoder[i] = [];
     geocoder[i].push(window.ymaps.geocode(place.geo));
     geocoder[i].push(place.title);
@@ -46,7 +45,7 @@ export default async function init() {
 
   geocoder.forEach((geo) => {
     geo[0].then((res) => {
-      console.log(` check ${geo[6]}`);
+      // console.log(` check ${geo[6]}`);
       // координаты объекта
       const coordinates = res.geoObjects.get(0).geometry.getCoordinates();
       // console.log('координаты', coordinates);

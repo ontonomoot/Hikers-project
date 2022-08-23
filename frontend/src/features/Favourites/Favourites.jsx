@@ -14,7 +14,7 @@ export default function Favourites() {
   const dispatch = useDispatch();
   const favPlaces = useSelector(selectorFavourites);
 
-  console.log('favourites', favPlaces);
+  // console.log('favourites', favPlaces);
 
   useEffect(() => {
     dispatch(favouritesThunk(id));

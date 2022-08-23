@@ -47,7 +47,7 @@ export default function Category() {
         <p className="placesListTitle">Список мест для <span className="placesPlusListTitle">{categories.title}а </span></p>
       </div>
       <div>
-        <div id="map" style={{ width: 600, height: 400 }} />
+        <div id="map" style={{ width: 600, height: 450 }} />
         <div id="placeFilter">
           <div className="placesContainer" id="placesContainer">
             {

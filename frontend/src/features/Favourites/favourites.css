@@ -16,6 +16,11 @@
   width: 340px;
   border: 1px solid #0d071c;
   margin-bottom: 20px;
+  cursor: pointer;
+}
+
+#favPhoto:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 #favDescription {
@@ -23,6 +28,10 @@
   width: 640px;
   margin-bottom: 20px;
   border: 1px solid #0d071c;
+}
+
+#favDescription:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .favPlaceTitle {
