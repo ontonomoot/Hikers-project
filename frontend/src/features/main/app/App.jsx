@@ -5,6 +5,7 @@ import { Provider, useDispatch } from 'react-redux';
 import Category from '../../Category/Category.jsx';
 // import Categories from '../../Category/Categories';
 import './App.css';
+// eslint-disable-next-line import/extensions
 import MainPage from '../MainPage.jsx';
 import Navbar from '../navbar/Navbar';
 import PlacePage from '../../placePage/PlacePage';
@@ -13,10 +14,13 @@ import Login from '../login/Login';
 import { categoriesThunk } from '../mainPage';
 import { auth } from '../auth';
 import store from '../../../store';
+// eslint-disable-next-line import/extensions
 import Profile from '../../profile/Profile.jsx';
 import { subscribeThunk } from '../../profile/profile';
+// eslint-disable-next-line import/extensions
 import Favourites from '../../Favourites/Favourites.jsx';
 import Footer from '../footer/Footer';
+import TodoList from '../../todoList/TodoList';
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +43,7 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/favourites" element={<Favourites />} />
+          <Route path="/todo" element={<TodoList />} />
         </Route>
       </Routes>
       <Footer />
