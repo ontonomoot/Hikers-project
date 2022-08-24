@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-bitwise */
 /* eslint-disable react/jsx-no-bind */
 import React, { useEffect } from 'react';
@@ -11,10 +12,7 @@ import './PlacePage.css';
 // eslint-disable-next-line import/extensions
 import Weather from '../weather/Weather.jsx';
 import { placeThunk, selectorPlaces } from '../Category/placesSlice';
-import {
-  addFavPlaceThunk, selectorFavourites, selectorAddFavourites
-  // eslint-disable-next-line import/no-useless-path-segments
-} from '../Favourites/favouritesSlice';
+import { addFavPlaceThunk, selectorFavourites, favouritesThunk } from '../Favourites/favouritesSlice';
 import initMap from './placeMapApi';
 
 function PlaceInfo() {
@@ -23,26 +21,33 @@ function PlaceInfo() {
 
   const user = useSelector(selectorUserSession);
   const arrPlaces = useSelector(selectorPlaces);
-  const checkAddedPlace = useSelector(selectorAddFavourites);
+  const favPlace = useSelector(selectorFavourites);
   const { id, placeid } = useParams();
   const place = arrPlaces && arrPlaces.find((el) => el.id === Number(placeid));
-  // console.log('checkplace', place);
+  // console.log('place', place);
+  let checkFavPlace;
+  if (user && favPlace) {
+      checkFavPlace = favPlace.find((el) => el.place_id === Number(placeid));
+  }
+  // let checkStatus;
 
-  const checkFavPlace = user && checkAddedPlace && checkAddedPlace
-    .filter((el) => (el.user_id === user.id))
-    .filter((el) => el.place_id === Number(placeid));
+  // if (user && favPlace) {
+  //   const checkFavPlace = favPlace.find((el) => el.place_id === Number(placeid));
 
-  const checkStatus = user && checkAddedPlace && checkFavPlace.length && checkFavPlace[0].status;
+  //   if (checkFavPlace) {
+  //     checkStatus = checkFavPlace.status;
+  //   }
+  // }
+  // console.log('checkStatus', checkStatus);
 
-  function handleFavourite(event) {
-    event.preventDefault();
+  function handleFavourite() {
     dispatch(addFavPlaceThunk(placeid));
   }
 
   useEffect(() => {
-    dispatch(addFavPlaceThunk(id));
     dispatch(placeThunk(id));
-  }, []);
+    dispatch(favouritesThunk());
+  }, [dispatch, id]);
 
   // Функция ymaps.ready() будет вызвана, когда
   // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
@@ -78,7 +83,7 @@ function PlaceInfo() {
           <Drawer visible={state} onClose={() => setState(false)} placement="top">
             <Weather geo={place && place.geo} />
           </Drawer>
-          {checkStatus ? (
+          {checkFavPlace ? (
             // eslint-disable-next-line react/jsx-indent
             <Button
               disabled
