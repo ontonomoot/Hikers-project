@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { v4 as uuidv4 } from 'uuid';
 
 function PlaceGallery() {
   const photos = [
@@ -16,7 +17,7 @@ function PlaceGallery() {
   return (
     <Carousel fade>
       {photos.map((el) => (
-        <Carousel.Item>
+        <Carousel.Item key={uuidv4()}>
           <img
             className="d-block carousel-img"
             src={el}

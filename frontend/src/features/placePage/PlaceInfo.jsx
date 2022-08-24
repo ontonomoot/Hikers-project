@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Card, Text, Divider, Drawer, Button } from '@geist-ui/core';
 import Star from '@geist-ui/icons/star';
 import { useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import { selectorUserSession } from '../main/auth';
 import './PlacePage.css';
 // eslint-disable-next-line import/extensions
@@ -67,7 +68,7 @@ function PlaceInfo() {
         </Card.Content>
         <Divider h="1px" my={0} />
         <Card.Content>
-          {place && place.description.split('\n').map((el) => <Text>{el}<br /></Text>)}
+          {place && place.description.split('\n').map((el) => <Text key={uuidv4()}>{el}<br /></Text>)}
         </Card.Content>
         <Card.Footer id="rating">
           <div>

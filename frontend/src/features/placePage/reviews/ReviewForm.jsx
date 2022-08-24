@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Button, Modal, Grid, Rating, Text } from '@geist-ui/core';
 import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPhoto, addReview, selectPhoto } from './review';
+import { addPhoto, addReview, selectPhoto } from './reviewSlice';
 
 function ReviewForm() {
   const [state, setState] = useState(false);
