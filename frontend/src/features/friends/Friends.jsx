@@ -17,19 +17,27 @@ function Friends() {
 //   setState(false);
 // };
 
+  const [num, setNum] = useState(0);
   const dispatch = useDispatch();
   const allFr = useSelector(selectorFriends);
   const userSession = useSelector(selectorUserSession);
-  const userFriends = userSession && allFr && allFr.friends && allFr.friends.length && allFr.friends.filter((el) => el.user_id === userSession.id && el.status === true);
+  const [userFriends, setUserFriends] = useState();
   // console.log(userFriends, 'userFriends');
-
+  // console.log(allFr);
+  const ava = 'images/profile/9d3b8b1fffc60251dc8cedadf5f6695d.jpeg';
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     dispatch(getSubscribeThunk());
+  //     dispatch(getFriendsThunk());
+  //     // dispatch(unSubscribeThunk());
+  //   }, 50);
+  // }, [userSession, dispatch, state]);
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(getSubscribeThunk());
-      dispatch(getFriendsThunk());
-    }, 50);
-  }, [userSession, dispatch, state]);
-
+    if (allFr && num === 0) {
+   setUserFriends(allFr && allFr.friends.filter((el) => el.user_id === userSession.id && el.status === true));
+   setNum(null);
+    }
+   }, [allFr, num]);
   if (!allFr) return <div>oops</div>;
   if (!userSession) return <div>oops</div>;
 
@@ -40,10 +48,12 @@ function Friends() {
       </div>
       <div>
         {
-          userSession && allFr && allFr.friends && allFr.friends.length && allFr.friends.map((friend) => (friend.user_id === userSession.id && friend.status === true) && (
+          // userSession && allFr && allFr.friends && allFr.friends.length && allFr.friends.map((friend) => (friend.user_id === userSession.id && friend.status === true) &&
+          allFr && userFriends && userFriends.map((friend) => (
             <div key={friend.id} className="friend">
               <div>
-                <img src={`${friend['User.user_ava']}`} alt="img" />
+                <img src={`${friend['User.ava']}`} alt="img" />
+                {/* <img src={ava} alt="img" /> */}
               </div>
               <div>
                 {friend['User.user_name']}
@@ -77,6 +87,7 @@ function Friends() {
                     e.preventDefault();
                     dispatch(unSubscribeThunk({ userId: userSession.id, friendId: friend.friend_id }));
                     setState((prev) => !prev);
+                    setUserFriends((p) => p.filter((el) => el.id !== friend.id));
                   }}
                   >Отписаться
                         </Button>
@@ -103,3 +114,5 @@ function Friends() {
 }
 
 export default Friends;
+
+//      /profile/9d3b8b1fffc60251dc8cedadf5f6695d.jpeg
