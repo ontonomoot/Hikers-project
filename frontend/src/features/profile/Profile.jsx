@@ -1,12 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Input } from '@geist-ui/core';
-import Form from 'react-bootstrap/Form';
+import { Button } from '@geist-ui/core';
 
-import { selectorEditProfile, editProfile, getProfileThunk, selectorProfile, addPhotoProfile } from './profile';
+import { selectorEditProfile,
+  editProfile,
+  getProfileThunk,
+  selectorProfile,
+  subscribeThunk,
+  selectorFriends,
+  getSubscribeThunk } from './profile';
 import EditProfile from './editProfile/editProfile';
-import { editProfileThunk, selectorUserSession } from '../main/auth';
+import { selectorUserSession } from '../main/auth';
 import './Profile.css';
 
 function Profile() {
@@ -15,11 +21,15 @@ function Profile() {
   const profileData = useSelector(selectorEditProfile);
   const userSession = useSelector(selectorUserSession);
   const profile = useSelector(selectorProfile);
+  const { friends } = useSelector(selectorFriends);
+  const follow = userSession && friends && friends.filter((el) => (el.user_id === userSession.id))
+  .filter((el) => el.friend_id === Number(id))[0];
   useEffect(() => {
     dispatch(getProfileThunk(id));
-  }, [userSession]);
+    dispatch(getSubscribeThunk());
+  }, [userSession, id]);
 
-  console.log(userSession);
+  if (!userSession) return <div>oops</div>;
 
   return (
     <div className="profile-page">
@@ -58,8 +68,14 @@ function Profile() {
           <div className="profile-edit-btn" />
         </div>
         <div className="edit-btn">
-          {profile && userSession && profile.id === userSession.id &&
-          <Button type="button" onClick={() => dispatch(editProfile())}>Редактировать</Button>}
+          {profile && userSession && (profile.id === userSession.id) ?
+            <Button type="button" onClick={() => dispatch(editProfile())}>Редактировать</Button> : (
+              <Button type="button" onClick={() => dispatch(subscribeThunk({ userId: userSession.id, friendId: profile.id }))}>
+                {follow && follow.status ?
+                  <>Отписаться</>
+                : <>Подписаться</>}
+              </Button>
+          )}
         </div>
       </div>
       {profileData && <EditProfile id={id} />}
