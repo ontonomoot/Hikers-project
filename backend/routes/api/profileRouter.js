@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const storageProfileUpload = require('../../middleware/storageProfileUpload');
 
-const { User } = require('../../db/models');
+const { User, Friend } = require('../../db/models');
+
+// получение данных пользователя
 
 router.post('/profile/:id', async (req, res) => {
   const { id } = req.params;
@@ -15,6 +17,8 @@ router.post('/profile/:id', async (req, res) => {
     console.error(error);
   }
 });
+
+// обновление данных пользователя
 
 router.put('/profile', async (req, res) => {
   const {
@@ -39,12 +43,76 @@ router.put('/profile', async (req, res) => {
   res.json(updatedUser[1][0]);
 });
 
+// получение списка всех подписок/подписчиков
+
+router.get('/profile/subscribe', async (req, res) => {
+  try {
+    const subscribers = await Friend.findAll({ raw: true });
+    console.log('route', subscribers);
+    res.json(subscribers);
+  } catch (error) {
+    res.status(404).json(error);
+  }
+});
+
+// подписка
+
+router.post('/profile', async (req, res) => {
+  const { userId, friendId } = req.body;
+  try {
+    const subscribe = await Friend.findOne({
+      where: {
+        user_id: userId,
+        friend_id: friendId,
+      },
+      raw: true,
+    });
+
+    if (!subscribe) {
+      console.log('ya tut');
+      await Friend.create({
+        user_id: userId,
+        friend_id: friendId,
+      });
+      const friends = await Friend.findAll({ raw: true });
+      return res.json(friends);
+    }
+    if (subscribe.status) {
+      await Friend.update(
+        { status: false },
+        {
+          where: {
+            user_id: userId,
+            friend_id: friendId,
+          },
+        },
+      );
+      const friends = await Friend.findAll();
+      res.json(friends);
+    } else {
+      await Friend.update(
+        { status: true },
+        {
+          where: {
+            user_id: userId,
+            friend_id: friendId,
+          },
+        },
+      );
+      const friends = await Friend.findAll();
+      res.json(friends);
+    }
+  } catch (error) {
+    res.status(404).json(error);
+  }
+});
+
+// обновление фото user'a
+
 router.put('/profile/photo', async (req, res) => {
   const photos = req.files.profileImg;
   const { id } = req.session.user;
-  // console.log(photos, 'photos');
   const url = await Promise.all(await storageProfileUpload(photos));
-  console.log(url, 'url');
   const updatedUser = await User.update(
     {
       ava: url.join(''),
@@ -57,7 +125,6 @@ router.put('/profile/photo', async (req, res) => {
   );
   const [, [user]] = updatedUser;
   req.session.user = user;
-  // console.log(updatedUser, 'updUSER');
   res.json(updatedUser[1][0]);
 });
 

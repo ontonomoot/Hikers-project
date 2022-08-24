@@ -10,7 +10,7 @@ const storage = async (file) => {
   if (!allowedExtensions.test(extension)) throw 'Unsupported extension !';
   if (size > 5000000) throw 'File must be less than 5MB';
 
-  const { md5 } = file;
+  const md5 = file.md5 + new Date().getTime();
   const URL = `/profile/${md5}${extension}`;
   await util.promisify(file.mv)(`./public/images${URL}`);
   return URL;

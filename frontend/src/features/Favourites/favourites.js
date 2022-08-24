@@ -4,7 +4,7 @@ import {
 } from '@reduxjs/toolkit';
 
 const initialState = {
-  favouritesState: null,
+  favouritesState: [],
 };
 
 const favouritesThunk = createAsyncThunk(
@@ -33,6 +33,7 @@ const addFavPlaceThunk = createAsyncThunk(
       })
     });
     const data = await response.json();
+    // console.log('data', data);
     return data;
   }
 );

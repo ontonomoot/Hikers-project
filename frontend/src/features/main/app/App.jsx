@@ -5,17 +5,17 @@ import { Provider, useDispatch } from 'react-redux';
 import Category from '../../Category/Category.jsx';
 // import Categories from '../../Category/Categories';
 import './App.css';
-import MainPage from '../MainPage';
+import MainPage from '../MainPage.jsx';
 import Navbar from '../navbar/Navbar';
 import PlacePage from '../../placePage/PlacePage';
 import Registration from '../registration/Registration';
 import Login from '../login/Login';
-import Weather from '../../weather/Weather';
 import { categoriesThunk } from '../mainPage';
 import { auth } from '../auth';
 import store from '../../../store';
-import Profile from '../../profile/Profile';
-import Favourites from '../../Favourites/Favourites';
+import Profile from '../../profile/Profile.jsx';
+import { subscribeThunk } from '../../profile/profile';
+import Favourites from '../../Favourites/Favourites.jsx';
 import Footer from '../footer/Footer';
 import init from '../../Category/apiMap';
 
@@ -25,6 +25,7 @@ function App() {
   useEffect(() => {
     dispatch(auth());
     dispatch(categoriesThunk());
+    // dispatch(subscribeThunk());
   }, [dispatch]);
 
   useEffect(() => {

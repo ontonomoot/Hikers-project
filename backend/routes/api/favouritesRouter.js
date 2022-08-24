@@ -71,37 +71,98 @@ router.route('/favourites')
     }
   }).post(async (req, res) => {
     const userId = req.session.user.id;
-
     const {
       placeid,
     } = req.body;
-    // console.log(placeid)
 
-    // console.log(favPlaceID);
-    const checkFav = await Favorite.findOne({
-      where: {
-        user_id: userId,
-        place_id: placeid,
-      },
-      raw: true,
-    });
+    try {
+      const favorite = await Favorite.findOne({
+        where: {
+          user_id: userId,
+          place_id: placeid,
+        },
+        raw: true,
+      });
+      // console.log('fav1', favorite)
 
-    // console.log(checkFav)
+      // если нет в избранном
+      if (!favorite) {
+        // console.log('ne favorite');
+        await Favorite.create({
+          user_id: userId,
+          place_id: placeid,
+        });
+        const favorites = await Favorite.findAll({
+          raw: true,
+        });
+        // console.log('fav2', favorites)
+        return res.json(favorites);
+      }
 
-    if (!checkFav) {
-      console.log('test')
-      await Favorite.create({
-        user_id: userId,
-        place_id: placeid,
-      });
-      res.json({
-        message: 'Успешно',
-      });
-    } else {
-      res.json({
-        message: 'Вы уже добавили в избранное',
-      });
+      // если есть в избранном меняем статус на false
+      // иначе статус true
+      if (favorite.status) {
+        await Favorite.update({
+          status: false,
+        }, {
+          where: {
+            user_id: userId,
+            place_id: placeid,
+
+          },
+        });
+        const favorites = await Favorite.findAll();
+        res.json(favorites);
+      } else {
+        await Favorite.update({
+          status: true,
+        }, {
+          where: {
+            user_id: userId,
+            place_id: placeid,
+          },
+        });
+        const favorites = await Favorite.findAll();
+        res.json(favorites);
+      }
+    } catch (error) {
+      res.status(404).json(error);
     }
   });
+
+// .post(async (req, res) => {
+//   const userId = req.session.user.id;
+
+//   const {
+//     placeid,
+//   } = req.body;
+//   // console.log(placeid)
+
+//   // console.log(favPlaceID);
+//   const checkFav = await Favorite.findOne({
+//     where: {
+//       user_id: userId,
+//       place_id: placeid,
+//     },
+//     raw: true,
+//   });
+
+//   // console.log(checkFav)
+
+//   if (!checkFav) {
+//     console.log('test')
+//     await Favorite.create({
+//       user_id: userId,
+//       place_id: placeid,
+//     });
+//     res.json({
+//       message: 'Успешно',
+//     });
+//   } else {
+//     res.json({
+//       message: 'Вы уже добавили в избранное',
+//     });
+//   }
+// });
 
 module.exports = router;
