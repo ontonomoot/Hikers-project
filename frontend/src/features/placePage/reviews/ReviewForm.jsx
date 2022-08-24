@@ -12,7 +12,7 @@ function ReviewForm() {
   const closeHandler = (event) => {
     setState(false);
   };
-  const { id } = useParams();
+  const { id, placeid } = useParams();
   const dispatch = useDispatch();
 
   const photo = useSelector(selectPhoto);
@@ -33,7 +33,7 @@ function ReviewForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const placeId = Number(id);
+    const placeId = Number(placeid);
     const form = event.target;
     const valueForm = {
       title: form.title.value,
