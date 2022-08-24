@@ -11,7 +11,7 @@ import Button from 'react-bootstrap/Button';
 import {
   deleteFavPlaceThunk, selectorFavourites
   // eslint-disable-next-line import/no-useless-path-segments
-} from '../Favourites/favourites';
+} from './favouritesSlice';
 
 export default function FavPlaces({ favPlace }) {
   // const favPlaces = useSelector(selectorFavourites);

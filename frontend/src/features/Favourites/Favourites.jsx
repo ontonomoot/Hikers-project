@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import {
   favouritesThunk, selectorFavourites
   // eslint-disable-next-line import/no-useless-path-segments
-} from '../Favourites/favourites';
+} from './favouritesSlice';
 // eslint-disable-next-line import/extensions
 import FavPlace from './favPlace.jsx';
 import './favourites.css';

@@ -7,11 +7,11 @@ import Star from '@geist-ui/icons/star';
 import init from './apiMap';
 import {
   categoryThunk, selectorCategory
-} from './category';
+} from './categorySlice';
 import { categoriesThunk, selectorCategories } from '../main/mainPage';
 import {
   placeThunk, selectorPlaces
-} from './places';
+} from './placesSlice';
 import Place from './Place';
 
 import './category.css';

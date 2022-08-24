@@ -9,14 +9,14 @@ import { selectorUserSession } from '../main/auth';
 import './PlacePage.css';
 // eslint-disable-next-line import/extensions
 import Weather from '../weather/Weather.jsx';
-import { placeThunk, selectorPlaces } from '../Category/places';
+import { placeThunk, selectorPlaces } from '../Category/placesSlice';
 // import {
 //   selectorProfile
 // } from '../profile/profile';
 import {
   addFavPlaceThunk, selectorFavourites, selectorAddFavourites
   // eslint-disable-next-line import/no-useless-path-segments
-} from '../Favourites/favourites';
+} from '../Favourites/favouritesSlice';
 import initMap from './placeMapApi';
 
 function PlaceInfo() {
@@ -39,10 +39,10 @@ function PlaceInfo() {
     .filter((el) => (el.user_id === user.id))
     .filter((el) => el.place_id === Number(placeid));
 
-  console.log('checkFavPlace1', checkFavPlace);
+  // console.log('checkFavPlace1', checkFavPlace);
 
   const checkStatus = user && checkAddedPlace && checkFavPlace.length && checkFavPlace[0].status;
-  console.log('checkcStatus', checkStatus);
+  // console.log('checkcStatus', checkStatus);
   // console.log('checkFavPlace', checkStatus);
   // console.log('user', user);
 
