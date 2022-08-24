@@ -3,33 +3,19 @@ const {
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Favorite extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+  class ChatNumber extends Model {
     static associate(models) {
-      Favorite.belongsTo(models.Place, { foreignKey: 'place_id' });
-      Favorite.belongsTo(models.User, { foreignKey: 'user_id' });
+      // ChatNumber.hasMany(models.Chat, { foreignKey: 'chat_id' });
+      ChatNumber.belongsTo(models.User, { foreignKey: 'user_id' });
+      ChatNumber.belongsTo(models.User, { foreignKey: 'friend_id' });
     }
   }
-  Favorite.init({
+  ChatNumber.init({
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER,
-    },
-    place_id: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'Places',
-        key: 'id',
-      },
-      onDelete: 'cascade',
-      onUpdate: 'cascade',
     },
     user_id: {
       allowNull: false,
@@ -41,9 +27,19 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'cascade',
       onUpdate: 'cascade',
     },
-    status: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
+    friend_id: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id',
+      },
+      onDelete: 'cascade',
+      onUpdate: 'cascade',
+    },
+    chat_id: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
     },
     createdAt: {
       allowNull: false,
@@ -57,8 +53,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
-    modelName: 'Favorite',
-    tableName: 'Favorites',
+    modelName: 'ChatNumber',
   });
-  return Favorite;
+  return ChatNumber;
 };

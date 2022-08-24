@@ -7,11 +7,11 @@ import Star from '@geist-ui/icons/star';
 import init from './apiMap';
 import {
   categoryThunk, selectorCategory
-} from './category';
+} from './categorySlice';
 import { categoriesThunk, selectorCategories } from '../main/mainPage';
 import {
   placeThunk, selectorPlaces
-} from './places';
+} from './placesSlice';
 import Place from './Place';
 
 import './category.css';
@@ -30,7 +30,17 @@ export default function Category() {
     async function winFunc() {
       await window.ymaps.ready(init);
     }
-    winFunc();
+    setTimeout(() => {
+      const daddy = document.querySelector('#map').closest('#daddy');
+      document.querySelector('#map').remove();
+      const newMap = document.createElement('div');
+      newMap.id = 'map';
+      newMap.style.width = '600px';
+      newMap.style.height = '450px';
+      daddy.insertAdjacentElement('afterBegin', newMap);
+      console.log(newMap);
+      winFunc();
+    }, 1000);
     dispatch(categoriesThunk());
     dispatch(placeThunk(id));
   }, [dispatch, id]);
@@ -44,8 +54,8 @@ export default function Category() {
         {categories && <h1 id={id} className="category">{categories.title}</h1>}
         <p className="placesListTitle">Список мест для <span className="placesPlusListTitle">{categories.title}а </span></p>
       </div>
-      <div>
-        <div id="map" style={{ width: 600, height: 400 }} />
+      <div id="daddy">
+        <div id="map" style={{ width: 600, height: 450 }} />
         <div id="placeFilter">
           <div className="placesContainer" id="placesContainer">
             {

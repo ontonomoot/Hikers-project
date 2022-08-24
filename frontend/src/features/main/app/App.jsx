@@ -5,8 +5,12 @@ import { Provider, useDispatch } from 'react-redux';
 import Category from '../../Category/Category.jsx';
 // import Categories from '../../Category/Categories';
 import './App.css';
+<<<<<<< HEAD
 // eslint-disable-next-line import/extensions
 import MainPage from '../MainPage.jsx';
+=======
+import MainPage from '../MainPage';
+>>>>>>> de4d838c39d0da77eee3e7a58f9a7f3807e1531b
 import Navbar from '../navbar/Navbar';
 import PlacePage from '../../placePage/PlacePage';
 import Registration from '../registration/Registration';
@@ -14,14 +18,14 @@ import Login from '../login/Login';
 import { categoriesThunk } from '../mainPage';
 import { auth } from '../auth';
 import store from '../../../store';
-// eslint-disable-next-line import/extensions
-import Profile from '../../profile/Profile.jsx';
-// eslint-disable-next-line import/extensions
-import Favourites from '../../Favourites/Favourites.jsx';
-import Footer from '../footer/Footer';
 import TodoList from '../../todoList/TodoList';
-// eslint-disable-next-line import/extensions
-import Friends from '../../friends/Friends.jsx';
+import Profile from '../../profile/Profile';
+import Favourites from '../../Favourites/Favourites';
+import Footer from '../footer/Footer';
+import init from '../../Category/apiMap';
+import Chat from '../../chat/Chat';
+import { chatsThunk } from '../../chat/chatReducer';
+import Friends from '../../friends/Friends';
 import Subscribers from '../../friends/Subscribers';
 import { getFriendsThunk } from '../../friends/friends';
 
@@ -31,8 +35,17 @@ function App() {
   useEffect(() => {
     dispatch(auth());
     dispatch(categoriesThunk());
+    dispatch(chatsThunk());
     dispatch(getFriendsThunk());
   }, [dispatch]);
+
+  useEffect(() => {
+    async function winFunc() {
+      await window.ymaps.ready(init);
+    }
+    winFunc();
+    dispatch(categoriesThunk());
+  }, []);
 
   return (
     <Provider store={store}>
@@ -47,11 +60,12 @@ function App() {
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/categories/:id/places/:placeid/todo" element={<TodoList />} />
+          <Route path="/profile/:id/chat" element={<Chat />} />
           <Route path="/profile/:id/friends" element={<Friends />} />
           <Route path="/profile/:id/subscribers" element={<Subscribers />} />
         </Route>
       </Routes>
-      <Footer />
+      <Footer style={{ }} />
     </Provider>
   );
 }

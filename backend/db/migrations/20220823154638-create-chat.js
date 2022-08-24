@@ -1,21 +1,11 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Favorites', {
+    await queryInterface.createTable('Chats', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
-      },
-      place_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Places',
-          key: 'id',
-        },
-        onDelete: 'cascade',
-        onUpdate: 'cascade',
       },
       user_id: {
         allowNull: false,
@@ -27,9 +17,22 @@ module.exports = {
         onDelete: 'cascade',
         onUpdate: 'cascade',
       },
-      status: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: true,
+      friend_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      },
+      chat_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      text: {
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,
@@ -44,6 +47,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Favorites');
+    await queryInterface.dropTable('Chats');
   },
 };
