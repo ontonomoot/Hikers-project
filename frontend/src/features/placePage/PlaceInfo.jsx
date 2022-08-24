@@ -10,9 +10,6 @@ import './PlacePage.css';
 // eslint-disable-next-line import/extensions
 import Weather from '../weather/Weather.jsx';
 import { placeThunk, selectorPlaces } from '../Category/placesSlice';
-// import {
-//   selectorProfile
-// } from '../profile/profile';
 import {
   addFavPlaceThunk, selectorFavourites, selectorAddFavourites
   // eslint-disable-next-line import/no-useless-path-segments
@@ -26,28 +23,14 @@ function PlaceInfo() {
   const user = useSelector(selectorUserSession);
   const arrPlaces = useSelector(selectorPlaces);
   const checkAddedPlace = useSelector(selectorAddFavourites);
-  // const profile = useSelector(selectorProfile);
   const { id, placeid } = useParams();
   const place = arrPlaces && arrPlaces.find((el) => el.id === Number(placeid));
 
-  // console.log('addedPlace', checkAddedPlace);
-  // console.log('users', user);
-
-  // console.log('placeid', placeid);
-  // console.log('checkAddedPlace', checkAddedPlace);
   const checkFavPlace = user && checkAddedPlace && checkAddedPlace
     .filter((el) => (el.user_id === user.id))
     .filter((el) => el.place_id === Number(placeid));
 
-  // console.log('checkFavPlace1', checkFavPlace);
-
   const checkStatus = user && checkAddedPlace && checkFavPlace.length && checkFavPlace[0].status;
-  // console.log('checkcStatus', checkStatus);
-  // console.log('checkFavPlace', checkStatus);
-  // console.log('user', user);
-
-  // console.log('place', place);
-  // console.log(place);
 
   function handleFavourite(event) {
     event.preventDefault();
@@ -56,7 +39,6 @@ function PlaceInfo() {
 
   useEffect(() => {
     dispatch(addFavPlaceThunk(id));
-    // dispatch(addFavPlaceThunk(id));
   }, []);
 
   // Функция ymaps.ready() будет вызвана, когда
@@ -93,7 +75,7 @@ function PlaceInfo() {
           <Drawer visible={state} onClose={() => setState(false)} placement="top">
             <Weather geo={place && place.geo} />
           </Drawer>
-          {checkFavPlace && user && checkStatus ? (
+          {checkStatus ? (
             // eslint-disable-next-line react/jsx-indent
             <Button
               disabled
