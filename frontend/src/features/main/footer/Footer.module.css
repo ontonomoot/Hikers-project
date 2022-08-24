@@ -1,22 +1,77 @@
-/* #footerMain{
-  margin-top: 50px;
+#footerMain {
   width: 100%;
+  height: 450px;
+  background-color: black;
   color: white;
-  background-color: #0d071c;
-  position: absolute;
-  left: 0;
-  bottom: 0;
+}
+
+.mainMarqAll {
+  margin: 0;
   width: 100%;
-  height: 400px; 
-  display: table;
-  height: 400px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.mainMarqAll .mainMarques {
+  display: flex;
+  width: 200%;
+  height: 100%;
+  animation: div 30s linear infinite;
+}
+
+.mainMarqAll .mainMarq {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.mainMarqAll .one {
+  width: 15%;
+  padding: 20px;
+  border-radius: 35px;
+  height: 80%;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(202, 202, 202);
+}
+
+.mainMarqAll .mainMarques:hover{
+  animation-play-state: paused;
+}
+
+/* .images1:hover {
+  background-image: url(../../../../../backend/public/images/photo/Hiking1.jpg);
 } */
 
-#footerMain {
-  height: 100px;
-  width: 100%;
-  background-color: black;
-  position: absolute;
-  left: 0;
-  bottom: 0;
+.mainMarqAll .one:hover {
+  color: white;
+  transition: 1s;
+  font-size: 40px;
+  background-image: url(../../../../../backend/public/images/photo/Hiking1.jpg);
 }
+
+
+@keyframes div {
+  0%{
+    transform: translateX(100%);
+  }
+  
+  100%{
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes div {
+  0%{
+    transform: translateX(0%);
+  }
+  
+  100%{
+    transform: translateX(-50%);
+  }
+}
+

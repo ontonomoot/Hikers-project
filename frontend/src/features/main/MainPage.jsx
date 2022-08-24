@@ -21,7 +21,12 @@ export default function MainPage() {
   if (!categories) return <div>Loading...</div>;
 
   return (
-    <>
+    <div style={{
+      position: 'relative',
+      height: '100%',
+      marginBottom: '100px'
+      }}
+    >
       <div className={css.mainTitle}>{categories[getUpCat].title}</div>
       <div id={css.main}>
         <span className={css.photo}>
@@ -139,6 +144,6 @@ export default function MainPage() {
         </span>
       </div>
       <Outlet />
-    </>
+    </div>
   );
 }
