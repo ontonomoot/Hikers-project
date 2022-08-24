@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
   reviewList: [],
+  reviewPhoto: [],
   photo: [],
   error: [],
 };
@@ -10,12 +11,13 @@ const initialState = {
 export const loadReview = createAsyncThunk(
   'review/loadReview',
   async (id) => {
-    const data = await fetch(`/api/place/${id}/review`);
-    if (data.status >= 400) {
+    const response = await fetch(`/api/place/${id}/review`);
+    const data = await response.json();
+    if (data.status) {
       const { error } = await data.json();
       throw error;
     } else {
-      return data.json();
+      return data;
     }
   }
 );
@@ -63,13 +65,17 @@ const reviewSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadReview.fulfilled, (state, action) => {
-        state.reviewList = action.payload;
+        state.reviewList = action.payload.review;
+        state.reviewPhoto = action.payload.photos;
       })
       .addCase(loadReview.rejected, (state, action) => {
         state.error = action.error.message;
       })
       .addCase(addReview.fulfilled, (state, action) => {
-        state.reviewList.unshift(action.payload);
+        state.reviewList.unshift(action.payload.review);
+        if (Array.isArray(action.payload.photos)) {
+          action.payload.photos.map((photo) => state.reviewPhoto.push(photo));
+        } else state.reviewPhoto.push(action.payload.photos);
       })
       .addCase(addPhoto.fulfilled, (state, action) => {
         state.photo = action.payload;
@@ -79,6 +85,7 @@ const reviewSlice = createSlice({
 
 // экспорт функции селектора
 export const selectReview = (state) => state.review.reviewList;
+export const selectReviewPhoto = (state) => state.review.reviewPhoto;
 export const selectPhoto = (state) => state.review.photo;
 
 // экспорт функции редьюсера

@@ -5,20 +5,22 @@ import { Provider, useDispatch } from 'react-redux';
 import Category from '../../Category/Category.jsx';
 // import Categories from '../../Category/Categories';
 import './App.css';
-import MainPage from '../MainPage';
+import MainPage from '../MainPage.jsx';
 import Navbar from '../navbar/Navbar';
 import PlacePage from '../../placePage/PlacePage';
 import Registration from '../registration/Registration';
 import Login from '../login/Login';
-import Weather from '../../weather/Weather';
 import { categoriesThunk } from '../mainPage';
 import { auth } from '../auth';
 import store from '../../../store';
-import Profile from '../../profile/Profile';
-import Favourites from '../../Favourites/Favourites';
+import Profile from '../../profile/Profile.jsx';
+import Favourites from '../../Favourites/Favourites.jsx';
 import Footer from '../footer/Footer';
 import Chat from '../../chat/Chat';
 import { chatsThunk } from '../../chat/chatReducer';
+import Friends from '../../friends/Friends.jsx';
+import Subscribers from '../../friends/Subscribers';
+import { getFriendsThunk } from '../../friends/friends';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ function App() {
     dispatch(auth());
     dispatch(categoriesThunk());
     dispatch(chatsThunk());
+    dispatch(getFriendsThunk());
   }, [dispatch]);
 
   return (
@@ -42,6 +45,8 @@ function App() {
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/profile/:id/chat" element={<Chat />} />
+          <Route path="/profile/:id/friends" element={<Friends />} />
+          <Route path="/profile/:id/subscribers" element={<Subscribers />} />
         </Route>
       </Routes>
       <Footer style={{ }} />

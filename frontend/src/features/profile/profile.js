@@ -3,7 +3,10 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const initialState = {
   edit: false,
   profile: [],
+  friends: [],
 };
+
+// получение данных пользователя
 
 const getProfileThunk = createAsyncThunk(
   'profile/edit',
@@ -16,18 +19,50 @@ const getProfileThunk = createAsyncThunk(
   }
   );
 
-  // отправка фото
-  export const addPhotoProfile = createAsyncThunk(
-    'profile/addPhotoProfile',
-    async (photos) => {
-      const response = await fetch('/api/profile/photo', {
-        method: 'PUT',
-        body: photos
+// получение списка всех подписок/подписчиков
+
+const getSubscribeThunk = createAsyncThunk(
+  'profile/subscribe',
+  async () => {
+    const response = await fetch('/api/profile/subscribe', { method: 'GET' });
+    const data = await response.json();
+    return data;
+  }
+  );
+
+  // добавление подписки в базу
+
+  const subscribeThunk = createAsyncThunk(
+    'profile/friends',
+    async ({ userId, friendId }) => {
+      const response = await fetch('/api/profile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'Application/json'
+        },
+        body: JSON.stringify({
+          userId,
+          friendId,
+        })
       });
       const data = await response.json();
-      return data;
-    }
-  );
+    return data;
+  }
+);
+
+// отправка фото
+
+export const addPhotoProfile = createAsyncThunk(
+  'profile/addPhotoProfile',
+  async (photos) => {
+    const response = await fetch('/api/profile/photo', {
+      method: 'PUT',
+      body: photos
+    });
+    const data = await response.json();
+    return data;
+  }
+);
 
 const editProfileSlice = createSlice({
   name: 'profile',
@@ -38,7 +73,7 @@ const editProfileSlice = createSlice({
     },
     newProfile: (state, action) => {
       state.profile = action.payload;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -47,20 +82,29 @@ const editProfileSlice = createSlice({
       })
       .addCase(addPhotoProfile.fulfilled, (state, action) => {
         state.profile = action.payload;
+      })
+      .addCase(getSubscribeThunk.fulfilled, (state, action) => {
+        state.friends = action.payload;
+      })
+      .addCase(subscribeThunk.fulfilled, (state, action) => {
+        state.friends = action.payload;
       });
   }
 });
 
 export {
   getProfileThunk,
+  getSubscribeThunk,
+  subscribeThunk,
 };
 
 export const selectorEditProfile = (state) => state.profile.edit;
 export const selectorProfile = (state) => state.profile.profile;
+export const selectorFriends = (state) => state.profile.friends;
 
 export const {
   editProfile,
-  newProfile
+  newProfile,
 } = editProfileSlice.actions;
 
 export default editProfileSlice.reducer;

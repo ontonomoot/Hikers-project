@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Button, Modal, Grid, Rating, Text } from '@geist-ui/core';
 import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPhoto, addReview, selectPhoto } from './review';
+import { addPhoto, addReview, selectPhoto } from './reviewSlice';
 
 function ReviewForm() {
   const [state, setState] = useState(false);
@@ -44,6 +44,7 @@ function ReviewForm() {
       placeId,
     };
     dispatch(addReview(valueForm));
+    setState(false);
   };
 
   return (
@@ -55,15 +56,15 @@ function ReviewForm() {
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Краткий отзыв:</Form.Label>
-              <Form.Control type="text" name="title" />
+              <Form.Control required type="text" name="title" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Label>Развернутый отзыв:</Form.Label>
-              <Form.Control as="textarea" name="description" rows={3} />
+              <Form.Control required as="textarea" name="description" rows={3} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Дата вашей поездки:</Form.Label>
-              <Form.Control type="date" name="date" />
+              <Form.Control required type="date" name="date" />
             </Form.Group>
             <Form.Group controlId="formFileMultiple" className="mb-3">
               <Form.Label>Прикрепить фото:</Form.Label>
@@ -75,7 +76,7 @@ function ReviewForm() {
             </Form.Group>
             <div id="modalBtns">
               <Button type="error" ghost onClick={() => setState(false)}>Отмена</Button>
-              <Button htmlType="submit" onClick={() => setState(false)}>Отправить</Button>
+              <Button htmlType="submit">Отправить</Button>
             </div>
           </Form>
         </Modal.Content>
