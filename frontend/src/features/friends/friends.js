@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 const initialState = {
-  subscribers: []
+  subscribers: null
 };
 
 // получение данных о всех юзерах и друзьях
@@ -11,9 +11,30 @@ const getFriendsThunk = createAsyncThunk(
   async () => {
     const response = await fetch('/api/profile/friends', { method: 'GET' });
     const data = await response.json();
-    // console.log(data, 'THUNK');
+    console.log(data, 'THUNK');
     return data;
   }
+);
+
+// отписка от юзера в компоненте FRIENDS
+
+const unSubscribeThunk = createAsyncThunk(
+  'profile/unsubscribe',
+  async ({ userId, friendId }) => {
+    const response = await fetch('/api/profile/friends/unsubscribe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      body: JSON.stringify({
+        userId,
+        friendId,
+      })
+    });
+    const data = await response.json();
+    console.log(data, 'UNsubscribe thunk');
+  return data;
+}
 );
 
 const getFriendsSlice = createSlice({
@@ -24,12 +45,16 @@ const getFriendsSlice = createSlice({
     builder
     .addCase(getFriendsThunk.fulfilled, (state, action) => {
       state.subscribers = action.payload;
+    })
+    .addCase(unSubscribeThunk.fulfilled, (state, action) => {
+      state.subscribers = action.payload;
     });
   }
 });
 
 export {
   getFriendsThunk,
+  unSubscribeThunk,
 };
 
 export const selectorFriends = (state) => state.friends.subscribers;
