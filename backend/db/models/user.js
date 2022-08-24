@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Task, { foreignKey: 'user_id' });
       User.hasMany(models.Friend, { foreignKey: 'user_id' });
       User.hasMany(models.Friend, { foreignKey: 'friend_id' });
+      User.hasMany(models.ChatNumber, { foreignKey: 'user_id' });
+      User.hasMany(models.ChatNumber, { foreignKey: 'friend_id' });
+      User.hasMany(models.Chat, { foreignKey: 'user_id' });
+      User.hasMany(models.Chat, { foreignKey: 'friend_id' });
     }
   }
   User.init({
