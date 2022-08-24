@@ -27,7 +27,7 @@ function Profile() {
   (el.user_id === userSession.id && (el.friend_id === Number(id))));
   // console.log(follow, 'follow');
   useEffect(() => {
-    dispatch(getSubscribeThunk());
+    // dispatch(getSubscribeThunk());
     dispatch(getProfileThunk(id));
   }, [userSession, id]);
 
