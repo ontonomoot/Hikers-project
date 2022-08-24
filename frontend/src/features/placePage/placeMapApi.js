@@ -21,10 +21,10 @@ export default async function initMap(place) {
   myMap.controls.remove('rulerControl'); // удаляем контрол правил
   myMap.controls.remove('searchControl'); // удаляем поиск
 
-    console.log('check geo');
+    // console.log('check geo');
     // координаты объекта
     const coordinates = placeGeo.geoObjects.get(0).geometry.getCoordinates();
-    console.log('координаты', coordinates);
+    // console.log('координаты', coordinates);
     // Добавление метки (Placemark) на карту
     const placemark = new window.ymaps.Placemark(coordinates, {
       hintContent: `${place.title}`,
