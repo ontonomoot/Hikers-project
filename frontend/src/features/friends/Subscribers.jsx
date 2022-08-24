@@ -21,7 +21,7 @@ function Subscribers() {
     const filter = users.find((user) => user.id === el);
     subscribers.push(filter);
   });
-  console.log(subscribers, 'мои подписчики');
+  // console.log(subscribers, 'мои подписчики');
   useEffect(() => {
     dispatch(getFriendsThunk(),);
   }, [userSession, dispatch]);

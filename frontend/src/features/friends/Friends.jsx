@@ -20,12 +20,10 @@ function Friends() {
   const dispatch = useDispatch();
   const allFr = useSelector(selectorFriends);
   const userSession = useSelector(selectorUserSession);
-  console.log('45687645676456', allFr);
   const userFriends = userSession && allFr && allFr.friends && allFr.friends.length && allFr.friends.filter((el) => el.user_id === userSession.id && el.status === true);
   // console.log(userFriends, 'userFriends');
 
   useEffect(() => {
-    console.log(222);
     setTimeout(() => {
       dispatch(getSubscribeThunk());
       dispatch(getFriendsThunk());
