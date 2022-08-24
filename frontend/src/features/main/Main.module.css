@@ -102,29 +102,6 @@
   margin-left: 20px;
 }
 
-.iconCategory {
-  padding: 10px;
-  width: 70px;
-  height: 70px;
-  opacity: 0.3;
-  margin-left: 20px;
-}
-
-.iconCategory:hover{
-  transition: 0.5s;
-  width: 80px;
-  height: 80px;
-  opacity: 1;
-  cursor: pointer;
-}
-
-.iconCategoryTake {
-  width: 80px;
-  height: 80px;
-  opacity: 1;
-  cursor: pointer;
-}
-
 .iconMainUpDown {
   width: 30px;
   cursor: pointer;

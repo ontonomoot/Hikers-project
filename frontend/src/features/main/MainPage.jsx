@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { selectorCategories } from './mainPage';
 import css from './Main.module.css';
-import iconSwitch from './mainFunction';
 
 export default function MainPage() {
   // const memoCategories = useMemo(() => selectorCategories, [selectorCategories]);
@@ -23,19 +22,6 @@ export default function MainPage() {
 
   return (
     <>
-      <div className={css.categoryMain}>
-        {categories.map((icon, i) => (
-          <img
-            id={icon.id}
-            key={`mainPhotoImgIcon${icon.id}`}
-            onClick={(e) => iconSwitch(e, setGetDownCat, setGetUpCat, setTitleUp)}
-            className={i === getUpCat ? `${css.iconCategory} ${css.iconCategoryTake}` : css.iconCategory}
-            src={`/images/icon/${icon.icon}`}
-            alt={icon.icon}
-          />
-        )
-            )}
-      </div>
       <div className={css.mainTitle}>{categories[getUpCat].title}</div>
       <div id={css.main}>
         <span className={css.photo}>
