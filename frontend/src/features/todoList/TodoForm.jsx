@@ -2,6 +2,8 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+// import Send from '@geist-ui/icons/send';
+import Plus from '@geist-ui/icons/plus';
 
 function TodoForm() {
   return (
@@ -12,7 +14,7 @@ function TodoForm() {
         aria-describedby="basic-addon2"
       />
       <Button variant="outline-secondary" id="button-addon2">
-        Добавить
+        <Plus />
       </Button>
     </InputGroup>
   );
