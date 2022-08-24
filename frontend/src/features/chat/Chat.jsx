@@ -6,11 +6,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { selectorUserSession } from '../main/auth';
 import { newMessageThunk, selectorChats, selectorChatsWith } from './chatReducer';
 
+import css from './Chat.module.css';
+
 export default function Chat() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [chatNum, setChatNum] = useState(1);
+  const [chatNum, setChatNum] = useState(null);
 
   const { id } = useParams();
   const chats = useSelector(selectorChats);
@@ -19,19 +21,21 @@ export default function Chat() {
 
   // Все чаты с юзером сессии
   const myChats =
-  chatsWith &&
-  userSession &&
-  chatsWith.filter((el) => el.user_id === userSession.id);
+    chatsWith &&
+    userSession &&
+    chatsWith.filter((el) => el.user_id === userSession.id);
 
   // Все сообщения по конкрутному чату chatNum
   const chatMes =
-  chats &&
-  chats.filter((el) => chatNum === el.chat_id);
+    chats &&
+    chats.filter((el) => chatNum === el.chat_id);
 
   // Имя юзера по конкрутному чату chatNum
   const friendName =
-  myChats &&
-  myChats.find((user) => user.chat_id === chatNum);
+    myChats &&
+    myChats.find((user) => user.chat_id === chatNum);
+
+  console.log(friendName);
 
   function handleChat(e) {
     e.preventDefault();
@@ -46,36 +50,121 @@ export default function Chat() {
   }
 
   return (
-    <div>
-      <div>Чаты</div>
-      <div>
-        <div>
-          {myChats && myChats.map((user) => (
-            <div>{user['User.user_name']}</div>
+    <div id={css.conteiner}>
+      <div className={css.mainPage}>
+        <div className={css.mainPageChats}>
+          <div className={css.mainPageChatsChat}>
+            Чаты
+          </div>
+          <div className={css.mainChats}>
+            {myChats && myChats.map((user) => (
+              <button
+                className={user.chat_id === chatNum
+                  ? css.mainChatsButtonTake
+                  : css.mainChatsButton}
+                onClick={() => setChatNum(user.chat_id)}
+                type="button"
+                key={`chatButtonKey${user.id}`}
+              >{user['User.user_name']}
+              </button>
             )
-          )}
+            )}
+          </div>
         </div>
-        <br />
-        <div>
-          {chatMes && chatMes.map((mas) => (
-            <>
-              {mas.user_id === userSession.id
-              ? <div>{userSession.user_name}</div>
-              : <div>{friendName['User.user_name']}</div>}
-              <div>{mas.createdAt.slice(0, 10)}</div>
-              <div>{mas.text}</div>
-              <br />
-              <br />
-            </>
+        <div className={css.mainPageMessage}>
+          <div className={css.mainPageChatsMes}>
+            Сообщения
+          </div>
+          <div className={css.messagePage}>
+            {chatMes && chatMes.map((mas) => (
+              <div
+                key={`allCatMap${mas.id}`}
+                className={mas.user_id === userSession.id
+                  ? css.messageAllCardRight
+                  : css.messageAllCardLeft}
+              >
+                <div
+                  className={mas.user_id === userSession.id
+                    ? css.messageAllRight
+                    : css.messageAllLeft}
+                >
+                  <div className={css.divAvaProfLeft}>
+                    {mas.user_id !== userSession.id
+                      && <img className={css.avaProfLeft} src={friendName['User.ava']} alt="" />}
+                  </div>
+                  <div>
+                    {mas.user_id === userSession.id
+                      ? (
+                        <div
+                          className={css.messageNameRight}
+                        >{userSession.user_name}
+                        </div>
+                      )
+                      : (
+                        <div
+                          className={css.messageNameLeft}
+                        >{friendName['User.user_name']}
+                        </div>
+                      )}
+                    {mas.user_id === userSession.id
+                      ? (
+                        <>
+                          <div
+                            className={css.messageDataRight}
+                          >
+                            {mas.createdAt.slice(0, 10)}
+                          </div>
+                          <div
+                            className={css.messageTextRight}
+                          >
+                            {mas.text}
+                          </div>
+                        </>
+                      )
+                      : (
+                        <>
+                          <div
+                            className={css.messageDataLeft}
+                          >
+                            {mas.createdAt.slice(0, 10)}
+                          </div>
+                          <div
+                            className={css.messageTextLeft}
+                          >{mas.text}
+                          </div>
+                        </>
+                      )}
+                  </div>
+                  <div className={css.divAvaProfRight}>
+                    {mas.user_id === userSession.id
+                      && <img className={css.avaProfRight} src={friendName['User.ava']} alt="" />}
+                  </div>
+                </div>
+              </div>
             )
-          )}
+            )}
+          </div>
+          <div className={css.luboy} />
+          {chatMes && chatNum ? (
+            <form
+              className={css.mainWriteChat}
+              onSubmit={handleChat}
+            >
+              <input
+                className={css.inputForm}
+                type="text"
+                name="message"
+              />
+              <button
+                className={css.buttonForm}
+                type="submit"
+              >Отправить
+              </button>
+            </form>
+            )
+          : <div>Выберите чат или напишите другу, чтобы начать беседу</div>}
         </div>
       </div>
-      <form onSubmit={handleChat}>
-        <input type="text" name="message" />
-        <button type="submit">Отправить</button>
-      </form>
-      hello
     </div>
   );
 }

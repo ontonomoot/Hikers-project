@@ -4,15 +4,16 @@ const chatRoute = require('express').Router();
 const { Chat, User, ChatNumber } = require('../../db/models');
 
 chatRoute.get('/allchat', async (req, res) => {
-  const chats = await Chat.findAll({ raw: true });
+  const chats = await Chat.findAll({
+    raw: true,
+    order: [['createdAt', 'DESC']],
+  });
   const chatsWith = await ChatNumber.findAll({
     include: {
       model: User,
     },
     raw: true,
-    order: [
-      ['createdAt', 'DESC'],
-    ],
+    order: [['createdAt', 'ASC']],
   });
   res.json({ chats, chatsWith });
 });
@@ -32,16 +33,17 @@ chatRoute.post('/newMes', async (req, res) => {
     text,
   });
 
-  const chats = await Chat.findAll({ raw: true });
+  const chats = await Chat.findAll({
+    raw: true,
+    order: [['createdAt', 'DESC']],
+  });
 
   const chatsWith = await ChatNumber.findAll({
+    raw: true,
     include: {
       model: User,
     },
-    raw: true,
-    order: [
-      ['createdAt', 'DESC'],
-    ],
+    order: [['createdAt', 'ASC']],
   });
   res.json({ chats, chatsWith });
 });
