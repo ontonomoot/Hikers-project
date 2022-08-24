@@ -27,7 +27,6 @@ function Friends() {
     setTimeout(() => {
       dispatch(getSubscribeThunk());
       dispatch(getFriendsThunk());
-      // dispatch(unSubscribeThunk());
     }, 50);
   }, [userSession, dispatch, state]);
 
