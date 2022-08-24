@@ -10,7 +10,7 @@ import { selectorEditProfile,
   selectorProfile,
   subscribeThunk,
   selectorFriends,
-  getSubscribeThunk, } from './profile';
+  getSubscribeThunk, } from './profileSlice';
 import EditProfile from './editProfile/editProfile';
 import { selectorUserSession } from '../main/auth';
 import './Profile.css';

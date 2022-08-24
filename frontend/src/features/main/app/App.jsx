@@ -16,9 +16,9 @@ import store from '../../../store';
 import Profile from '../../profile/Profile.jsx';
 import Favourites from '../../Favourites/Favourites.jsx';
 import Footer from '../footer/Footer';
-import Friends from '../../friends/Friends.jsx';
+import Friends from '../../friends/Friends';
 import Subscribers from '../../friends/Subscribers';
-import { getFriendsThunk } from '../../friends/friends';
+import { getFriendsThunk } from '../../friends/friendsSlice';
 
 function App() {
   const dispatch = useDispatch();
