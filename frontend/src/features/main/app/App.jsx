@@ -16,11 +16,14 @@ import { auth } from '../auth';
 import store from '../../../store';
 // eslint-disable-next-line import/extensions
 import Profile from '../../profile/Profile.jsx';
-import { subscribeThunk } from '../../profile/profile';
 // eslint-disable-next-line import/extensions
 import Favourites from '../../Favourites/Favourites.jsx';
 import Footer from '../footer/Footer';
 import TodoList from '../../todoList/TodoList';
+// eslint-disable-next-line import/extensions
+import Friends from '../../friends/Friends.jsx';
+import Subscribers from '../../friends/Subscribers';
+import { getFriendsThunk } from '../../friends/friends';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +31,7 @@ function App() {
   useEffect(() => {
     dispatch(auth());
     dispatch(categoriesThunk());
-    // dispatch(subscribeThunk());
+    dispatch(getFriendsThunk());
   }, [dispatch]);
 
   return (
@@ -44,6 +47,8 @@ function App() {
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/todo" element={<TodoList />} />
+          <Route path="/profile/:id/friends" element={<Friends />} />
+          <Route path="/profile/:id/subscribers" element={<Subscribers />} />
         </Route>
       </Routes>
       <Footer />

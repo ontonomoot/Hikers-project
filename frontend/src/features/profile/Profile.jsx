@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,7 +21,7 @@ function Profile() {
   const profileData = useSelector(selectorEditProfile);
   const userSession = useSelector(selectorUserSession);
   const profile = useSelector(selectorProfile);
-  const friends = useSelector(selectorFriends);
+  const { friends } = useSelector(selectorFriends);
   const follow = userSession && friends && friends.filter((el) => (el.user_id === userSession.id))
   .filter((el) => el.friend_id === Number(id))[0];
   useEffect(() => {
