@@ -5,12 +5,7 @@ import { Provider, useDispatch } from 'react-redux';
 import Category from '../../Category/Category.jsx';
 // import Categories from '../../Category/Categories';
 import './App.css';
-<<<<<<< HEAD
-// eslint-disable-next-line import/extensions
-import MainPage from '../MainPage.jsx';
-=======
 import MainPage from '../MainPage';
->>>>>>> de4d838c39d0da77eee3e7a58f9a7f3807e1531b
 import Navbar from '../navbar/Navbar';
 import PlacePage from '../../placePage/PlacePage';
 import Registration from '../registration/Registration';
