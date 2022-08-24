@@ -15,14 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Task.init({
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: DataTypes.INTEGER,
-    },
     place_id: {
       allowNull: false,
+      primaryKey: true,
       type: DataTypes.INTEGER,
       references: {
         model: 'Places',
@@ -33,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     user_id: {
       allowNull: false,
+      primaryKey: true,
       type: DataTypes.INTEGER,
       references: {
         model: 'Users',
