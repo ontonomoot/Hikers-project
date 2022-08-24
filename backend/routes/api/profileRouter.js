@@ -43,12 +43,11 @@ router.put('/profile', async (req, res) => {
   res.json(updatedUser[1][0]);
 });
 
-// получение списка всех подписок/подписчиков
+// получение ID списка всех подписок/подписчиков
 
 router.get('/profile/subscribe', async (req, res) => {
   try {
     const subscribers = await Friend.findAll({ raw: true });
-    console.log('route', subscribers);
     res.json(subscribers);
   } catch (error) {
     res.status(404).json(error);
@@ -69,7 +68,6 @@ router.post('/profile', async (req, res) => {
     });
 
     if (!subscribe) {
-      console.log('ya tut');
       await Friend.create({
         user_id: userId,
         friend_id: friendId,
