@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal } from '@geist-ui/core';
+import TodoForm from './TodoForm';
 
 function TodoList() {
   const [state, setState] = useState(false);
@@ -16,6 +17,7 @@ function TodoList() {
         <Modal.Title>Место</Modal.Title>
         <Modal.Subtitle>Взять с собой:</Modal.Subtitle>
         <Modal.Content>
+          <TodoForm />
           <p>Some content contained within the modal.</p>
         </Modal.Content>
         <Modal.Action passive onClick={() => setState(false)}>Закрыть</Modal.Action>
