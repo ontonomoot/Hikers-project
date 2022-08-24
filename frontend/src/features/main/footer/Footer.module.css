@@ -16,7 +16,7 @@
   display: flex;
   width: 200%;
   height: 100%;
-  animation: div 30s linear infinite;
+  animation: div 40s linear infinite;
 }
 
 .mainMarqAll .mainMarq {
@@ -25,33 +25,59 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  overflow: hidden
 }
 
 .mainMarqAll .one {
-  width: 15%;
-  padding: 20px;
-  border-radius: 35px;
+  width: 13%;
   height: 80%;
-  font-size: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgb(202, 202, 202);
+  overflow: hidden;
+  border-radius: 35px;
 }
 
 .mainMarqAll .mainMarques:hover{
   animation-play-state: paused;
 }
 
-/* .images1:hover {
-  background-image: url(../../../../../backend/public/images/photo/Hiking1.jpg);
-} */
+.oneImg {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(202, 202, 202);
+  overflow: hidden;
+  opacity: 0;
+}
 
-.mainMarqAll .one:hover {
+.oneP {
+  position: relative;
+  height: 100%;
+  bottom: 360px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(202, 202, 202);
+  cursor: pointer;
+}
+
+.mainMarqAll .oneP:hover  {
   color: white;
   transition: 1s;
   font-size: 40px;
-  background-image: url(../../../../../backend/public/images/photo/Hiking1.jpg);
+  opacity: 1;
+}
+
+.one:hover .oneImg {
+  transition: 1.5s;
+  opacity: 0.8;
+}
+
+.one:hover .oneP {
+  color: white;
+  transition: 1.5s;
+  font-size: 40px;
 }
 
 
