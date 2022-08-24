@@ -32,7 +32,15 @@ module.exports = {
     },
     {
       place_id: 1,
-      title: '/images/photo/1.jpeg',
+      title: '/images/snowboard/sheregesh-1.jpg',
+    },
+    {
+      place_id: 1,
+      title: '/images/snowboard/sheregesh-2.jpg',
+    },
+    {
+      place_id: 1,
+      title: '/images/snowboard/sheregesh-3.jpg',
     }, {
       place_id: 2,
       title: '/images/photo/1.jpeg',

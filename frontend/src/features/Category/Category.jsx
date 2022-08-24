@@ -23,6 +23,8 @@ export default function Category() {
   const allCategories = useSelector(selectorCategories);
   const categories = allCategories ? allCategories.find((el) => el.id === Number(id)) : null;
 
+  // console.log('places', places);
+
   const dispatch = useDispatch();
   // Функция ymaps.ready() будет вызвана, когда
   // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
