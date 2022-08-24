@@ -14,9 +14,11 @@ import { categoriesThunk } from '../mainPage';
 import { auth } from '../auth';
 import store from '../../../store';
 import Profile from '../../profile/Profile.jsx';
-import { subscribeThunk } from '../../profile/profile';
 import Favourites from '../../Favourites/Favourites.jsx';
 import Footer from '../footer/Footer';
+import Friends from '../../friends/Friends.jsx';
+import Subscribers from '../../friends/Subscribers';
+import { getFriendsThunk } from '../../friends/friends';
 
 function App() {
   const dispatch = useDispatch();
@@ -24,7 +26,7 @@ function App() {
   useEffect(() => {
     dispatch(auth());
     dispatch(categoriesThunk());
-    // dispatch(subscribeThunk());
+    dispatch(getFriendsThunk());
   }, [dispatch]);
 
   return (
@@ -39,6 +41,8 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/favourites" element={<Favourites />} />
+          <Route path="/profile/:id/friends" element={<Friends />} />
+          <Route path="/profile/:id/subscribers" element={<Subscribers />} />
         </Route>
       </Routes>
       <Footer />
