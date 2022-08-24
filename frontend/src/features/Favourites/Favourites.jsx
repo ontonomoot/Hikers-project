@@ -10,15 +10,14 @@ import FavPlace from './favPlace.jsx';
 import './favourites.css';
 
 export default function Favourites() {
-  const { id } = useParams();
   const dispatch = useDispatch();
   const favPlaces = useSelector(selectorFavourites);
 
   // console.log('favourites', favPlaces);
 
   useEffect(() => {
-    dispatch(favouritesThunk(id));
-  }, []);
+    dispatch(favouritesThunk());
+  }, [dispatch]);
 
   return (
     <div className="favouritesBox">

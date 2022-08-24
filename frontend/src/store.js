@@ -10,6 +10,7 @@ import editProfileSlice from './features/profile/profileSlice.js';
 import getFriendsSlice from './features/friends/friendsSlice.js';
 import categorySlice from './features/Category/categorySlice.js';
 import placeSlice from './features/Category/placesSlice.js';
+import todoSlice from './features/todoList/todoSlice.js';
 import favouritesSlice from './features/Favourites/favouritesSlice.js';
 import reviewSlice from './features/placePage/reviews/reviewSlice.js';
 import chatSlice from './features/chat/chatReducer.js';
@@ -24,6 +25,7 @@ const store = configureStore({
     weather: weatherSlice,
     profile: editProfileSlice,
     favourites: favouritesSlice,
+    todo: todoSlice,
     friends: getFriendsSlice,
     chat: chatSlice,
   }

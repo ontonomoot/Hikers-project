@@ -13,6 +13,7 @@ import Login from '../login/Login';
 import { categoriesThunk } from '../mainPage';
 import { auth } from '../auth';
 import store from '../../../store';
+import TodoList from '../../todoList/TodoList';
 import Profile from '../../profile/Profile';
 import Favourites from '../../Favourites/Favourites';
 import Footer from '../footer/Footer';
@@ -53,6 +54,7 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/favourites" element={<Favourites />} />
+          <Route path="/categories/:id/places/:placeid/todo" element={<TodoList />} />
           <Route path="/profile/:id/chat" element={<Chat />} />
           <Route path="/profile/:id/friends" element={<Friends />} />
           <Route path="/profile/:id/subscribers" element={<Subscribers />} />
