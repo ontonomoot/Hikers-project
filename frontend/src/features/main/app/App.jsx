@@ -46,7 +46,7 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/favourites" element={<Favourites />} />
-          <Route path="/todo" element={<TodoList />} />
+          <Route path="/categories/:id/places/:placeid/todo" element={<TodoList />} />
           <Route path="/profile/:id/friends" element={<Friends />} />
           <Route path="/profile/:id/subscribers" element={<Subscribers />} />
         </Route>

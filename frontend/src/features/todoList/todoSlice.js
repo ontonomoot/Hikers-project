@@ -8,7 +8,7 @@ const initialState = {
 export const loadTasks = createAsyncThunk(
   'todo/loadTasks',
   async (placeId) => {
-    const response = await fetch(`/api/place/${placeId}/tasks}`);
+    const response = await fetch(`/api/place/${placeId}/tasks`);
     const data = await response.json();
     return data;
   }
@@ -25,6 +25,9 @@ const todoSlice = createSlice({
       });
   }
 });
+
+// экспорт функции селектора
+export const selectTasks = (state) => state.todo.tasks;
 
 // экспорт функции редьюсера
 export default todoSlice.reducer;

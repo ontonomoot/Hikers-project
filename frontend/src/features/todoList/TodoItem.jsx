@@ -4,13 +4,13 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import Trash2 from '@geist-ui/icons/trash2';
 
-function TodoItem() {
+function TodoItem({ task }) {
   return (
     <InputGroup className="mb-3">
-      <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+      <InputGroup.Checkbox checked={task.done} aria-label="Checkbox for following text input" />
       <Form.Control
         disabled
-        defaultValue="рюкзак"
+        defaultValue={task.task}
         aria-label="Text input with checkbox"
       />
       {/* Lorem, ipsum dolor sit amet
