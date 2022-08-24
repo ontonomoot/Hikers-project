@@ -14,14 +14,25 @@
 
 #favPhoto {
   width: 340px;
-  border: 1px solid #0d071c;
+  border: 1px solid #cecece;
   margin-bottom: 20px;
+  cursor: pointer;
+}
+
+#favPhoto:hover {
+  /* box-shadow: 0 0 10px rgba(0,0,0,0.5); */
+  border: 1px solid #090909;
 }
 
 #favDescription {
   margin-left: 20px;
   width: 640px;
   margin-bottom: 20px;
+  border: 1px solid #cecece;;
+}
+
+#favDescription:hover {
+  /* box-shadow: 0 0 10px rgba(0,0,0,0.5); */
   border: 1px solid #0d071c;
 }
 
@@ -30,8 +41,25 @@
 }
 
 .favPlaceBtn {
-  border-radius: 5px;
-  background-color: green;
-  height: 45px;
-  width: 150px;
+margin-right: 20px;
+border-radius: 15px;
+}
+
+ .delPlaceBtn{
+  border-radius: 15px;
+} 
+
+.close:hover {
+  background-color: #0d071c;
+  cursor: pointer;
+}
+
+.delFavPlace {
+  display: flex;
+  flex-direction: row;
+}
+
+.favPlaceTitle:hover {
+ cursor: pointer;
+ text-decoration: underline;
 }

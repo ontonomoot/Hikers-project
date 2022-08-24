@@ -7,11 +7,11 @@ import Star from '@geist-ui/icons/star';
 import init from './apiMap';
 import {
   categoryThunk, selectorCategory
-} from './category';
+} from './categorySlice';
 import { categoriesThunk, selectorCategories } from '../main/mainPage';
 import {
   placeThunk, selectorPlaces
-} from './places';
+} from './placesSlice';
 import Place from './Place';
 
 import './category.css';
@@ -30,7 +30,9 @@ export default function Category() {
     async function winFunc() {
       await window.ymaps.ready(init);
     }
-    winFunc();
+    setTimeout(() => {
+      winFunc();
+    }, 1000);
     dispatch(categoriesThunk());
     dispatch(placeThunk(id));
   }, [dispatch, id]);
@@ -45,7 +47,7 @@ export default function Category() {
         <p className="placesListTitle">Список мест для <span className="placesPlusListTitle">{categories.title}а </span></p>
       </div>
       <div>
-        <div id="map" style={{ width: 600, height: 400 }} />
+        <div id="map" style={{ width: 600, height: 450 }} />
         <div id="placeFilter">
           <div className="placesContainer" id="placesContainer">
             {

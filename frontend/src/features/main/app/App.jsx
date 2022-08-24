@@ -16,6 +16,7 @@ import store from '../../../store';
 import Profile from '../../profile/Profile.jsx';
 import Favourites from '../../Favourites/Favourites.jsx';
 import Footer from '../footer/Footer';
+import init from '../../Category/apiMap';
 import Chat from '../../chat/Chat';
 import { chatsThunk } from '../../chat/chatReducer';
 import Friends from '../../friends/Friends.jsx';
@@ -31,6 +32,14 @@ function App() {
     dispatch(chatsThunk());
     dispatch(getFriendsThunk());
   }, [dispatch]);
+
+  useEffect(() => {
+    async function winFunc() {
+      await window.ymaps.ready(init);
+    }
+    winFunc();
+    dispatch(categoriesThunk());
+  }, []);
 
   return (
     <Provider store={store}>
