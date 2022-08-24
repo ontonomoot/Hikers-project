@@ -21,7 +21,7 @@ import Chat from '../../chat/Chat';
 import { chatsThunk } from '../../chat/chatReducer';
 import Friends from '../../friends/Friends';
 import Subscribers from '../../friends/Subscribers';
-import { getFriendsThunk } from '../../friends/friends';
+import { getFriendsThunk } from '../../friends/friendsSlice';
 
 function App() {
   const dispatch = useDispatch();
