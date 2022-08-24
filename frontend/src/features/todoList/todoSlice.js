@@ -10,7 +10,7 @@ export const loadTasks = createAsyncThunk(
   async (placeId) => {
     const response = await fetch(`/api/place/${placeId}/tasks`);
     const data = await response.json();
-    console.log(data, 'daaaaaaaaata');
+    // console.log(data, 'daaaaaaaaata');
     return data;
   }
 );
@@ -22,9 +22,9 @@ const todoSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadTasks.fulfilled, (state, action) => {
-        console.log(state.tasks, 'taaaasksssssss1111');
+        // console.log(state.tasks, 'taaaasksssssss1111');
         state.tasks.push(...action.payload);
-        console.log(state.tasks, 'taaaasksssssss2222');
+        // console.log(state.tasks, 'taaaasksssssss2222');
       });
   }
 });
