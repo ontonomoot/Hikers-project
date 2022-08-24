@@ -61,6 +61,29 @@
 .userName {
   cursor: pointer;
   margin-right: 20px;
+  justify-content: center;
+}
+
+.navbarCategory {
+  display: flex;
+
+}
+
+.navbarCategoryClass {
+  border-bottom: 1px solid black;
+  opacity: 0.5;
+}
+
+.navbarCategoryClass:not(:last-child) {
+  display: flex;
+  margin-right: 20px;
+}
+
+.navbarCategoryClass:hover {
+  transition: 0.5s;
+  opacity: 1;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .marquee{
@@ -86,4 +109,27 @@
   100% {
       transform: translateX(-50%)
   }
+}
+
+.iconCategory {
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+  opacity: 0.3;
+  margin-left: 13px;
+}
+
+.iconCategory:hover{
+  transition: 0.5s;
+  width: 70px;
+  height: 70px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.iconCategoryTake {
+  width: 70px;
+  height: 70px;
+  opacity: 1;
+  cursor: pointer;
 }

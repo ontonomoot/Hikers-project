@@ -61,7 +61,34 @@ export default function MainPage() {
           <div className={css.categoryChange}>
             <button
               className={css.buttonBack}
-              key={`buttonkey${categories[0].id}`}
+              type="button"
+              onClick={() => {
+                  setTrueCssUp(true);
+                if (getUpCat > 4) {
+                  setGetUpCat(0);
+                  setGetDownCat(5);
+                  setTitleUp((prev) => prev + 1);
+                } else {
+                  setGetUpCat((prev) => prev + 1);
+                  setGetDownCat((prev) => prev + 1);
+                  setTitleUp((prev) => prev + 1);
+                  if (titleUp === 5) setTitleUp(0);
+                  if (getDownCat === 5) setGetDownCat(0);
+                  // setGetDownCat((prev) => prev + 1);
+                }
+                const interval = setTimeout(() => {
+                  setTrueCssUp(false);
+                  return clearInterval(interval);
+                }, 1000);
+              }}
+            ><img
+              className={css.iconMainUpDown}
+              src="/images/icon/Up.png"
+              alt="own"
+            />
+            </button>
+            <button
+              className={css.buttonNext}
               type="button"
               onClick={() => {
                   setTrueCssDown(true);
@@ -87,42 +114,11 @@ export default function MainPage() {
               }}
             ><img
               className={css.iconMainUpDown}
-              src="/images/icon/Up.png"
+              src="/images/icon/Down.png"
               alt="up"
             />
             </button>
-            {categories.map((icon, i) =>
-              <img onClick={() => setGetUpCat(i)} className={i === getUpCat ? `${css.iconCategory} ${css.iconCategoryTake}` : css.iconCategory} src={`/images/icon/${icon.icon}`} alt={icon.icon} />
-            )}
-            <button
-              className={css.buttonNext}
-              key={`buttonkey${categories[0].id}`}
-              type="button"
-              onClick={() => {
-                  setTrueCssUp(true);
-                if (getUpCat > 4) {
-                  setGetUpCat(0);
-                  setGetDownCat(5);
-                  setTitleUp((prev) => prev + 1);
-                } else {
-                  setGetUpCat((prev) => prev + 1);
-                  setGetDownCat((prev) => prev + 1);
-                  setTitleUp((prev) => prev + 1);
-                  if (titleUp === 5) setTitleUp(0);
-                  if (getDownCat === 5) setGetDownCat(0);
-                  // setGetDownCat((prev) => prev + 1);
-                }
-                const interval = setTimeout(() => {
-                  setTrueCssUp(false);
-                  return clearInterval(interval);
-                }, 1000);
-              }}
-            ><img
-              className={css.iconMainUpDown}
-              src="/images/icon/Down.png"
-              alt="own"
-            />
-            </button>
+
           </div>
           <div className={css.categoryDistraction}>
             <div>

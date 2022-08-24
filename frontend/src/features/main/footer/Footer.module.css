@@ -1,14 +1,22 @@
-#footerMain{
+/* #footerMain{
   margin-top: 50px;
   width: 100%;
   color: white;
   background-color: #0d071c;
   position: absolute;
-  /* left: 0;
+  left: 0;
   bottom: 0;
   width: 100%;
-  height: 400px; */
-
+  height: 400px; 
   display: table;
   height: 400px;
+} */
+
+#footerMain {
+  height: 100px;
+  width: 100%;
+  background-color: black;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }

@@ -16,6 +16,8 @@ import store from '../../../store';
 import Profile from '../../profile/Profile.jsx';
 import Favourites from '../../Favourites/Favourites.jsx';
 import Footer from '../footer/Footer';
+import Chat from '../../chat/Chat';
+import { chatsThunk } from '../../chat/chatReducer';
 import Friends from '../../friends/Friends.jsx';
 import Subscribers from '../../friends/Subscribers';
 import { getFriendsThunk } from '../../friends/friends';
@@ -26,6 +28,7 @@ function App() {
   useEffect(() => {
     dispatch(auth());
     dispatch(categoriesThunk());
+    dispatch(chatsThunk());
     dispatch(getFriendsThunk());
   }, [dispatch]);
 
@@ -41,11 +44,12 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/favourites" element={<Favourites />} />
+          <Route path="/profile/:id/chat" element={<Chat />} />
           <Route path="/profile/:id/friends" element={<Friends />} />
           <Route path="/profile/:id/subscribers" element={<Subscribers />} />
         </Route>
       </Routes>
-      <Footer />
+      <Footer style={{ }} />
     </Provider>
   );
 }
