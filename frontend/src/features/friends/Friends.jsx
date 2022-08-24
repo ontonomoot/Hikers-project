@@ -2,9 +2,11 @@
 /* eslint-disable max-len */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Grid, Button } from '@geist-ui/core';
 import { selectorUserSession } from '../main/auth';
-import { getSubscribeThunk, selectorFriends } from '../profile/profile';
+import { getSubscribeThunk, selectorFriends, subscribeThunk } from '../profile/profile';
 import { getFriendsThunk } from './friends';
+
 import './Friends.css';
 
 function Friends() {
@@ -12,6 +14,7 @@ function Friends() {
   const { friends } = useSelector(selectorFriends);
   const userSession = useSelector(selectorUserSession);
   const userFriends = userSession && friends && friends.filter((el) => el.user_id === userSession.id && el.status === true);
+  console.log(userFriends);
   useEffect(() => {
     dispatch(getFriendsThunk(),);
   }, [userSession, dispatch]);
@@ -44,6 +47,14 @@ function Friends() {
               </div>
               <div>
                 {friend['User.email']}
+              </div>
+              <div className="btn-group">
+                <div className="friends-btn">
+                  <Grid><Button type="success" ghost auto scale={0.7}>Сообщение</Button></Grid>
+                </div>
+                <div className="friends-btn">
+                  <Grid><Button type="secondary" ghost auto scale={0.7} onClick={() => dispatch(subscribeThunk({ userId: userSession.id, friendId: friend.friend_id }))}>Отписаться</Button></Grid>
+                </div>
               </div>
             </div>
           ))
