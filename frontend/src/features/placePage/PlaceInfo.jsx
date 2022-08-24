@@ -25,6 +25,7 @@ function PlaceInfo() {
   const checkAddedPlace = useSelector(selectorAddFavourites);
   const { id, placeid } = useParams();
   const place = arrPlaces && arrPlaces.find((el) => el.id === Number(placeid));
+  // console.log('checkplace', place);
 
   const checkFavPlace = user && checkAddedPlace && checkAddedPlace
     .filter((el) => (el.user_id === user.id))
@@ -39,20 +40,21 @@ function PlaceInfo() {
 
   useEffect(() => {
     dispatch(addFavPlaceThunk(id));
+    dispatch(placeThunk(id));
   }, []);
 
   // Функция ymaps.ready() будет вызвана, когда
   // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
   useEffect(() => {
-    dispatch(placeThunk(id));
+    dispatch(placeThunk(id, placeid));
     async function winFunc(num) {
       await window.ymaps.ready(initMap(num));
     }
     if (place) {
-      console.log(1);
+      // console.log(1);
       winFunc(place);
     }
-  }, [dispatch, id, place === undefined]);
+  }, [dispatch, id, placeid, place === undefined]);
 
   if (!place) return <div>load</div>;
 

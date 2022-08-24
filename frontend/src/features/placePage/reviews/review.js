@@ -1,4 +1,7 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  createSlice,
+  createAsyncThunk
+} from '@reduxjs/toolkit';
 
 const initialState = {
   reviewList: [],
@@ -14,7 +17,9 @@ export const loadReview = createAsyncThunk(
     const response = await fetch(`/api/place/${id}/review`);
     const data = await response.json();
     if (data.status) {
-      const { error } = await data.json();
+      const {
+        error
+      } = await data.json();
       throw error;
     } else {
       return data;
