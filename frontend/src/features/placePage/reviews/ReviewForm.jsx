@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Button, Modal, Grid, Rating, Text } from '@geist-ui/core';
 import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPhoto, addReview, selectPhoto } from './review';
+import { addPhoto, addReview, selectPhoto } from './reviewSlice';
 
 function ReviewForm() {
   const [state, setState] = useState(false);
@@ -12,7 +12,7 @@ function ReviewForm() {
   const closeHandler = (event) => {
     setState(false);
   };
-  const { id } = useParams();
+  const { id, placeid } = useParams();
   const dispatch = useDispatch();
 
   const photo = useSelector(selectPhoto);
@@ -33,7 +33,7 @@ function ReviewForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const placeId = Number(id);
+    const placeId = Number(placeid);
     const form = event.target;
     const valueForm = {
       title: form.title.value,

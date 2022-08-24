@@ -5,7 +5,7 @@ import { Provider, useDispatch } from 'react-redux';
 import Category from '../../Category/Category.jsx';
 // import Categories from '../../Category/Categories';
 import './App.css';
-import MainPage from '../MainPage.jsx';
+import MainPage from '../MainPage';
 import Navbar from '../navbar/Navbar';
 import PlacePage from '../../placePage/PlacePage';
 import Registration from '../registration/Registration';
@@ -13,9 +13,12 @@ import Login from '../login/Login';
 import { categoriesThunk } from '../mainPage';
 import { auth } from '../auth';
 import store from '../../../store';
-import Profile from '../../profile/Profile.jsx';
-import Favourites from '../../Favourites/Favourites.jsx';
+import Profile from '../../profile/Profile';
+import Favourites from '../../Favourites/Favourites';
 import Footer from '../footer/Footer';
+import init from '../../Category/apiMap';
+import Chat from '../../chat/Chat';
+import { chatsThunk } from '../../chat/chatReducer';
 import Friends from '../../friends/Friends';
 import Subscribers from '../../friends/Subscribers';
 import { getFriendsThunk } from '../../friends/friendsSlice';
@@ -26,8 +29,17 @@ function App() {
   useEffect(() => {
     dispatch(auth());
     dispatch(categoriesThunk());
+    dispatch(chatsThunk());
     dispatch(getFriendsThunk());
   }, [dispatch]);
+
+  useEffect(() => {
+    async function winFunc() {
+      await window.ymaps.ready(init);
+    }
+    winFunc();
+    dispatch(categoriesThunk());
+  }, []);
 
   return (
     <Provider store={store}>
@@ -41,11 +53,12 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/favourites" element={<Favourites />} />
+          <Route path="/profile/:id/chat" element={<Chat />} />
           <Route path="/profile/:id/friends" element={<Friends />} />
           <Route path="/profile/:id/subscribers" element={<Subscribers />} />
         </Route>
       </Routes>
-      <Footer />
+      <Footer style={{ }} />
     </Provider>
   );
 }

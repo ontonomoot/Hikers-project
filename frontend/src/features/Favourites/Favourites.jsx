@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import {
   favouritesThunk, selectorFavourites
   // eslint-disable-next-line import/no-useless-path-segments
-} from '../Favourites/favourites';
+} from './favouritesSlice';
 // eslint-disable-next-line import/extensions
 import FavPlace from './favPlace.jsx';
 import './favourites.css';
@@ -13,7 +13,8 @@ export default function Favourites() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const favPlaces = useSelector(selectorFavourites);
-  console.log('places', favPlaces);
+
+  // console.log('favourites', favPlaces);
 
   useEffect(() => {
     dispatch(favouritesThunk(id));
