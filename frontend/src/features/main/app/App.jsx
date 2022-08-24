@@ -10,15 +10,19 @@ import Navbar from '../navbar/Navbar';
 import PlacePage from '../../placePage/PlacePage';
 import Registration from '../registration/Registration';
 import Login from '../login/Login';
-import Weather from '../../weather/Weather';
 import { categoriesThunk } from '../mainPage';
 import { auth } from '../auth';
 import store from '../../../store';
+import TodoList from '../../todoList/TodoList';
 import Profile from '../../profile/Profile';
 import Favourites from '../../Favourites/Favourites';
 import Footer from '../footer/Footer';
+import init from '../../Category/apiMap';
 import Chat from '../../chat/Chat';
 import { chatsThunk } from '../../chat/chatReducer';
+import Friends from '../../friends/Friends';
+import Subscribers from '../../friends/Subscribers';
+import { getFriendsThunk } from '../../friends/friendsSlice';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +31,16 @@ function App() {
     dispatch(auth());
     dispatch(categoriesThunk());
     dispatch(chatsThunk());
+    dispatch(getFriendsThunk());
   }, [dispatch]);
+
+  useEffect(() => {
+    async function winFunc() {
+      await window.ymaps.ready(init);
+    }
+    winFunc();
+    dispatch(categoriesThunk());
+  }, []);
 
   return (
     <Provider store={store}>
@@ -41,7 +54,10 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/favourites" element={<Favourites />} />
+          <Route path="/categories/:id/places/:placeid/todo" element={<TodoList />} />
           <Route path="/profile/:id/chat" element={<Chat />} />
+          <Route path="/profile/:id/friends" element={<Friends />} />
+          <Route path="/profile/:id/subscribers" element={<Subscribers />} />
         </Route>
       </Routes>
       <Footer style={{ }} />

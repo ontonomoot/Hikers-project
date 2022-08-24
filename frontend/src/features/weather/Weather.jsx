@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCoordinate, selectorWeather } from './weather';
+import { getCoordinate, selectorWeather } from './weatherSlice';
 import './Weather.css';
 
-function Weather() {
+function Weather({ geo }) {
 const dispatch = useDispatch();
 const weatherSelector = useSelector(selectorWeather);
+const geoArr = geo.split(',');
 
 const searchLocation = async (event) => {
-  dispatch(getCoordinate({ lat: 59.57, lon: 30.18 }));
+  dispatch(getCoordinate({ lat: geoArr[0], lon: geoArr[1] }));
 };
 
 useEffect(() => {

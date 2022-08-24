@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import init from './apiMap';
 import {
   categoryThunk, selectorCategory
-} from './category';
+} from './categorySlice';
 
 export default function Categories() {
   const { id } = useParams();

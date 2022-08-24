@@ -1,0 +1,11 @@
+.friend {
+  margin: 50px;
+}
+
+.friends-btn {
+  margin: 20px;
+}
+
+.btn-group {
+   display: flex
+}

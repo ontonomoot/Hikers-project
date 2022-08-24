@@ -4,12 +4,15 @@ import {
 } from '@reduxjs/toolkit';
 import navBarSlice from './features/main/auth.js';
 import mainPage from './features/main/mainPage.js';
-import categorySlice from './features/Category/category.js';
-import weatherSlice from './features/weather/weather.js';
-import reviewSlice from './features/placePage/reviews/review.js';
-import placeSlice from './features/Category/places.js';
-import editProfileSlice from './features/profile/profile.js';
-import favouritesSlice from './features/Favourites/favourites.js';
+
+import weatherSlice from './features/weather/weatherSlice.js';
+import editProfileSlice from './features/profile/profileSlice.js';
+import getFriendsSlice from './features/friends/friendsSlice.js';
+import categorySlice from './features/Category/categorySlice.js';
+import placeSlice from './features/Category/placesSlice.js';
+import todoSlice from './features/todoList/todoSlice.js';
+import favouritesSlice from './features/Favourites/favouritesSlice.js';
+import reviewSlice from './features/placePage/reviews/reviewSlice.js';
 import chatSlice from './features/chat/chatReducer.js';
 
 const store = configureStore({
@@ -22,6 +25,8 @@ const store = configureStore({
     weather: weatherSlice,
     profile: editProfileSlice,
     favourites: favouritesSlice,
+    todo: todoSlice,
+    friends: getFriendsSlice,
     chat: chatSlice,
   }
 });
