@@ -12,6 +12,7 @@ import {
   deleteFavPlaceThunk, selectorFavourites
   // eslint-disable-next-line import/no-useless-path-segments
 } from './favouritesSlice';
+import TodoList from '../todoList/TodoList';
 
 export default function FavPlaces({ favPlace }) {
   // const favPlaces = useSelector(selectorFavourites);
@@ -43,7 +44,9 @@ export default function FavPlaces({ favPlace }) {
         <p className="favPlaceDesc">
           Рейтинг: {favPlace && favPlace['Place.rating'] ? Array.from({ length: favPlace['Place.rating'] }, (_, i) => <Star key={i} color="orange" size={22} />) : 'У места нет отзывов'}
         </p>
-        <Button variant="outline-success" id={favPlace.id} className="favPlaceBtn">Собраться</Button>
+        {/* <Button variant="outline-success"
+        id={favPlace.id} className="favPlaceBtn">Собраться</Button> */}
+        <TodoList placeid={favPlace.place_id} />
         <Button variant="outline-secondary" id={favPlace.id} onClick={handleDeleteClick} className="delPlaceBtn">Удалить</Button>
       </Card>
     </div>
