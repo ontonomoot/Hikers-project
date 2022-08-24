@@ -22,9 +22,10 @@ function Friends() {
   const allFr = useSelector(selectorFriends);
   const userSession = useSelector(selectorUserSession);
   const [userFriends, setUserFriends] = useState();
-  // console.log(userFriends, 'userFriends');
+  console.log(userFriends, 'userFriends');
   // console.log(allFr);
-  const ava = 'images/profile/9d3b8b1fffc60251dc8cedadf5f6695d.jpeg';
+  const ava = '/images/profile/1.png';
+  // const ava = '/images/review/dc700dec8f50ce55f7ddaa49ac2445a61661255956856.jpg';
   // useEffect(() => {
   //   setTimeout(() => {
   //     dispatch(getSubscribeThunk());
@@ -115,4 +116,4 @@ function Friends() {
 
 export default Friends;
 
-//      /profile/9d3b8b1fffc60251dc8cedadf5f6695d.jpeg
+//      /images/profile/9d3b8b1fffc60251dc8cedadf5f6695d.jpeg

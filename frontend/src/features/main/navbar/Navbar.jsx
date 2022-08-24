@@ -97,12 +97,12 @@ export default function Navbar() {
                 </ButtonDropdown.Item>
                 <ButtonDropdown.Item
                   style={{ fontSize: 12, padding: 5 }}
-                  onClick={() => 1}
+                  onClick={() => navigate(`/profile/${userSession.id}/friends`)}
                 >Мои подписки
                 </ButtonDropdown.Item>
                 <ButtonDropdown.Item
                   style={{ fontSize: 12, padding: 5 }}
-                  onClick={() => 2}
+                  onClick={() => navigate(`/profile/${userSession.id}/subscribers`)}
                 >Мои подписчики
                 </ButtonDropdown.Item>
                 <ButtonDropdown.Item
