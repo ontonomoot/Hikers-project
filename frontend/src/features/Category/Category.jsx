@@ -31,6 +31,14 @@ export default function Category() {
       await window.ymaps.ready(init);
     }
     setTimeout(() => {
+      const daddy = document.querySelector('#map').closest('#daddy');
+      document.querySelector('#map').remove();
+      const newMap = document.createElement('div');
+      newMap.id = 'map';
+      newMap.style.width = '600px';
+      newMap.style.height = '450px';
+      daddy.insertAdjacentElement('afterBegin', newMap);
+      console.log(newMap);
       winFunc();
     }, 1000);
     dispatch(categoriesThunk());
@@ -46,7 +54,7 @@ export default function Category() {
         {categories && <h1 id={id} className="category">{categories.title}</h1>}
         <p className="placesListTitle">Список мест для <span className="placesPlusListTitle">{categories.title}а </span></p>
       </div>
-      <div>
+      <div id="daddy">
         <div id="map" style={{ width: 600, height: 450 }} />
         <div id="placeFilter">
           <div className="placesContainer" id="placesContainer">
