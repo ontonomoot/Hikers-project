@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Grid, Button, Modal } from '@geist-ui/core';
-import { selectorUserSession } from '../main/auth';
+import { selectorUserSession } from '../main/authSlice';
 import { getSubscribeThunk } from '../profile/profileSlice';
 import { getFriendsThunk, unSubscribeThunk, selectorFriends } from './friendsSlice';
 

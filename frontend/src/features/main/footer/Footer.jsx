@@ -3,7 +3,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { selectorCategories } from '../mainPage';
+import { Loading } from '@geist-ui/core';
+import { selectorCategories } from '../mainPageSlice';
 
 import css from './Footer.module.css';
 
@@ -11,7 +12,7 @@ export default function FooterMain() {
   const categories = useSelector(selectorCategories);
   const navigate = useNavigate();
 
-  if (!categories) return <div>Loading...</div>;
+  if (!categories) return <div />;
 
   return (
     <footer id={css.footerMain}>
@@ -19,7 +20,7 @@ export default function FooterMain() {
         <div className={css.mainMarques}>
           <div className={css.mainMarq}>
             {categories && categories.map((category) => (
-              <div className={css.one}>
+              <div key={`secondImg${category.id}`} className={css.one}>
                 <img
                   style={{ overflow: 'hidden' }}
                   src={`/images/footer/${category.photo}`}
@@ -36,7 +37,7 @@ export default function FooterMain() {
           </div>
           <div className={css.mainMarq}>
             {categories && categories.map((category) => (
-              <div className={css.one}>
+              <div key={`firstImg${category.id}`} className={css.one}>
                 <img
                   style={{ overflow: 'hidden' }}
                   src={`/images/footer/${category.photo}`}

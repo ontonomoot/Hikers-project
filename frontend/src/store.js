@@ -2,8 +2,8 @@
 import {
   configureStore
 } from '@reduxjs/toolkit';
-import navBarSlice from './features/main/auth.js';
-import mainPage from './features/main/mainPage.js';
+import navBarSlice from './features/main/authSlice.js';
+import mainPage from './features/main/mainPageSlice.js';
 
 import weatherSlice from './features/weather/weatherSlice.js';
 import editProfileSlice from './features/profile/profileSlice.js';
@@ -13,7 +13,7 @@ import placeSlice from './features/Category/placesSlice.js';
 import todoSlice from './features/todoList/todoSlice.js';
 import favouritesSlice from './features/Favourites/favouritesSlice.js';
 import reviewSlice from './features/placePage/reviews/reviewSlice.js';
-import chatSlice from './features/chat/chatReducer.js';
+import chatSlice from './features/chat/chatSlice.js';
 
 const store = configureStore({
   reducer: {

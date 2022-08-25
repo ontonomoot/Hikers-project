@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Card, Text, User, Divider } from '@geist-ui/core';
 import Star from '@geist-ui/icons/star';
 import { v4 as uuidv4 } from 'uuid';
-import { selectorUserSession } from '../../main/auth';
+import { selectorUserSession } from '../../main/authSlice';
 import { loadReview, selectReview, selectReviewPhoto } from './reviewSlice';
 import ReviewForm from './ReviewForm';
 
@@ -18,6 +18,7 @@ function ReviewList() {
   }, [id, dispatch]);
 
   const review = useSelector(selectReview);
+  // console.log('review', review);
   const reviewPhotos = useSelector(selectReviewPhoto);
 
   return (

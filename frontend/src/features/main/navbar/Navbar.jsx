@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { ButtonDropdown } from '@geist-ui/core';
+import { ButtonDropdown, Loading } from '@geist-ui/core';
 import css from './Navbar.module.css';
 import {
   selectorAuthLogin,
@@ -14,10 +14,10 @@ import {
   selectorUserSession,
   selectorAuthReg,
   booleanAuthReg
-} from '../auth';
+} from '../authSlice';
 import Login from '../login/Login';
 import Registration from '../registration/Registration';
-import { selectorCategories } from '../mainPage';
+import { selectorCategories } from '../mainPageSlice';
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ export default function Navbar() {
     if (url === `/categories/${Number(id)}`) setGetCat(Number(id));
   }, [url]);
 
-  if (!categories) return <div>Loading...</div>;
+  if (!categories) return <div />;
 
   return (
     <div>
@@ -112,7 +112,10 @@ export default function Navbar() {
                 </ButtonDropdown.Item>
                 <ButtonDropdown.Item
                   style={{ fontSize: 12, padding: 5 }}
-                  onClick={() => dispatch(authLogOut())}
+                  onClick={() => {
+                    dispatch(authLogOut());
+                    navigate('/');
+                  }}
                 >Выйти
                 </ButtonDropdown.Item>
               </ButtonDropdown>
@@ -129,10 +132,25 @@ export default function Navbar() {
           >logo
           </div>
         </div>
-        <div className={css.marqueeAll}>
-          <p className={css.marquee}>
-            {' '}СНОУБОРД - РАФТИНГ - КЕМПИНГ - ДАУНХИЛЛ - АЛЬПИНИЗМ - ХАЙКИНГ
-          </p>
+        <div className={css.categoryMain}>
+          {categories.map((icon, i) => (
+            <img
+              id={icon.id}
+              key={`mainPhotoImgIcon${icon.id}`}
+              onClick={(e) => {
+                  setGetCat(Number(e.target.id));
+                  navigate(`/categories/${Number(e.target.id)}`);
+                }}
+              className={url !== `/categories/${icon.id}`
+                ? css.iconCategory
+                : icon.id === getCat
+                ? `${css.iconCategory} ${css.iconCategoryTake}`
+                : css.iconCategory}
+              src={`/images/icon/${icon.icon}`}
+              alt={icon.icon}
+            />
+              )
+            )}
         </div>
         <div className={css.right}>
           <button className={css.button} type="button" onClick={() => dispatch(booleanAuthLogin())}>Войти</button>

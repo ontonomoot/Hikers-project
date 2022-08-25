@@ -6,7 +6,7 @@ import { Modal } from '@geist-ui/core';
 import Form from 'react-bootstrap/Form';
 import css from './Edit.module.css';
 import { addPhotoProfile, editProfile, newProfile, selectorEditProfile, selectorProfile } from '../profileSlice';
-import { editProfileThunk, selectorUserSession } from '../../main/auth';
+import { editProfileThunk, selectorUserSession } from '../../main/authSlice';
 
 export default function EditProfile({ id }) {
   const dispatch = useDispatch();
