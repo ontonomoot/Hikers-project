@@ -1,23 +1,28 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Card, Text, User, Divider } from '@geist-ui/core';
 import { v4 as uuidv4 } from 'uuid';
 import { selectorUserSession } from '../../main/authSlice';
 import { loadReview, selectReview, selectReviewPhoto } from './reviewSlice';
 import ReviewForm from './ReviewForm';
+import '../PlacePage.css';
 
 function ReviewList() {
   const user = useSelector(selectorUserSession);
   const { id, placeid } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(loadReview(placeid));
   }, [placeid, dispatch]);
 
   const review = useSelector(selectReview);
-  // console.log('review', review);
+  console.log('review', review);
   const reviewPhotos = useSelector(selectReviewPhoto);
 
   return (
@@ -26,8 +31,18 @@ function ReviewList() {
       <div className="reviews-list-container">
         {review.map((el) => (
           <Card key={uuidv4()} width="700px">
-            <User src={el['User.ava']} name={el['User.user_name']} />
+            <div className="user-name-img">
+              <img
+                src={`/images/${el['User.ava']}`}
+                alt="ava"
+                id="user-ava"
+                onClick={() => navigate(`/profile/${el['User.id']}`)}
+              />
+              <h5>{el['User.user_name']}</h5>
+            </div>
+            {/* <User name={el['User.user_name']} /> */}
             <Text>{el.title}</Text>
+
             <Text>{el.description}</Text>
             <Text>Дата поездки: {el.date.slice(0, 10)}</Text>
             <Divider />
@@ -38,6 +53,7 @@ function ReviewList() {
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
                   <img key={uuidv4()} className="review-img" tabIndex="0" src={ph.title} alt="some" />
                 )}
+
             </div>
             <Card.Footer>
               <div>
