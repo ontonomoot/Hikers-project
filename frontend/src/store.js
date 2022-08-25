@@ -14,6 +14,7 @@ import todoSlice from './features/todoList/todoSlice.js';
 import favouritesSlice from './features/Favourites/favouritesSlice.js';
 import reviewSlice from './features/placePage/reviews/reviewSlice.js';
 import chatSlice from './features/chat/chatSlice.js';
+import newCardSlice from './features/profile/newCardSlice.js';
 
 const store = configureStore({
   reducer: {
@@ -28,6 +29,7 @@ const store = configureStore({
     todo: todoSlice,
     friends: getFriendsSlice,
     chat: chatSlice,
+    newcard: newCardSlice,
   }
 });
 
