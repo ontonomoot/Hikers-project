@@ -49,7 +49,14 @@ export default function Category() {
   if (!categories) return <div>Loading</div>;
 
   return (
-    <div className="categoriesBox">
+    <div
+      style={{
+      position: 'relative',
+      height: '100%',
+      marginBottom: '100px'
+      }}
+      className="categoriesBox"
+    >
       <div className="placeTitleBox">
         {categories && <h1 id={id} className="category">{categories.title}</h1>}
         <p className="placesListTitle">Список мест для <span className="placesPlusListTitle">{categories.title}а </span></p>
