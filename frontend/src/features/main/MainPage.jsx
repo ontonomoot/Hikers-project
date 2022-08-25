@@ -29,7 +29,6 @@ export default function MainPage() {
       marginBottom: '100px'
       }}
     >
-      <div className={css.mainTitle}>{categories[getUpCat].title}</div>
       <div id={css.main}>
         <span className={css.photo}>
           {trueCssUp && (

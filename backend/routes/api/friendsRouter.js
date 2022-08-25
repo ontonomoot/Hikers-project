@@ -34,7 +34,8 @@ friendsRouter.post('/profile/friends/unsubscribe', async (req, res) => {
         friend_id: friendId,
       });
       const friends = await Friend.findAll({ raw: true });
-      return res.json(friends);
+      const users = await User.findAll({ raw: true });
+      res.json({ friends, users });
     }
     if (subscribe.status) {
       await Friend.update(
@@ -47,7 +48,8 @@ friendsRouter.post('/profile/friends/unsubscribe', async (req, res) => {
         },
       );
       const friends = await Friend.findAll();
-      res.json(friends);
+      const users = await User.findAll({ raw: true });
+      res.json({ friends, users });
     } else {
       await Friend.update(
         { status: true },
@@ -59,7 +61,8 @@ friendsRouter.post('/profile/friends/unsubscribe', async (req, res) => {
         },
       );
       const friends = await Friend.findAll();
-      res.json(friends);
+      const users = await User.findAll({ raw: true });
+      res.json({ friends, users });
     }
   } catch (error) {
     res.status(404).json(error);
