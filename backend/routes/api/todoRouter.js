@@ -29,6 +29,21 @@ router
     } catch (err) {
       console.log(err);
     }
+  })
+  .delete('/place/:id/tasks', async (req, res) => {
+    try {
+      const { id } = req.body;
+      const successDelete = await Task.destroy({
+        where: { id },
+      });
+      if (successDelete) {
+        res.json({ success: true, id });
+      } else {
+        res.json({ success: false });
+      }
+    } catch (err) {
+      console.log(err);
+    }
   });
 
 module.exports = router;

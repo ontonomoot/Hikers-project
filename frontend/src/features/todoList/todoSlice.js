@@ -33,6 +33,26 @@ export const addTask = createAsyncThunk(
   }
 );
 
+// экспорт санок для удаления задачи
+export const deleteTask = createAsyncThunk(
+  'todo/deleteTask',
+  async (task) => {
+    const { id } = task;
+    const placeId = task.place_id;
+    const response = await fetch(`/api/place/${placeId}/tasks`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      body: JSON.stringify({
+        id
+      })
+    });
+    const data = await response.json();
+    return data;
+  }
+);
+
 const todoSlice = createSlice({
   name: 'todo',
   initialState,
@@ -42,12 +62,18 @@ const todoSlice = createSlice({
       .addCase(loadTasks.fulfilled, (state, action) => {
         // фильтрую пришедший массив с тасками и оставляю в нем только те, которых в стейте еще нет
         const newTasks = action.payload.filter((el) =>
-        !state.tasks.find((task) => task.id === el.id));
+          !state.tasks.find((task) => task.id === el.id));
         // и затем пушу их массив в стейт
         state.tasks.push(...newTasks);
       })
       .addCase(addTask.fulfilled, (state, action) => {
         state.tasks.push(action.payload);
+      })
+      .addCase(deleteTask.fulfilled, (state, action) => {
+        if (action.payload.success) {
+          const { id } = action.payload;
+          state.tasks = state.tasks.filter((task) => task.id !== id);
+        }
       });
   }
 });
