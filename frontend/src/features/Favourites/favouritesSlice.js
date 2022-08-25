@@ -72,6 +72,7 @@ const favouritesSlice = createSlice({
         .filter((el) => el.id !== Number(action.payload));
       })
       .addCase(addFavPlaceThunk.fulfilled, (state, action) => {
+        console.log(action.payload, 'from slice');
         state.favouritesState.push(action.payload);
       });
   }

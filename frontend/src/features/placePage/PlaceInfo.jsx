@@ -4,7 +4,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Text, Divider, Drawer, Button } from '@geist-ui/core';
-import Star from '@geist-ui/icons/star';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { selectorUserSession } from '../main/authSlice';
@@ -25,20 +24,13 @@ function PlaceInfo() {
   const { id, placeid } = useParams();
   const place = arrPlaces && arrPlaces.find((el) => el.id === Number(placeid));
   // console.log('place', place);
+  console.log(user);
   let checkFavPlace;
-  if (user && favPlace) {
+  if (user) {
+    if (favPlace) {
       checkFavPlace = favPlace.find((el) => el.place_id === Number(placeid));
+    }
   }
-  // let checkStatus;
-
-  // if (user && favPlace) {
-  //   const checkFavPlace = favPlace.find((el) => el.place_id === Number(placeid));
-
-  //   if (checkFavPlace) {
-  //     checkStatus = checkFavPlace.status;
-  //   }
-  // }
-  // console.log('checkStatus', checkStatus);
 
   function handleFavourite() {
     dispatch(addFavPlaceThunk(placeid));
@@ -46,8 +38,10 @@ function PlaceInfo() {
 
   useEffect(() => {
     dispatch(placeThunk(id));
-    dispatch(favouritesThunk());
-  }, [dispatch, id]);
+    if (user) {
+      dispatch(favouritesThunk());
+    }
+  }, [dispatch, id, user]);
 
   // Функция ymaps.ready() будет вызвана, когда
   // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
@@ -77,7 +71,7 @@ function PlaceInfo() {
         </Card.Content>
         <Card.Footer id="rating">
           <div>
-            {Array.from({ length: place && place.rating }, (_, i) => <Star key={i} color="orange" size={32} />)}
+            {Array.from({ length: place && place.rating }, (_, i) => <img src="/images/icon/star.png" style={{ maxWidth: 40 }} alt="" />)}
           </div>
           <Button auto onClick={() => setState(true)} mr="10px">Погода</Button>
           <Drawer visible={state} onClose={() => setState(false)} placement="top">

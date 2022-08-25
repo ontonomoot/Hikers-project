@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Provider, useDispatch } from 'react-redux';
 // eslint-disable-next-line import/extensions
-import Category from '../../Category/Category.jsx';
+import Category from '../../Category/Category';
 // import Categories from '../../Category/Categories';
 import './App.css';
 import MainPage from '../MainPage';
@@ -23,6 +23,7 @@ import { chatsThunk } from '../../chat/chatSlice';
 import Friends from '../../friends/Friends';
 import Subscribers from '../../friends/Subscribers';
 import { getFriendsThunk } from '../../friends/friendsSlice';
+import Users from '../../users/Users';
 
 function App() {
   const dispatch = useDispatch();
@@ -58,6 +59,7 @@ function App() {
           <Route path="/profile/:id/chat" element={<Chat />} />
           <Route path="/profile/:id/friends" element={<Friends />} />
           <Route path="/profile/:id/subscribers" element={<Subscribers />} />
+          <Route path="/users" element={<Users />} />
         </Route>
       </Routes>
       <Footer style={{ }} />

@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Text, Divider, Button, Loading } from '@geist-ui/core';
-import Star from '@geist-ui/icons/star';
 import init from './apiMap';
 import {
   categoryThunk, selectorCategory
@@ -31,6 +30,7 @@ export default function Category() {
   // Функция ymaps.ready() будет вызвана, когда
   // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
   useEffect(() => {
+    window.scrollTo(0, 0);
     async function winFunc() {
       await window.ymaps.ready(init);
     }
@@ -62,10 +62,10 @@ export default function Category() {
       <div
         className={load ? 'categoriesBox' : 'bad'}
         style={{
-      position: 'relative',
-      minHeight: '83vh',
-      maxHeight: '100%',
-      }}
+          position: 'relative',
+          minHeight: '83vh',
+          maxHeight: '100%',
+        }}
       >
         <div className="placeTitleBox">
           {categories && <h1 id={id} className="category">{categories.title}</h1>}
@@ -75,9 +75,9 @@ export default function Category() {
           <div id="placeFilter">
             <div className="placesContainer" id="placesContainer">
               {
-              places &&
-              places.map((place, i) => <Place key={`${i + 1}`} place={place} placeID={place.id} />)
-            }
+                places &&
+                places.map((place, i) => <Place key={`${i + 1}`} place={place} placeID={place.id} />)
+              }
             </div>
           </div>
         </div>
