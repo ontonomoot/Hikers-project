@@ -35,8 +35,10 @@ function PlaceInfo() {
 
   useEffect(() => {
     dispatch(placeThunk(id));
-    dispatch(favouritesThunk());
-  }, [dispatch, id]);
+    if (user) {
+      dispatch(favouritesThunk());
+    }
+  }, [dispatch, id, user]);
 
   // Функция ymaps.ready() будет вызвана, когда
   // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
