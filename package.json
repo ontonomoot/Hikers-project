@@ -1,0 +1,21 @@
+{
+  "name": "hikers-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd backend && npm i && npx sequelize db:migrate && cd ../frontend && npm i && npm run build",
+    "start": "cd backend && npm start "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ontonomoot/Hikers-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ontonomoot/Hikers-project/issues"
+  },
+  "homepage": "https://github.com/ontonomoot/Hikers-project#readme"
+}

@@ -16,6 +16,7 @@ module.exports = function config(app) {
   app.use(morgan('dev'));
   app.use(express.static(path.join(__dirname, '../../frontend')));
   app.use(express.static(path.join(__dirname, '../public')));
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
   app.use(cookieParser());
   app.use(session(sessionConfig));
   app.use(ssr);
