@@ -30,6 +30,7 @@ export default function Category() {
   // Функция ymaps.ready() будет вызвана, когда
   // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
   useEffect(() => {
+    window.scrollTo(0, 0);
     async function winFunc() {
       await window.ymaps.ready(init);
     }
@@ -45,7 +46,6 @@ export default function Category() {
       console.log(456789098765);
       winFunc();
     }, 1000);
-    console.log(456789098765);
     dispatch(categoriesThunk());
     dispatch(placeThunk(id));
   }, [dispatch, id]);
