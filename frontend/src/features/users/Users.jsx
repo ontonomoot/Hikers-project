@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { selectorFriends } from '../friends/friendsSlice';
+import { selectorFriends, getFriendsThunk } from '../friends/friendsSlice';
 
 import './Users.css';
 
@@ -11,15 +11,30 @@ function Users() {
   const users = useSelector(selectorFriends);
   const usersList = users && users.users;
   const navigate = useNavigate();
-  // console.log(usersList);
+  const dispatch = useDispatch();
+  console.log(usersList);
+
+  useEffect(() => {
+    dispatch(getFriendsThunk());
+  }, []);
+
+  if (!users) return <div>load</div>;
+
   return (
-    <div>
+    <div
+      style={{
+      position: 'relative',
+      minHeight: '83vh',
+      maxHeight: '100%',
+      marginBottom: '100px'
+      }}
+    >
       <div className="users-title">
         Все пользователи
       </div>
       <div className="all-users">
         {
-        usersList && usersList.map((user) => (
+        users && usersList && usersList.map((user) => (
           <div className="user-block" key={user.id}>
             <div className="user">
               <div>
