@@ -88,6 +88,9 @@ placeRouter.get('/places/:id', async (req, res) => {
 
       const photos = await Photo.findAll({
         raw: true,
+        where: {
+          review_id: null,
+        },
       });
 
       checkPlaces.map((el) => {
