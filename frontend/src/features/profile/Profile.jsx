@@ -10,7 +10,7 @@ import { selectorEditProfile,
   selectorProfile,
   subscribeThunk,
   selectorFriends,
-  getSubscribeThunk } from './profile';
+  getSubscribeThunk, } from './profileSlice';
 import EditProfile from './editProfile/editProfile';
 import { selectorUserSession } from '../main/auth';
 import './Profile.css';
@@ -21,12 +21,14 @@ function Profile() {
   const profileData = useSelector(selectorEditProfile);
   const userSession = useSelector(selectorUserSession);
   const profile = useSelector(selectorProfile);
-  const { friends } = useSelector(selectorFriends);
-  const follow = userSession && friends && friends.filter((el) => (el.user_id === userSession.id))
-  .filter((el) => el.friend_id === Number(id))[0];
+  const list = useSelector(selectorFriends);
+  // console.log(list, 'list');
+  const follow = userSession && list.length && list.filter((el) =>
+  (el.user_id === userSession.id && (el.friend_id === Number(id))));
+  // console.log(follow, 'follow');
   useEffect(() => {
+    // dispatch(getSubscribeThunk());
     dispatch(getProfileThunk(id));
-    dispatch(getSubscribeThunk());
   }, [userSession, id]);
 
   if (!userSession) return <div>oops</div>;
@@ -71,7 +73,7 @@ function Profile() {
           {profile && userSession && (profile.id === userSession.id) ?
             <Button type="button" onClick={() => dispatch(editProfile())}>Редактировать</Button> : (
               <Button type="button" onClick={() => dispatch(subscribeThunk({ userId: userSession.id, friendId: profile.id }))}>
-                {follow && follow.status ?
+                {follow && follow[0].status ?
                   <>Отписаться</>
                 : <>Подписаться</>}
               </Button>

@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const favouritesThunk = createAsyncThunk(
-  'favourite/places',
+  'favouritePlaces/places',
   async () => {
     try {
       const response = await fetch('/api/favourites');
@@ -21,7 +21,7 @@ const favouritesThunk = createAsyncThunk(
 );
 
 const addFavPlaceThunk = createAsyncThunk(
-  'favPlaces/add',
+  'favouritePlaces/add',
   async (placeid) => {
     const response = await fetch('/api/favourites', {
       method: 'POST',
@@ -39,8 +39,8 @@ const addFavPlaceThunk = createAsyncThunk(
 );
 
 const deleteFavPlaceThunk = createAsyncThunk(
-  'favPlaces/delete',
-  async (placeID) => {
+  'favouritePlaces/delete',
+  async (favPlaceID) => {
     // console.log('getPlaceID', placeID);
     const response = await fetch('/api/favourites', {
       method: 'DELETE',
@@ -48,11 +48,11 @@ const deleteFavPlaceThunk = createAsyncThunk(
         'Content-Type': 'Application/json'
       },
       body: JSON.stringify({
-        placeID,
+        favPlaceID,
       })
     });
     const data = await response.json();
-    // console.log('data', data);
+    console.log('data', data);
     return data;
   }
 );
@@ -68,12 +68,11 @@ const favouritesSlice = createSlice({
         state.favouritesState = action.payload;
       })
       .addCase(deleteFavPlaceThunk.fulfilled, (state, action) => {
-        state.delFavouritesState = action.payload;
-        state.favouritesState = action.payload;
+        state.favouritesState = state.favouritesState
+        .filter((el) => el.id !== Number(action.payload));
       })
       .addCase(addFavPlaceThunk.fulfilled, (state, action) => {
-        state.addFavouritesState = action.payload;
-        state.favouritesState = action.payload;
+        state.favouritesState.push(action.payload);
       });
   }
 });
@@ -85,8 +84,6 @@ export {
 };
 
 export const selectorFavourites = (state) => state.favourites.favouritesState;
-export const selectorAddFavourites = (state) => state.favourites.addFavouritesState;
-export const selectorDelFavourites = (state) => state.favourites.delFavouritesState;
 
 // экспорт reducer'a
 export default favouritesSlice.reducer;

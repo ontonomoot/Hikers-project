@@ -3,8 +3,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectorUserSession } from '../main/auth';
-import { getSubscribeThunk, selectorFriends } from '../profile/profile';
-import { getFriendsThunk } from './friends';
+import { getSubscribeThunk, selectorFriends } from '../profile/profileSlice';
+import { getFriendsThunk } from './friendsSlice';
 import './Friends.css';
 
 function Subscribers() {
@@ -21,7 +21,7 @@ function Subscribers() {
     const filter = users.find((user) => user.id === el);
     subscribers.push(filter);
   });
-  console.log(subscribers, 'мои подписчики');
+  // console.log(subscribers, 'мои подписчики');
   useEffect(() => {
     dispatch(getFriendsThunk(),);
   }, [userSession, dispatch]);

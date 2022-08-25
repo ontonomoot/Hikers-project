@@ -1,7 +1,6 @@
 const router = require('express').Router();
 
 const {
-  Photo,
   Place,
   Favorite,
 } = require('../../db/models');
@@ -15,57 +14,40 @@ router.route('/favourites')
         raw: true,
         where: {
           user_id: userId,
+          status: true,
         },
+        include: [{ model: Place }],
       });
 
-      const places = await Place.findAll({
-        include: {
-          model: Photo,
-        },
-        raw: true,
-      });
+      // const places = await Place.findAll({
+      //   include: {
+      //     model: Photo,
+      //   },
+      //   raw: true,
+      // });
 
-      const favPlaces = fav.map((fav) => places.filter((place) => place.id === fav.place_id))
-        .flat();
+      // const favPlaces = fav.map((fav) => places.filter((place) => place.id === fav.place_id))
+      //   .flat();
 
-      res.json(favPlaces);
+      res.json(fav);
     } catch (error) {
       res.status(404).json(error);
     }
   }).delete(async (req, res) => {
     try {
-      const userId = req.session.user.id;
-
       const {
         id,
-      } = req.body.placeID;
+      } = req.body.favPlaceID;
 
-      await Favorite.destroy({
-        raw: true,
+      await Favorite.update({
+        status: false,
+      }, {
         where: {
-          user_id: userId,
-          place_id: id,
+          id,
         },
       });
 
-      const fav = await Favorite.findAll({
-        raw: true,
-        where: {
-          user_id: userId,
-        },
-      });
-
-      const places = await Place.findAll({
-        include: {
-          model: Photo,
-        },
-        raw: true,
-      });
-
-      const changedFavPlaces = fav.map((fav) => places.filter((place) => place.id === fav.place_id))
-        .flat();
-
-      res.json(changedFavPlaces);
+      res.json(id);
     } catch (error) {
       res.status(404).json(error);
     }
@@ -83,37 +65,16 @@ router.route('/favourites')
         },
         raw: true,
       });
-      // console.log('fav1', favorite)
 
-      // если нет в избранном
+      // если нет в избранном - добавляем в бд
       if (!favorite) {
-        // console.log('ne favorite');
-        await Favorite.create({
+        const newFavorite = await Favorite.create({
           user_id: userId,
           place_id: placeid,
         });
-        const favorites = await Favorite.findAll({
-          raw: true,
-        });
-        // console.log('fav2', favorites)
-        return res.json(favorites);
-      }
-
-      // если есть в избранном меняем статус на false
-      // иначе статус true
-      if (favorite.status) {
-        await Favorite.update({
-          status: false,
-        }, {
-          where: {
-            user_id: userId,
-            place_id: placeid,
-
-          },
-        });
-        const favorites = await Favorite.findAll();
-        res.json(favorites);
+        res.json(newFavorite);
       } else {
+        // если есть в избранном, обновляем статус
         await Favorite.update({
           status: true,
         }, {
@@ -122,9 +83,42 @@ router.route('/favourites')
             place_id: placeid,
           },
         });
-        const favorites = await Favorite.findAll();
-        res.json(favorites);
+        const updateFavorite = await Favorite.findOne({
+          where: {
+            user_id: userId,
+            place_id: placeid,
+          },
+          raw: true,
+        });
+        res.json(updateFavorite);
       }
+
+      // если есть в избранном меняем статус на false
+      // иначе статус true
+      // if (favorite.status) {
+      //   await Favorite.update({
+      //     status: false,
+      //   }, {
+      //     where: {
+      //       user_id: userId,
+      //       place_id: placeid,
+
+      //     },
+      //   });
+      //   const favorites = await Favorite.findAll();
+      //   res.json(favorites);
+      // } else {
+      //   await Favorite.update({
+      //     status: true,
+      //   }, {
+      //     where: {
+      //       user_id: userId,
+      //       place_id: placeid,
+      //     },
+      //   });
+      //   const favorites = await Favorite.findAll();
+      //   res.json(favorites);
+      // }
     } catch (error) {
       res.status(404).json(error);
     }

@@ -24,7 +24,7 @@ placeRouter.get('/places/:id', async (req, res) => {
 
     let check = false;
 
-    // console.log('places', places);
+    // console.log('test', places);
 
     places.forEach(async (place) => {
       // console.log('places');
