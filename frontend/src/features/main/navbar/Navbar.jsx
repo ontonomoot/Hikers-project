@@ -90,11 +90,19 @@ export default function Navbar() {
                   onClick={() => navigate(`/profile/${userSession.id}`)}
                 >Личный кабинет
                 </ButtonDropdown.Item>
+
+                <ButtonDropdown.Item
+                  style={{ fontSize: 12, padding: 5 }}
+                  onClick={() => navigate('/users')}
+                >Пользователи
+                </ButtonDropdown.Item>
+
                 <ButtonDropdown.Item
                   style={{ fontSize: 12, padding: 5 }}
                   onClick={() => navigate('/favourites')}
                 >Избранное
                 </ButtonDropdown.Item>
+
                 <ButtonDropdown.Item
                   style={{ fontSize: 12, padding: 5 }}
                   onClick={() => navigate(`/profile/${userSession.id}/friends`)}

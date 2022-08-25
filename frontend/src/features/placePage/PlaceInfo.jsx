@@ -25,9 +25,12 @@ function PlaceInfo() {
   const { id, placeid } = useParams();
   const place = arrPlaces && arrPlaces.find((el) => el.id === Number(placeid));
   // console.log('place', place);
+  console.log(user);
   let checkFavPlace;
-  if (user && favPlace) {
+  if (user) {
+    if (favPlace) {
       checkFavPlace = favPlace.find((el) => el.place_id === Number(placeid));
+    }
   }
 
   function handleFavourite() {
@@ -36,8 +39,10 @@ function PlaceInfo() {
 
   useEffect(() => {
     dispatch(placeThunk(id));
-    dispatch(favouritesThunk());
-  }, [dispatch, id]);
+    if (user) {
+      dispatch(favouritesThunk());
+    }
+  }, [dispatch, id, user]);
 
   // Функция ymaps.ready() будет вызвана, когда
   // загрузятся все компоненты API, а также когда будет готово DOM-дерево.

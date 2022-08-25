@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -22,7 +24,12 @@ function Users() {
             <div className="user">
               <div>
                 {/* <NavLink to="/">клик</NavLink> */}
-                <img src={`/images/${user.ava}`} alt="img" className="ava-img" />
+                <img
+                  src={`/images/${user.ava}`}
+                  alt="img"
+                  className="ava-img"
+                  onClick={() => navigate(`/profile/${user.id}`)}
+                />
               </div>
               <div className="user-info">
                 <div>{user.user_name}</div>
