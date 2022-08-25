@@ -11,10 +11,11 @@ router
         raw: true,
         where: { place_id: id },
         include: [{ model: User }],
-        order: [['createdAt', 'DESC']],
+        order: [['createdAt', 'ASC']],
       });
       const photos = await Photo.findAll({
         raw: true,
+        where: { place_id: null },
       });
       res.json({ review, photos });
     } catch (error) {
