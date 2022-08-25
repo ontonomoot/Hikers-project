@@ -23,12 +23,12 @@ function TodoList({ placeid }) {
 
   return (
     <>
-      <Button className="favPlaceBtn" variant="outline-success" auto onClick={handler}>Собраться</Button>
+      <Button className="favPlaceBtn" variant="outline-success" onClick={handler}>Собраться</Button>
       <Modal visible={state} onClose={closeHandler}>
         <Modal.Title>Место</Modal.Title>
         <Modal.Subtitle>Взять с собой:</Modal.Subtitle>
         <Modal.Content>
-          <TodoForm />
+          <TodoForm placeId={placeid} />
           {tasks && tasks
           .filter((el) => el.place_id === placeid)
           .map((task) => <TodoItem task={task} />)}

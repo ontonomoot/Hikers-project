@@ -14,6 +14,25 @@ export const loadTasks = createAsyncThunk(
   }
 );
 
+// экспорт санок для добавления новой задачи
+export const addTask = createAsyncThunk(
+  'todo/addTask',
+  async (taskObj) => {
+    const { placeId } = taskObj;
+    const response = await fetch(`/api/place/${placeId}/tasks`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      body: JSON.stringify({
+        taskObj
+      })
+    });
+    const data = await response.json();
+    return data;
+  }
+);
+
 const todoSlice = createSlice({
   name: 'todo',
   initialState,
@@ -26,6 +45,9 @@ const todoSlice = createSlice({
         !state.tasks.find((task) => task.id === el.id));
         // и затем пушу их массив в стейт
         state.tasks.push(...newTasks);
+      })
+      .addCase(addTask.fulfilled, (state, action) => {
+        state.tasks.push(action.payload);
       });
   }
 });

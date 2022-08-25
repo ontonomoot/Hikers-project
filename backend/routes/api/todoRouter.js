@@ -15,6 +15,20 @@ router
     } catch (err) {
       console.log(err);
     }
+  })
+  .post('/place/:id/tasks', async (req, res) => {
+    const userId = req.session.user.id;
+    const { placeId, task } = req.body.taskObj;
+    try {
+      const newTask = await Task.create({
+        place_id: placeId,
+        user_id: userId,
+        task,
+      });
+      res.json(newTask);
+    } catch (err) {
+      console.log(err);
+    }
   });
 
 module.exports = router;
