@@ -71,7 +71,7 @@ function PlaceInfo() {
         </Card.Content>
         <Card.Footer id="rating">
           <div>
-            {Array.from({ length: place && place.rating }, (_, i) => <img src="/images/icon/star.png" style={{ maxWidth: 40 }} alt="" />)}
+            {Array.from({ length: place && place.rating }, (_, i) => <img key={uuidv4()} src="/images/icon/star.png" style={{ maxWidth: 40 }} alt="" />)}
           </div>
           <Button auto onClick={() => setState(true)} mr="10px">Погода</Button>
           <Drawer visible={state} onClose={() => setState(false)} placement="top">

@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Modal } from '@geist-ui/core';
+import { Modal, Spacer } from '@geist-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import TodoForm from './TodoForm';
 import TodoItem from './TodoItem';
 import { loadTasks, selectTasks } from './todoSlice';
 
-function TodoList({ placeid }) {
+function TodoList({ place }) {
   const [state, setState] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadTasks(placeid));
-  }, [dispatch, placeid]);
+    dispatch(loadTasks(place.place_id));
+  }, [dispatch, place.place_id]);
 
   const tasks = useSelector(selectTasks);
 
@@ -25,13 +25,18 @@ function TodoList({ placeid }) {
     <>
       <Button className="favPlaceBtn" variant="outline-success" onClick={handler}>Собраться</Button>
       <Modal visible={state} onClose={closeHandler}>
-        <Modal.Title>Место</Modal.Title>
+        <Modal.Title>
+          <img src={`/images/icon/${place['Place.category_id']}.png`} alt="icon" style={{ maxWidth: 25 }} />
+          <Spacer w={1} />{place['Place.title']}<Spacer w={1} />
+          <img src={`/images/icon/${place['Place.category_id']}.png`} alt="icon" style={{ maxWidth: 25 }} />
+        </Modal.Title>
+        <br />
         <Modal.Subtitle>Взять с собой:</Modal.Subtitle>
         <Modal.Content>
-          <TodoForm placeId={placeid} />
+          <TodoForm placeId={place.place_id} />
           {tasks && tasks
-          .filter((el) => el.place_id === placeid)
-          .map((task) => <TodoItem task={task} />)}
+          .filter((el) => el.place_id === place.place_id)
+          .map((task) => <TodoItem key={task.id} task={task} />)}
         </Modal.Content>
         <Modal.Action passive onClick={() => setState(false)}>Закрыть</Modal.Action>
       </Modal>

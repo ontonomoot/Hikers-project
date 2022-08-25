@@ -6,6 +6,7 @@ import React from 'react';
 import { Card, Text, Divider } from '@geist-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import Button from 'react-bootstrap/Button';
 import {
   deleteFavPlaceThunk, selectorFavourites
@@ -41,9 +42,9 @@ export default function FavPlaces({ favPlace }) {
         </div>
         <p className="favPlaceDesc">{favPlace['Place.description'] && `${favPlace['Place.description'].slice(0, 100)}......`}</p>
         <div className="favPlaceDesc">
-          Рейтинг: {favPlace && favPlace['Place.rating'] ? Array.from({ length: favPlace['Place.rating'] }, (_, i) => <img src="/images/icon/star.png" style={{ maxWidth: 25 }} alt="" />) : 'У места нет отзывов'}
+          Рейтинг: {favPlace && favPlace['Place.rating'] ? Array.from({ length: favPlace['Place.rating'] }, (_, i) => <img key={uuidv4()} src="/images/icon/star.png" style={{ maxWidth: 25 }} alt="" />) : 'У места нет отзывов'}
         </div><br />
-        <TodoList placeid={favPlace.place_id} />
+        <TodoList place={favPlace} />
         <Button variant="outline-secondary" id={favPlace.id} onClick={handleDeleteClick} className="delPlaceBtn">Удалить</Button>
       </Card>
     </div>

@@ -41,7 +41,7 @@ function ReviewList() {
             </div>
             <Card.Footer>
               <div>
-                {Array.from({ length: el.rating }, (_, i) => <img src="/images/icon/star.png" style={{ maxWidth: 40 }} alt="" />)}
+                {Array.from({ length: el.rating }, (_, i) => <img key={uuidv4()} src="/images/icon/star.png" style={{ maxWidth: 40 }} alt="" />)}
               </div>
             </Card.Footer>
           </Card>
