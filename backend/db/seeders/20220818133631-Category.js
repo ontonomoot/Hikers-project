@@ -3,13 +3,13 @@ module.exports = {
     await queryInterface.bulkInsert('Categories', [
       {
         title: 'Сноубординг',
-        description: 'Это сноуборд категория',
+        description: 'Один из самых увлекательных зимних видов физической активности.',
         icon: '1.png',
         photo: 'Snowboarding2.jpg',
       },
       {
         title: 'Рафтинг',
-        description: 'Это сноуборд категория',
+        description: 'Спортивный сплав по горным рекам и искусственным гребным каналам на надувных судах (рафтах).',
         icon: '2.png',
         photo: 'Rafting1.jpg',
       },

@@ -23,6 +23,7 @@ const favouritesRouter = require('./routes/api/favouritesRouter');
 const chatRoute = require('./routes/api/chatRoute');
 const friendsRouter = require('./routes/api/friendsRouter');
 const todoRouter = require('./routes/api/todoRouter');
+const newCardApi = require('./routes/api/newCardApi');
 
 // Подключаем use
 app.use('/api', authLoginApi);
@@ -35,5 +36,6 @@ app.use('/api', favouritesRouter);
 app.use('/api', chatRoute);
 app.use('/api', friendsRouter);
 app.use('/api', todoRouter);
+app.use('/api', newCardApi);
 
 app.listen(PORT, async () => console.log('\x1b[45m%s\x1b[0m', `Server started at ${PORT} port`));

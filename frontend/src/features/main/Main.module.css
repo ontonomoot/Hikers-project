@@ -46,7 +46,8 @@
 } */
 
 .categoryDistraction {
-  width: 100%;
+  width: 80%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -57,11 +58,11 @@
 
 .categoryDistractionTitle {
   font-size: 30px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .categoryDistractionTitleDis {
-  margin-bottom: 25px;
+  margin-bottom: 45px;
 }
 
 .categoryDistractionButton {
