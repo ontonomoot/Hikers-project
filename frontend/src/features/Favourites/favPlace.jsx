@@ -32,7 +32,7 @@ export default function FavPlaces({ favPlace }) {
 
   return (
     <div>
-      <Card className="favDescription" id="favPhoto" onClick={() => navigate(`/categories/${favPlace['Place.category_id']}/places/${favPlace.place_id}`)}><img src={`${favPlace['Photos.title']}`} alt="" /></Card>
+      <Card className="favDescription" id="favPhoto" onClick={() => navigate(`/categories/${favPlace['Place.category_id']}/places/${favPlace.place_id}`)}><img src={`${favPlace.photos[0]}`} alt="" /></Card>
       <Card className="favDescription" id="favDescription">
         <div className="favCardTop">
           <p className="favPlaceTitle" onClick={() => navigate(`/categories/${favPlace['Place.category_id']}/places/${favPlace.place_id}`)}>
