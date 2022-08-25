@@ -43,7 +43,7 @@ export default function FavPlaces({ favPlace }) {
         <div className="favPlaceDesc">
           Рейтинг: {favPlace && favPlace['Place.rating'] ? Array.from({ length: favPlace['Place.rating'] }, (_, i) => <img src="/images/icon/star.png" style={{ maxWidth: 25 }} alt="" />) : 'У места нет отзывов'}
         </div><br />
-        <TodoList placeid={favPlace.place_id} />
+        <TodoList place={favPlace} />
         <Button variant="outline-secondary" id={favPlace.id} onClick={handleDeleteClick} className="delPlaceBtn">Удалить</Button>
       </Card>
     </div>
