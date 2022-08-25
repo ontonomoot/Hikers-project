@@ -3,6 +3,7 @@ const router = require('express').Router();
 const {
   Place,
   Favorite,
+  Photo,
 } = require('../../db/models');
 
 router.route('/favourites')
@@ -19,17 +20,24 @@ router.route('/favourites')
         include: [{ model: Place }],
       });
 
-      // const places = await Place.findAll({
-      //   include: {
-      //     model: Photo,
-      //   },
-      //   raw: true,
-      // });
+      const photo = await Photo.findAll({
+        raw: true,
+        where: {
+          review_id: null,
+        },
+      });
 
-      // const favPlaces = fav.map((fav) => places.filter((place) => place.id === fav.place_id))
-      //   .flat();
+      const favorites = fav.map((el) => {
+        const photos = [];
+        photo.forEach((item) => {
+          if (el.place_id === item.place_id) {
+            photos.push(item.title);
+          }
+        });
+        return { ...el, photos };
+      });
 
-      res.json(fav);
+      res.json(favorites);
     } catch (error) {
       res.status(404).json(error);
     }
@@ -64,15 +72,35 @@ router.route('/favourites')
           place_id: placeid,
         },
         raw: true,
+        include: [{ model: Place }],
       });
 
       // если нет в избранном - добавляем в бд
       if (!favorite) {
-        const newFavorite = await Favorite.create({
+        const createNewFavorite = await Favorite.create({
           user_id: userId,
           place_id: placeid,
         });
-        res.json(newFavorite);
+
+        const newFavorite = await Favorite.findOne({
+          raw: true,
+          where: {
+            id: createNewFavorite.id,
+          },
+          include: [{ model: Place }],
+        });
+
+        const photo = await Photo.findAll({
+          raw: true,
+          where: {
+            place_id: placeid,
+          },
+        });
+
+        const photos = photo.map((el) => el.title);
+        const favoriteWithPhotos = { ...newFavorite, photos };
+
+        res.json(favoriteWithPhotos);
       } else {
         // если есть в избранном, обновляем статус
         await Favorite.update({
@@ -90,73 +118,22 @@ router.route('/favourites')
           },
           raw: true,
         });
-        res.json(updateFavorite);
+
+        const photo = await Photo.findAll({
+          raw: true,
+          where: {
+            place_id: placeid,
+          },
+        });
+
+        const photos = photo.map((el) => el.title);
+        const favoriteWithPhotos = { ...updateFavorite, photos };
+
+        res.json(favoriteWithPhotos);
       }
-
-      // если есть в избранном меняем статус на false
-      // иначе статус true
-      // if (favorite.status) {
-      //   await Favorite.update({
-      //     status: false,
-      //   }, {
-      //     where: {
-      //       user_id: userId,
-      //       place_id: placeid,
-
-      //     },
-      //   });
-      //   const favorites = await Favorite.findAll();
-      //   res.json(favorites);
-      // } else {
-      //   await Favorite.update({
-      //     status: true,
-      //   }, {
-      //     where: {
-      //       user_id: userId,
-      //       place_id: placeid,
-      //     },
-      //   });
-      //   const favorites = await Favorite.findAll();
-      //   res.json(favorites);
-      // }
     } catch (error) {
       res.status(404).json(error);
     }
   });
-
-// .post(async (req, res) => {
-//   const userId = req.session.user.id;
-
-//   const {
-//     placeid,
-//   } = req.body;
-//   // console.log(placeid)
-
-//   // console.log(favPlaceID);
-//   const checkFav = await Favorite.findOne({
-//     where: {
-//       user_id: userId,
-//       place_id: placeid,
-//     },
-//     raw: true,
-//   });
-
-//   // console.log(checkFav)
-
-//   if (!checkFav) {
-//     console.log('test')
-//     await Favorite.create({
-//       user_id: userId,
-//       place_id: placeid,
-//     });
-//     res.json({
-//       message: 'Успешно',
-//     });
-//   } else {
-//     res.json({
-//       message: 'Вы уже добавили в избранное',
-//     });
-//   }
-// });
 
 module.exports = router;
