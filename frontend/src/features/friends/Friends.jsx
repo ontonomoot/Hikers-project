@@ -3,10 +3,12 @@
 /* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Grid, Button, Modal } from '@geist-ui/core';
 import { selectorUserSession } from '../main/authSlice';
 import { getSubscribeThunk } from '../profile/profileSlice';
 import { getFriendsThunk, unSubscribeThunk, selectorFriends } from './friendsSlice';
+import { newChat } from '../chat/chatSlice';
 
 import './Friends.css';
 
@@ -19,6 +21,7 @@ function Friends() {
 
   const [num, setNum] = useState(0);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const allFr = useSelector(selectorFriends);
   const userSession = useSelector(selectorUserSession);
   const [userFriends, setUserFriends] = useState();
@@ -39,6 +42,21 @@ function Friends() {
    setNum(null);
     }
    }, [allFr, num]);
+
+  function handleChat(e, id) {
+    e.preventDefault();
+
+    const user = {
+      user_id: userSession.id,
+      friend_id: id
+    };
+
+    dispatch(newChat(user));
+    setTimeout(() => {
+      navigate(`/profile/${userSession.id}/chat`);
+    }, 1000);
+  }
+
   if (!allFr) return <div>oops</div>;
   if (!userSession) return <div>oops</div>;
 
@@ -77,7 +95,7 @@ function Friends() {
                 </div>
                 <div className="btn-group">
                   <div className="friends-btn">
-                    <Grid><Button type="success" ghost auto scale={0.7}>Сообщение</Button></Grid>
+                    <Grid><Button type="success" ghost auto scale={0.7} onClick={(e) => handleChat(e, friend.friend_id)}>Сообщение</Button></Grid>
                     {/* <Button onClick={handler} auto>Отпиться</Button>; */}
                   </div>
                   <div className="friends-btn">

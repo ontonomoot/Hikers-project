@@ -29,8 +29,11 @@ function Profile() {
   // console.log(follow, 'follow');
   useEffect(() => {
     dispatch(getProfileThunk(id));
-    // dispatch(getSubscribeThunk(id));
   }, [userSession, id]);
+
+  useEffect(() => {
+    // dispatch(getSubscribeThunk());
+  }, []);
 
   if (!userSession) return <div>oops</div>;
 
