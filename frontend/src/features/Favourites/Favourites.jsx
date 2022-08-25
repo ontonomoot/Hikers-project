@@ -20,7 +20,15 @@ export default function Favourites() {
   }, [dispatch]);
 
   return (
-    <div className="favouritesBox">
+    <div
+      className="favouritesBox"
+      style={{
+        position: 'relative',
+        minHeight: '83vh',
+        maxHeight: '100%',
+        marginBottom: '100px'
+      }}
+    >
       <h1>Избранное</h1>
       {
         favPlaces && favPlaces.map((favPlace, i) => <FavPlace key={`${i + 1}`} favPlace={favPlace} />)

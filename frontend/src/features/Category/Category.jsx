@@ -21,6 +21,7 @@ export default function Category() {
   const { id } = useParams();
 
   const places = useSelector(selectorPlaces);
+  // console.log(places);
   const allCategories = useSelector(selectorCategories);
   const categories = allCategories ? allCategories.find((el) => el.id === Number(id)) : null;
 
@@ -41,8 +42,6 @@ export default function Category() {
       newMap.style.width = '600px';
       newMap.style.height = '450px';
       daddy.insertAdjacentElement('afterBegin', newMap);
-      console.log(newMap);
-      console.log(456789098765);
       winFunc();
     }, 1000);
     console.log(456789098765);
