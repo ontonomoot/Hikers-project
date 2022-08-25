@@ -45,6 +45,8 @@ function Subscribers() {
                   {friend.city}
                 </div>
                 <div>
+                  <img src="/images/icon/email.png" alt="email" className="icons" />
+
                   {friend.email}
                 </div>
                 <div>

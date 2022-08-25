@@ -60,11 +60,6 @@ function Profile() {
           )}
           {profile && (
           <div className="profile-string">
-            <h6>email: {profile.email}</h6>
-          </div>
-          )}
-          {profile && (
-          <div className="profile-string">
             <h6>Город: {profile.city}</h6>
           </div>
           )}
@@ -76,9 +71,15 @@ function Profile() {
             }
             </div>
           </div>
+          {profile && (
           <div className="profile-string">
+            <img src="/images/icon/email.png" alt="email" className="icons" />
+            <h6>email: {profile.email}</h6>
+          </div>
+          )}
+          <div className="profile-string">
+            <img src="/images/icon/fb.png" alt="email" className="icons" />
             <a href={profile.link}>{profile.link}</a>
-            {/* {profile && <h6>{profile.link}</h6>} */}
           </div>
           <div className="profile-edit-btn" />
         </div>

@@ -43,7 +43,6 @@ export default function Category() {
       daddy.insertAdjacentElement('afterBegin', newMap);
       winFunc();
     }, 1000);
-    console.log(456789098765);
     dispatch(categoriesThunk());
     dispatch(placeThunk(id));
   }, [dispatch, id]);

@@ -78,17 +78,18 @@ function Friends() {
                   <div>
                     {friend['User.user_name']}
                   </div>
-                  <div>
+                  <div className="user-info">
                     {friend['User.city']}
-                  </div>
-                  <div>
-                  <a href={friend['User.link']}>{friend['User.link']}</a>
-                    {/* {friend['User.link']} */}
                   </div>
                   <div>
                     {friend['User.favorite_cat']}
                   </div>
                   <div>
+                    <img src="/images/icon/fb.png" alt="email" className="icons" />
+                    <a href={friend['User.link']}>{friend['User.link']}</a>
+                  </div>
+                  <div>
+                  <img src="/images/icon/email.png" alt="email" className="icons" />
                     {friend['User.email']}
                   </div>
                 </div>
