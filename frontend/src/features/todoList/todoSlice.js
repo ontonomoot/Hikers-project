@@ -53,6 +53,25 @@ export const deleteTask = createAsyncThunk(
   }
 );
 
+// экспорт санок для изменения статуса (done) задачи
+export const putDoneTask = createAsyncThunk(
+  'todo/putDoneTask',
+  async (taskObj) => {
+    const placeId = taskObj.place_id;
+    const response = await fetch(`/api/place/${placeId}/tasks`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'Application/json'
+      },
+      body: JSON.stringify({
+        taskObj
+      })
+    });
+    const data = await response.json();
+    return data;
+  }
+);
+
 const todoSlice = createSlice({
   name: 'todo',
   initialState,
@@ -73,6 +92,12 @@ const todoSlice = createSlice({
         if (action.payload.success) {
           const { id } = action.payload;
           state.tasks = state.tasks.filter((task) => task.id !== id);
+        }
+      })
+      .addCase(putDoneTask.fulfilled, (state, action) => {
+        if (action.payload.success) {
+          const { id, done } = action.payload;
+          state.tasks = state.tasks.map((task) => task.id === id ? { ...task, done } : task);
         }
       });
   }

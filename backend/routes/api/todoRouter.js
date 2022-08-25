@@ -44,6 +44,23 @@ router
     } catch (err) {
       console.log(err);
     }
+  })
+  .put('/place/:id/tasks', async (req, res) => {
+    try {
+      const { id, done } = req.body.taskObj;
+
+      const successUpdate = await Task.update({
+        done,
+      }, { raw: true, where: { id } });
+
+      if (successUpdate[0]) {
+        res.json({ success: true, done, id });
+      } else {
+        res.json({ success: false });
+      }
+    } catch (err) {
+      console.log(err);
+    }
   });
 
 module.exports = router;
