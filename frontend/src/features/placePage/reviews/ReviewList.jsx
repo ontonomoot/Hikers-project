@@ -10,12 +10,12 @@ import ReviewForm from './ReviewForm';
 
 function ReviewList() {
   const user = useSelector(selectorUserSession);
-  const { id } = useParams();
+  const { id, placeid } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadReview(id));
-  }, [id, dispatch]);
+    dispatch(loadReview(placeid));
+  }, [placeid, dispatch]);
 
   const review = useSelector(selectReview);
   // console.log('review', review);
