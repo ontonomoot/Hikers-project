@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { Outlet, useNavigate } from 'react-router-dom';
-import { selectorCategories } from './mainPage';
+import { selectorCategories } from './mainPageSlice';
 import css from './Main.module.css';
 
 export default function MainPage() {
@@ -23,7 +23,8 @@ export default function MainPage() {
   return (
     <div style={{
       position: 'relative',
-      height: '100%',
+      minHeight: '83vh',
+      maxHeight: '100%',
       marginBottom: '100px'
       }}
     >

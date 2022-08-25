@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectorUserSession } from '../main/auth';
+import { selectorUserSession } from '../main/authSlice';
 import { getSubscribeThunk, selectorFriends } from '../profile/profileSlice';
 import { getFriendsThunk } from './friendsSlice';
 import './Friends.css';
