@@ -53,8 +53,8 @@ function Friends() {
           allFr && userFriends && userFriends.map((friend) => (
             <div key={friend.id} className="friend">
               <div>
-                {/* <img src={`${friend['User.ava']}`} alt="img" id="ava-img" /> */}
-                <img src={ava} alt="img" id="ava-img" />
+                <img src={`/images/${friend['User.ava']}`} alt="img" id="ava-img" />
+                {/* <img src={ava} alt="img" id="ava-img" /> */}
                 {/* <img src={ava} alt="img" /> */}
               </div>
               <div className="info-btn">
@@ -125,4 +125,4 @@ function Friends() {
 
 export default Friends;
 
-//      /images/profile/9d3b8b1fffc60251dc8cedadf5f6695d.jpeg
+//  /images/progile/1.png

@@ -31,7 +31,7 @@ module.exports = {
       },
       ava: {
         type: Sequelize.TEXT,
-        defaultValue: 'https://beauty73.org/wp-content/uploads/2018/11/92979836-profile-anonymous-face-icon-gray-silhouette-person-male-default-avatar-photo-placeholder-isolated-on.jpg',
+        defaultValue: '/profile/1.png',
       },
       favorite_cat: {
         type: Sequelize.TEXT,
