@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Modal } from '@geist-ui/core';
-import { useParams } from 'react-router-dom';
+import { Modal } from '@geist-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
+import Button from 'react-bootstrap/Button';
 import TodoForm from './TodoForm';
 import TodoItem from './TodoItem';
 import { loadTasks, selectTasks } from './todoSlice';
@@ -23,7 +23,7 @@ function TodoList({ placeid }) {
 
   return (
     <>
-      <Button auto onClick={handler}>Собраться</Button>
+      <Button className="favPlaceBtn" variant="outline-success" auto onClick={handler}>Собраться</Button>
       <Modal visible={state} onClose={closeHandler}>
         <Modal.Title>Место</Modal.Title>
         <Modal.Subtitle>Взять с собой:</Modal.Subtitle>
