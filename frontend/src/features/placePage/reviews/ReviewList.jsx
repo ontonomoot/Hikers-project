@@ -18,6 +18,7 @@ function ReviewList() {
   }, [id, dispatch]);
 
   const review = useSelector(selectReview);
+  // console.log('review', review);
   const reviewPhotos = useSelector(selectReviewPhoto);
 
   return (

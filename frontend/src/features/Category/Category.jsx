@@ -20,8 +20,11 @@ export default function Category() {
   const { id } = useParams();
 
   const places = useSelector(selectorPlaces);
+  // console.log(places);
   const allCategories = useSelector(selectorCategories);
   const categories = allCategories ? allCategories.find((el) => el.id === Number(id)) : null;
+
+  // console.log('places', places);
 
   const dispatch = useDispatch();
   // Функция ymaps.ready() будет вызвана, когда
@@ -38,7 +41,7 @@ export default function Category() {
       newMap.style.width = '600px';
       newMap.style.height = '450px';
       daddy.insertAdjacentElement('afterBegin', newMap);
-      console.log(newMap);
+      // console.log(newMap);
       winFunc();
     }, 1000);
     dispatch(categoriesThunk());
