@@ -29,16 +29,6 @@ function PlaceInfo() {
   if (user && favPlace) {
       checkFavPlace = favPlace.find((el) => el.place_id === Number(placeid));
   }
-  // let checkStatus;
-
-  // if (user && favPlace) {
-  //   const checkFavPlace = favPlace.find((el) => el.place_id === Number(placeid));
-
-  //   if (checkFavPlace) {
-  //     checkStatus = checkFavPlace.status;
-  //   }
-  // }
-  // console.log('checkStatus', checkStatus);
 
   function handleFavourite() {
     dispatch(addFavPlaceThunk(placeid));

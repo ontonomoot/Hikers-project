@@ -5,7 +5,7 @@ import { Provider, useDispatch } from 'react-redux';
 import Category from '../../Category/Category.jsx';
 // import Categories from '../../Category/Categories';
 import './App.css';
-import MainPage from '../MainPage.jsx';
+import MainPage from '../MainPage';
 import Navbar from '../navbar/Navbar';
 import PlacePage from '../../placePage/PlacePage';
 import Registration from '../registration/Registration';
