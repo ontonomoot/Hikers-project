@@ -53,7 +53,7 @@ export default function Category() {
   useEffect(() => {
     setTimeout(() => {
       setLoad(() => true);
-    }, 100);
+    }, 1500);
   }, []);
 
   return (
