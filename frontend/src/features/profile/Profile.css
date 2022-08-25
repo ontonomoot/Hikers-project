@@ -13,15 +13,18 @@
 .profile-string {
   margin-bottom: 30px;
   display: flex;
+  align-items: center;
 }
 
 .profile-photo {
   display: flex;
   flex-direction: column ;
+
 }
 
 #profile-img {
   width: 300px;
+  border-radius: 50%;
 }
 
 .profile-block-btn{

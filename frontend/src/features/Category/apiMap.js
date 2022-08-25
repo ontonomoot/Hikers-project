@@ -52,10 +52,24 @@ export default async function init() {
       // Добавление метки (Placemark) на карту
       const placemark = new window.ymaps.Placemark(coordinates, {
         hintContent: `${geo[1]}`,
-        balloonContentHeader: `<img src=${geo[4][0]} id="yandexImage">`,
-        balloonContentBody: `<span class="yandexPlaceTitle">${geo[1]}</span><br>
-        <span class="yandexStar">${'★'.repeat(geo[5])}</span><br>
-        <button class="yandexButton"><a href = '/categories/${geo[6]}/places/${geo[3]}' class="yandexTitle">Подробнее</a></button>`
+        // balloonContentHeader: `<img src=${geo[4][0]} id="yandexImage">`,
+        // balloonContentBody: `<span class="yandexPlaceTitle">${geo[1]}</span><br>
+        // <span class="yandexStar">${'★'.repeat(geo[5])}</span><br>
+        // <button class="yandexButton"><a href = '/categories/${geo[6]}/places/${geo[3]}'
+        // class="yandexTitle">
+        // Подробнее</a></button>`
+        // balloonContentHeader:
+        balloonContentBody:
+        `<div className="modal">
+          <div>
+            <img src=${geo[4][0]} id="yandexImage">
+          </div>
+          <div>
+              <span className="yandexPlaceTitle">${geo[1]}</span><br>
+              <span class="yandexStar">${'★'.repeat(geo[5])}</span><br>
+              <button class="yandexButton"><a href = '/categories/${geo[6]}/places/${geo[3]}' class="yandexTitle">Подробнее</a></button>
+          </div>
+        </div>`
       }, {
         iconLayout: 'default#image',
         // Своё изображение иконки метки.

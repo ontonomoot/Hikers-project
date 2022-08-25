@@ -25,11 +25,21 @@ function Users() {
                 <img src={`/images/${user.ava}`} alt="img" className="ava-img" />
               </div>
               <div className="user-info">
-                <div>{user.user_name}</div>
-                <div>{user.city}</div>
-                <div>{user.favorite_cat}</div>
-                <div>{user.email}</div>
-                <a href={user.link}>{user.link}</a>
+                <div className="text-inf">
+                  <div className="str-inf">{user.user_name}</div>
+                  <div className="str-inf">Город: {user.city}</div>
+                  <div className="str-inf">Активность: {user.favorite_cat}</div>
+                </div>
+                <div>
+                  <div>
+                    <img src="/images/icon/email.png" alt="email" className="icons" />
+                    {user.email}
+                  </div>
+                  <div>
+                    <img src="/images/icon/fb.png" alt="email" className="icons" />
+                    <a href={user.link}>{user.link}</a>
+                  </div>
+                </div>
               </div>
             </div>
 

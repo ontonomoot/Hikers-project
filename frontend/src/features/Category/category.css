@@ -50,9 +50,10 @@
 }
 
 #yandexImage {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  /* height: 200px; */
   border: 1px solid #0d071c;
+  border-radius: 5px;
 }
 
 .yandexTitle {
@@ -61,23 +62,40 @@
 }
 
 .yandexButton {
-  border: 1px solid #0d071c;
+  border: 1px solid #ffffff;
   border-radius: 25px;
-  background-color: #0d071c;
+  background-color: #ffffff;
+  margin: 30px;
+
 }
 
 .yandexButton > a {
-  color: white;
+  color: rgb(0, 0, 0);
+  background-color: white;
+  border: 10px solid #ffffff;
+  border-radius: 25px;
+
   font-size: 15px;
+  /* margin: 30px; */
+
 }
 
 .yandexButton > a:hover {
-  color: white;
-  text-decoration: underline;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  border: 10px solid #000000;
+  border-radius: 25px;
+  /* padding: 5px; */
+  background-color: #000000;
+
+  /* text-decoration: underline; */
+  /* margin: 30px; */
+
 }
 
 .yandexPlaceTitle {
   font-size: 1.2rem;
+  margin: 50px;
 }
 
 .yandexStar {
@@ -85,6 +103,7 @@
   width: 30px;
   height: 40px;
   font-size: 25px;
+  margin: 50px;
 }
 
 #cardPlace:hover {
@@ -92,6 +111,11 @@
   transition: 0.5s;
   background-color: rgb(241, 241, 241);
   cursor: pointer;
+}
+
+.modal {
+  display: flex;
+  flex-direction: row;
 }
 
 
