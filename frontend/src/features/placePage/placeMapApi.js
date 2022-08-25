@@ -2,8 +2,11 @@ export default async function initMap(place) {
   const placeGeo = await window.ymaps.geocode(place.geo);
   // console.log('координаты из бд', place.geo);
   // console.log('координаты', placeGeo);
-  const center = place.geo.split(',').map((el) => Number(el));
+  const coord = place.geo.split(',').map((el) => Number(el));
+  const center = [coord[0], coord[1] + 2];
   // console.log('center', center);
+  // console.log('center2', '[52.935405052110895,89.50648133774354]');
+
   // добавляем карту на сайт
   const myMap = new window.ymaps.Map('placeMap', {
     // Координаты центра карты.

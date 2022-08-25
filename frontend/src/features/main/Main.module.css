@@ -10,7 +10,9 @@
   width: auto;
   height: 700px;
   display: flex;
-  overflow: hidden
+  overflow: hidden;
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .photo {
@@ -29,10 +31,6 @@
 
 .mainRight {
   width: 30%;
-  margin-right: 10px;
-  border: 1px solid black;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
   display: flex;
   justify-content: space-between;
   border-left: 0px solid;
