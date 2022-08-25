@@ -9,7 +9,7 @@ import {
   authLogin,
   booleanAuthLogin,
   errorAuthLogin
-} from '../auth';
+} from '../authSlice';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -26,7 +26,6 @@ export default function Login() {
   return (
     <Modal visible={auth} onClose={() => dispatch(booleanAuthLogin())}>
       <form id={css.form} onSubmit={handlerModal}>
-        <div className={css.href}>Нет учетной записи? Регистрация</div>
         <div className={authError ? css.authError : css.auth}>Авторизация</div>
         {authError && (
           <Card width="100%" type={`${'error'}`} className={css.error}>

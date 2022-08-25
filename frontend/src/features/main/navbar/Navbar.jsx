@@ -14,10 +14,10 @@ import {
   selectorUserSession,
   selectorAuthReg,
   booleanAuthReg
-} from '../auth';
+} from '../authSlice';
 import Login from '../login/Login';
 import Registration from '../registration/Registration';
-import { selectorCategories } from '../mainPage';
+import { selectorCategories } from '../mainPageSlice';
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -129,10 +129,25 @@ export default function Navbar() {
           >logo
           </div>
         </div>
-        <div className={css.marqueeAll}>
-          <p className={css.marquee}>
-            {' '}СНОУБОРД - РАФТИНГ - КЕМПИНГ - ДАУНХИЛЛ - АЛЬПИНИЗМ - ХАЙКИНГ
-          </p>
+        <div className={css.categoryMain}>
+          {categories.map((icon, i) => (
+            <img
+              id={icon.id}
+              key={`mainPhotoImgIcon${icon.id}`}
+              onClick={(e) => {
+                  setGetCat(Number(e.target.id));
+                  navigate(`/categories/${Number(e.target.id)}`);
+                }}
+              className={url !== `/categories/${icon.id}`
+                ? css.iconCategory
+                : icon.id === getCat
+                ? `${css.iconCategory} ${css.iconCategoryTake}`
+                : css.iconCategory}
+              src={`/images/icon/${icon.icon}`}
+              alt={icon.icon}
+            />
+              )
+            )}
         </div>
         <div className={css.right}>
           <button className={css.button} type="button" onClick={() => dispatch(booleanAuthLogin())}>Войти</button>

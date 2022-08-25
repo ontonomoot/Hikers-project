@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { selectorUserSession } from '../main/auth';
-import { newMessageThunk, selectorChats, selectorChatsWith } from './chatReducer';
+import { selectorUserSession } from '../main/authSlice';
+import { newMessageThunk, selectorChats, selectorChatsWith } from './chatSlice';
 
 import css from './Chat.module.css';
 
@@ -35,8 +35,6 @@ export default function Chat() {
     myChats &&
     myChats.find((user) => user.chat_id === chatNum);
 
-  console.log(friendName);
-
   function handleChat(e) {
     e.preventDefault();
     const form = {
@@ -50,7 +48,15 @@ export default function Chat() {
   }
 
   return (
-    <div id={css.conteiner}>
+    <div
+      style={{
+      position: 'relative',
+      minHeight: '83vh',
+      maxHeight: '100%',
+      marginBottom: '100px'
+      }}
+      id={css.conteiner}
+    >
       <div className={css.mainPage}>
         <div className={css.mainPageChats}>
           <div className={css.mainPageChatsChat}>
@@ -75,7 +81,7 @@ export default function Chat() {
           <div className={css.mainPageChatsMes}>
             Сообщения
           </div>
-          <div className={css.messagePage}>
+          <div className={chatNum && css.messagePage}>
             {chatMes && chatMes.map((mas) => (
               <div
                 key={`allCatMap${mas.id}`}
@@ -151,6 +157,7 @@ export default function Chat() {
               onSubmit={handleChat}
             >
               <input
+                placeholder="Введите сообщение"
                 className={css.inputForm}
                 type="text"
                 name="message"

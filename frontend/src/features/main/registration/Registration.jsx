@@ -9,7 +9,7 @@ import {
   errorAuthReg,
   selectorAuthReg,
   selectorAuthRegError
-} from '../auth';
+} from '../authSlice';
 
 export default function Registration() {
   const dispatch = useDispatch();
@@ -34,7 +34,6 @@ export default function Registration() {
   return (
     <Modal visible={auth} onClose={() => dispatch(booleanAuthReg())}>
       <form id={css.form} onSubmit={handlerModal}>
-        <div className={css.href}>Есть учетная запись? Войти</div>
         <div className={authError ? css.authError : css.auth}>Регистрация</div>
         {authError && (
           <Card width="100%" type={`${'error'}`} className={css.error}>

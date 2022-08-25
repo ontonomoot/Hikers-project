@@ -12,7 +12,7 @@ import { selectorEditProfile,
   selectorFriends,
   getSubscribeThunk, } from './profileSlice';
 import EditProfile from './editProfile/editProfile';
-import { selectorUserSession } from '../main/auth';
+import { selectorUserSession } from '../main/authSlice';
 import './Profile.css';
 
 function Profile() {
@@ -34,7 +34,15 @@ function Profile() {
   if (!userSession) return <div>oops</div>;
 
   return (
-    <div className="profile-page">
+    <div
+      style={{
+      position: 'relative',
+      minHeight: '83vh',
+      maxHeight: '100%',
+      marginBottom: '100px'
+      }}
+      className="profile-page"
+    >
       <div className="profile-photo">
         <img src={`/images/${profile.ava}`} alt="img" id="profile-img" />
         {/* <Form.Control type="file" name="photos" onChange={sendFiles} autoComplete="off" /> */}
