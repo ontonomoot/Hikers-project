@@ -59,7 +59,15 @@ function Friends() {
   if (!userSession) return <div>oops</div>;
 
   return (
-    <div className="friends">
+    <div
+      className="friends"
+      style={{
+      position: 'relative',
+      minHeight: '83vh',
+      maxHeight: '100%',
+      marginBottom: '100px'
+      }}
+    >
       <div className="friends-title">
         Мои подписки
       </div>

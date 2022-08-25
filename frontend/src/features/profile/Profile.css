@@ -24,7 +24,9 @@
 
 #profile-img {
   width: 300px;
+  height: 300px;
   border-radius: 50%;
+  overflow: hidden;
 }
 
 .profile-block-btn{

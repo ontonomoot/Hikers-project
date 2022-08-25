@@ -23,19 +23,18 @@ function Profile() {
   const profile = useSelector(selectorProfile);
 
   const list = useSelector(selectorFriends);
-  // console.log(list, 'list');
-  const follow = userSession && list.length && list.filter((el) =>
+  const follow = userSession && list && list.length && list.filter((el) =>
   (el.user_id === userSession.id && (el.friend_id === Number(id))));
-  // console.log(follow, 'follow');
   useEffect(() => {
     dispatch(getProfileThunk(id));
   }, [userSession, id]);
 
   useEffect(() => {
-    // dispatch(getSubscribeThunk());
+    dispatch(getSubscribeThunk());
   }, []);
 
   if (!userSession) return <div>oops</div>;
+  if (!list) return <div>oops</div>;
 
   return (
     <div
@@ -87,7 +86,7 @@ function Profile() {
           {profile && userSession && (profile.id === userSession.id) ?
             <Button type="button" onClick={() => dispatch(editProfile())}>Редактировать</Button> : (
               <Button type="button" onClick={() => dispatch(subscribeThunk({ userId: userSession.id, friendId: profile.id }))}>
-                {follow && follow[0].status ?
+                {follow && follow.length && follow[0].status ?
                   <>Отписаться</>
                 : <>Подписаться</>}
               </Button>
