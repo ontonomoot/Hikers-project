@@ -93,7 +93,7 @@
 .messageAllRight {
   width: 250px;
   display: flex;
-  background-color: rgb(241, 241, 241);
+  background-color: rgb(185, 185, 185);
   border-radius: 35px;
   min-height: 70px;
   max-height: auto;
@@ -104,7 +104,7 @@
 .messageAllLeft {
   width: 250px;
   display: flex;
-  background-color: rgb(241, 241, 241);
+  background-color: rgb(185, 185, 185);
   border-radius: 35px;
   min-height: 70px;
   max-height: auto;
@@ -129,7 +129,7 @@
   justify-content: flex-end;
   padding-right: 14px;
   font-size: 13px;
-  color: rgb(145, 145, 145);
+  color: white;
 }
 
 .messageNameLeft{
@@ -137,7 +137,7 @@
   justify-content: flex-start;
   padding-left: 14px;
   font-size: 14px;
-  color: rgb(145, 145, 145);
+  color: white;
 }
 
 .messageDataRight {
@@ -145,7 +145,7 @@
   justify-content: flex-end;
   padding-right: 14px;
   font-size: 11px;
-  color: rgb(145, 145, 145);
+  color: white;
 }
 
 .messageDataLeft {
@@ -153,7 +153,7 @@
   justify-content: flex-start;
   padding-left: 14px;
   font-size: 11px;
-  color: rgb(145, 145, 145);
+  color: white;
 }
 
 .messageTextRight {

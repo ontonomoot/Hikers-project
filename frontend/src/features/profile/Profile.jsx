@@ -14,6 +14,7 @@ import { selectorEditProfile,
 import EditProfile from './editProfile/editProfile';
 import { selectorUserSession } from '../main/authSlice';
 import './Profile.css';
+import { getFriendsThunk } from '../friends/friendsSlice';
 
 function Profile() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function Profile() {
 
   useEffect(() => {
     dispatch(getSubscribeThunk());
+    return () => dispatch(getFriendsThunk());
   }, []);
 
   if (!userSession) return <div>oops</div>;

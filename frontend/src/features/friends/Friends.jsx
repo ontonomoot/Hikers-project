@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Grid, Button, Modal } from '@geist-ui/core';
 import { selectorUserSession } from '../main/authSlice';
-import { getSubscribeThunk } from '../profile/profileSlice';
 import { getFriendsThunk, unSubscribeThunk, selectorFriends } from './friendsSlice';
 import { newChat } from '../chat/chatSlice';
 
@@ -25,7 +24,7 @@ function Friends() {
   const allFr = useSelector(selectorFriends);
   const userSession = useSelector(selectorUserSession);
   const [userFriends, setUserFriends] = useState();
-  console.log(userFriends, 'userFriends');
+    console.log('allFr', allFr);
   // console.log(allFr);
   // useEffect(() => {
   //   setTimeout(() => {
@@ -34,12 +33,24 @@ function Friends() {
   //     // dispatch(unSubscribeThunk());
   //   }, 50);
   // }, [userSession, dispatch, state]);
+
   useEffect(() => {
-    if (allFr && num === 0) {
-   setUserFriends(allFr && allFr.friends.filter((el) => el.user_id === userSession.id && el.status === true));
-   setNum(null);
+    dispatch(getFriendsThunk());
+   }, [dispatch]);
+
+   useEffect(() => {
+    if (userSession) {
+      if (allFr && !Array.isArray(allFr) && num === 0) {
+          console.log('filter', allFr);
+          setUserFriends(allFr.friends.filter((el) => el.user_id === userSession.id && el.status === true));
+          setNum(null);
+        }
+      // } else if (allFr && num === 0) {
+      //   setUserFriends(allFr.friends.filter((el) => el.user_id === userSession.id && el.status === true));
+      //   setNum(null);
+      // }
     }
-   }, [allFr, num]);
+   }, [allFr]);
 
   function handleChat(e, id) {
     e.preventDefault();
@@ -54,6 +65,8 @@ function Friends() {
       navigate(`/profile/${userSession.id}/chat`);
     }, 1000);
   }
+
+  // console.log(userFriends);
 
   if (!allFr) return <div>oops</div>;
   if (!userSession) return <div>oops</div>;

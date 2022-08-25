@@ -11,7 +11,7 @@ const getFriendsThunk = createAsyncThunk(
   async () => {
     const response = await fetch('/api/profile/friends', { method: 'GET' });
     const data = await response.json();
-    // console.log(data, 'THUNK');
+    console.log(data, 'THUNK');
     return data;
   }
 );
@@ -32,7 +32,7 @@ const unSubscribeThunk = createAsyncThunk(
       })
     });
     const data = await response.json();
-    // console.log(data, 'UNsubscribe thunk');
+    console.log(data, 'UNsubscribe thunk');
   return data;
 }
 );
@@ -51,6 +51,7 @@ const getFriendsSlice = createSlice({
     });
   }
 });
+// allFr (7)[{…}, {…}, {…}, {…}, {…}, {…}, {…}]
 
 export {
   getFriendsThunk,
