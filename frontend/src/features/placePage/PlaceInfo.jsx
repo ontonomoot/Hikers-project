@@ -4,7 +4,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Text, Divider, Drawer, Button } from '@geist-ui/core';
-import Star from '@geist-ui/icons/star';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { selectorUserSession } from '../main/authSlice';
@@ -67,7 +66,7 @@ function PlaceInfo() {
         </Card.Content>
         <Card.Footer id="rating">
           <div>
-            {Array.from({ length: place && place.rating }, (_, i) => <Star key={i} color="orange" size={32} />)}
+            {Array.from({ length: place && place.rating }, (_, i) => <img src="/images/icon/star.png" style={{ maxWidth: 40 }} alt="" />)}
           </div>
           <Button auto onClick={() => setState(true)} mr="10px">Погода</Button>
           <Drawer visible={state} onClose={() => setState(false)} placement="top">

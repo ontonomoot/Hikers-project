@@ -13,9 +13,9 @@ export default function Place({ place, placeID }) {
   return (
     <Card className="cardPlace" id="cardPlace" onClick={() => navigate(`/categories/${id}/places/${placeID}`)}>
       <p>{place.title}</p>
-      {
-        place.rating ? Array.from({ length: place.rating }, (_, i) => <Star key={i} color="orange" size={22} />) : <p>У места нет отзывов</p>
-      }
+      <div>
+        {place.rating ? Array.from({ length: place && place.rating }, (_, i) => <img src="/images/icon/star.png" style={{ maxWidth: 20 }} alt="" />) : <p>У места нет отзывов</p>}
+      </div>
     </Card>
   );
 }

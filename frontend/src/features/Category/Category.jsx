@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Text, Divider, Button, Loading } from '@geist-ui/core';
-import Star from '@geist-ui/icons/star';
 import init from './apiMap';
 import {
   categoryThunk, selectorCategory
@@ -61,11 +60,11 @@ export default function Category() {
       <div
         className={load ? 'categoriesBox' : 'bad'}
         style={{
-      position: 'relative',
-      minHeight: '83vh',
-      maxHeight: '100%',
-      marginBottom: '100px'
-      }}
+          position: 'relative',
+          minHeight: '83vh',
+          maxHeight: '100%',
+          marginBottom: '100px'
+        }}
       >
         <div className="placeTitleBox">
           {categories && <h1 id={id} className="category">{categories.title}</h1>}
@@ -75,9 +74,9 @@ export default function Category() {
           <div id="placeFilter">
             <div className="placesContainer" id="placesContainer">
               {
-              places &&
-              places.map((place, i) => <Place key={`${i + 1}`} place={place} placeID={place.id} />)
-            }
+                places &&
+                places.map((place, i) => <Place key={`${i + 1}`} place={place} placeID={place.id} />)
+              }
             </div>
           </div>
         </div>

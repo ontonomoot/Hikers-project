@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Card, Text, User, Divider } from '@geist-ui/core';
-import Star from '@geist-ui/icons/star';
 import { v4 as uuidv4 } from 'uuid';
 import { selectorUserSession } from '../../main/authSlice';
 import { loadReview, selectReview, selectReviewPhoto } from './reviewSlice';
@@ -41,7 +40,9 @@ function ReviewList() {
                 )}
             </div>
             <Card.Footer>
-              {Array.from({ length: el.rating }, (_, i) => <Star key={i} color="orange" size={32} />)}
+              <div>
+                {Array.from({ length: el.rating }, (_, i) => <img src="/images/icon/star.png" style={{ maxWidth: 40 }} alt="" />)}
+              </div>
             </Card.Footer>
           </Card>
         ))}

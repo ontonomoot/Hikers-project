@@ -4,7 +4,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { Card, Text, Divider } from '@geist-ui/core';
-import Star from '@geist-ui/icons/star';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
@@ -41,11 +40,9 @@ export default function FavPlaces({ favPlace }) {
           </p>
         </div>
         <p className="favPlaceDesc">{favPlace['Place.description'] && `${favPlace['Place.description'].slice(0, 100)}......`}</p>
-        <p className="favPlaceDesc">
-          Рейтинг: {favPlace && favPlace['Place.rating'] ? Array.from({ length: favPlace['Place.rating'] }, (_, i) => <Star key={i} color="orange" size={22} />) : 'У места нет отзывов'}
-        </p>
-        {/* <Button variant="outline-success"
-        id={favPlace.id} className="favPlaceBtn">Собраться</Button> */}
+        <div className="favPlaceDesc">
+          Рейтинг: {favPlace && favPlace['Place.rating'] ? Array.from({ length: favPlace['Place.rating'] }, (_, i) => <img src="/images/icon/star.png" style={{ maxWidth: 25 }} alt="" />) : 'У места нет отзывов'}
+        </div><br />
         <TodoList placeid={favPlace.place_id} />
         <Button variant="outline-secondary" id={favPlace.id} onClick={handleDeleteClick} className="delPlaceBtn">Удалить</Button>
       </Card>
