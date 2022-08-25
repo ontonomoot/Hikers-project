@@ -30,6 +30,7 @@ export default function Category() {
   // Функция ymaps.ready() будет вызвана, когда
   // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
   useEffect(() => {
+    window.scrollTo(0, 0);
     async function winFunc() {
       await window.ymaps.ready(init);
     }
