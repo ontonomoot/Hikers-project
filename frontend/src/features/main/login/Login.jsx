@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Modal, Card, Text } from '@geist-ui/core';
+import { useNavigate } from 'react-router-dom';
 import css from './Login.module.css';
 import {
   selectorAuthLogin,
@@ -13,6 +14,7 @@ import {
 
 export default function Login() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const auth = useSelector(selectorAuthLogin);
   const authError = useSelector(selectorAuthLoginError);
@@ -21,6 +23,7 @@ export default function Login() {
     event.preventDefault();
     const { email, password } = event.target;
     dispatch(authLogin({ email: email.value, password: password.value }));
+    navigate('/');
   };
 
   return (

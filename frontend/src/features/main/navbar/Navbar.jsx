@@ -112,7 +112,10 @@ export default function Navbar() {
                 </ButtonDropdown.Item>
                 <ButtonDropdown.Item
                   style={{ fontSize: 12, padding: 5 }}
-                  onClick={() => dispatch(authLogOut())}
+                  onClick={() => {
+                    dispatch(authLogOut());
+                    navigate('/');
+                  }}
                 >Выйти
                 </ButtonDropdown.Item>
               </ButtonDropdown>
