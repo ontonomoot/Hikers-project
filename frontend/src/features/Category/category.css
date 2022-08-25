@@ -11,8 +11,8 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  width: 1000px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  position: absolute;
 }
 
 .categoriesBox > div {
@@ -21,8 +21,17 @@
 }
 
 .placeTitleBox {
-  display: flex;
-  gap: 490px;
+  /* display: flex;
+  gap: 490px; */
+  position: absolute;
+  left: 0%;
+  z-index: 2;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: 1px solid black;
 }
 
 .placesListTitle {
@@ -35,14 +44,24 @@
   font-size: 1.8rem;
 }
 
-#placeFilter {
-  margin:0 auto;
+#placeFilter  {
+  position: absolute;
+  min-height: 700px !important;
+  right: 0;
+  width: 320px;
+  background-color: white;
+  margin-top: -40px;
+  /* border: 1px solid black; */
+  /* background-color: white; */
+   /* opacity: 0.5; */
+  /* z-index: 0;  */
 }
 
 #placesContainer{
-  max-height: 450px;
-  width: 300px;
+  max-height: 700px;
+  width: 100%;
   overflow-y: scroll;
+
 }
 
 .ratingNum {
@@ -85,6 +104,42 @@
   width: 30px;
   height: 40px;
   font-size: 25px;
+}
+
+/* #cardPlace:not(.opacity)  {
+opacity: 0.5;
+} */
+
+#cardPlace  {
+  position: relative;
+  border: none;
+  /* z-index: 2; */
+  background-color: transparent;
+  width: 100%;
+
+  /* background-color: white;
+  opacity: 0.5; */
+  }
+
+/* .imgTop {
+  position: inherit;
+  z-index: 3;
+} */
+
+.bottomBlock {
+  position: absolute;
+  z-index: 1;
+ background-color:white;
+ opacity: 0.6;
+ /* width: 100%;
+ height: 100%;
+ left:50%;
+ top:50%;
+ transform: translate(-50%,-50%); */
+}
+
+.bottomBlock:hover #cardPlace {
+  background-color:white;
 }
 
 #cardPlace:hover {

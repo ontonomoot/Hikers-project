@@ -39,12 +39,13 @@ export default function Category() {
       document.querySelector('#map').remove();
       const newMap = document.createElement('div');
       newMap.id = 'map';
-      newMap.style.width = '600px';
-      newMap.style.height = '450px';
+      newMap.style.width = '100%';
+      newMap.style.height = '700px';
+      newMap.style.marginTop = '-40px';
       daddy.insertAdjacentElement('afterBegin', newMap);
       winFunc();
     }, 1000);
-    console.log(456789098765);
+    // console.log(456789098765);
     dispatch(categoriesThunk());
     dispatch(placeThunk(id));
   }, [dispatch, id]);
@@ -57,21 +58,20 @@ export default function Category() {
 
   return (
     <>
-      {!load && <Loading style={{ width: '100%', position: 'absolute', minHeight: '83vh', maxHeight: '100%', backgroundColor: 'white' }}>Loading</Loading>}
+      {!load && <Loading style={{ width: '100%', position: 'absolute', minHeight: '83vh', Height: '100%', backgroundColor: 'white' }}>Loading</Loading>}
       <div
         className={load ? 'categoriesBox' : 'bad'}
         style={{
       position: 'relative',
       minHeight: '83vh',
       maxHeight: '100%',
-      marginBottom: '100px'
       }}
       >
         <div className="placeTitleBox">
           {categories && <h1 id={id} className="category">{categories.title}</h1>}
         </div>
         <div id="daddy">
-          <div id="map" style={{ width: 600, height: 450 }} />
+          <div id="map" style={{ width: 500, height: 600 }} />
           <div id="placeFilter">
             <div className="placesContainer" id="placesContainer">
               {
