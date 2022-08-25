@@ -21,7 +21,11 @@ const todoSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loadTasks.fulfilled, (state, action) => {
-        state.tasks.push(...action.payload);
+        // фильтрую пришедший массив с тасками и оставляю в нем только те, которых в стейте еще нет
+        const newTasks = action.payload.filter((el) =>
+        !state.tasks.find((task) => task.id === el.id));
+        // и затем пушу их массив в стейт
+        state.tasks.push(...newTasks);
       });
   }
 });
