@@ -78,6 +78,7 @@ function Friends() {
                 <div className="btn-group">
                   <div className="friends-btn">
                     <Grid><Button type="success" ghost auto scale={0.7}>Сообщение</Button></Grid>
+                    {/* <Button onClick={handler} auto>Отпиться</Button>; */}
                   </div>
                   <div className="friends-btn">
                     <Grid><Button
@@ -94,17 +95,23 @@ function Friends() {
                     >Отписаться
                           </Button>
                     </Grid>
-                    {/* <Button auto>Отписаться</Button> */}
-                    {/* <div>
-                      <Modal visible={state} onClose={closeHandler}>
+                    <div>
+                      {/* <Modal visible={state} onClose={(e) => closeHandler(e)}>
                         <Modal.Title>Отписаться</Modal.Title>
                         <Modal.Content>
                           <p>Подтвердите действие</p>
                         </Modal.Content>
                         <Modal.Action passive onClick={() => setState(false)}>Отмена</Modal.Action>
-                        <Modal.Action onClick={() => dispatch(unSubscribeThunk({ userId: userSession.id, friendId: friend.id }))}>Подтвердить</Modal.Action>
-                      </Modal>
-                    </div> */}
+                        <Modal.Action onClick={(e) => {
+                      // e.preventDefault();
+                      dispatch(unSubscribeThunk({ userId: userSession.id, friendId: friend.friend_id }));
+                      setState((prev) => !prev);
+                      setUserFriends((p) => p.filter((el) => el.id !== friend.id));
+                       }}
+                        >Подтвердить
+                        </Modal.Action>
+                      </Modal> */}
+                    </div>
                   </div>
                 </div>
               </div>
