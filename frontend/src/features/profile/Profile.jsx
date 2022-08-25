@@ -29,8 +29,11 @@ function Profile() {
   // console.log(follow, 'follow');
   useEffect(() => {
     dispatch(getProfileThunk(id));
-    // dispatch(getSubscribeThunk(id));
   }, [userSession, id]);
+
+  useEffect(() => {
+    // dispatch(getSubscribeThunk());
+  }, []);
 
   if (!userSession) return <div>oops</div>;
 
@@ -74,7 +77,8 @@ function Profile() {
             </div>
           </div>
           <div className="profile-string">
-            {profile && <h6>{profile.link}</h6>}
+            <a href={profile.link}>{profile.link}</a>
+            {/* {profile && <h6>{profile.link}</h6>} */}
           </div>
           <div className="profile-edit-btn" />
         </div>

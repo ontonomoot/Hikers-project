@@ -48,13 +48,10 @@ function Subscribers() {
                   {friend.email}
                 </div>
                 <div>
-                  {friend.link}
+                  <a href={friend.link}>{friend.link}</a>
                 </div>
                 <div>
                   {friend.favorite_cat}
-                </div>
-                <div>
-                  {friend.email}
                 </div>
               </div>
             </div>
