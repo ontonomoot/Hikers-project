@@ -13,7 +13,7 @@ function PlaceGallery() {
     'https://www.lutsen.com/sites/default/files/styles/scale_1440/public/2021-10/5%20DS-morning-groomer.jpg?itok=Z0OvcQ7S',
     'https://www.blacksheepsnowboardschool.com/img/rickards.jpg'
   ];
-
+  
   return (
     <Carousel fade>
       {photos.map((el) => (

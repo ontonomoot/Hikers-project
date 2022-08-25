@@ -20,6 +20,7 @@ export default function Category() {
   const { id } = useParams();
 
   const places = useSelector(selectorPlaces);
+  console.log(places);
   const allCategories = useSelector(selectorCategories);
   const categories = allCategories ? allCategories.find((el) => el.id === Number(id)) : null;
 

@@ -25,7 +25,7 @@ export default async function init() {
 
   const placesDB = await response.json();
 
-  // console.log('apiMap', placesDB);
+  console.log('apiMap', placesDB);
 
   const geocoder = [];
   placesDB.forEach((place, i) => {
@@ -34,7 +34,7 @@ export default async function init() {
     geocoder[i].push(place.title);
     geocoder[i].push(place.description);
     geocoder[i].push(place.id);
-    geocoder[i].push(place['Photos.title']);
+    geocoder[i].push(place.Photos);
     geocoder[i].push(place.rating);
     geocoder[i].push(place.category_id);
   });
@@ -45,14 +45,14 @@ export default async function init() {
 
   geocoder.forEach((geo) => {
     geo[0].then((res) => {
-      // console.log(` check ${geo[6]}`);
+      // console.log(` check ${geo[5]}`);
       // координаты объекта
       const coordinates = res.geoObjects.get(0).geometry.getCoordinates();
       // console.log('координаты', coordinates);
       // Добавление метки (Placemark) на карту
       const placemark = new window.ymaps.Placemark(coordinates, {
         hintContent: `${geo[1]}`,
-        balloonContentHeader: `<img src=${geo[4]} id="yandexImage">`,
+        balloonContentHeader: `<img src=${geo[4][0]} id="yandexImage">`,
         balloonContentBody: `<span class="yandexPlaceTitle">${geo[1]}</span><br>
         <span class="yandexStar">${'★'.repeat(geo[5])}</span><br>
         <button class="yandexButton"><a href = '/categories/${geo[6]}/places/${geo[3]}' class="yandexTitle">Подробнее</a></button>`
