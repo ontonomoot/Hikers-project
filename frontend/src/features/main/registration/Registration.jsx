@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Modal, Card, Text } from '@geist-ui/core';
+import { useNavigate } from 'react-router-dom';
 import css from './Reg.module.css';
 import {
   authRegistration,
@@ -9,10 +10,11 @@ import {
   errorAuthReg,
   selectorAuthReg,
   selectorAuthRegError
-} from '../auth';
+} from '../authSlice';
 
 export default function Registration() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const auth = useSelector(selectorAuthReg);
   const authError = useSelector(selectorAuthRegError);
@@ -29,12 +31,12 @@ export default function Registration() {
     };
 
     dispatch(authRegistration(form));
+    navigate('/');
   };
 
   return (
     <Modal visible={auth} onClose={() => dispatch(booleanAuthReg())}>
       <form id={css.form} onSubmit={handlerModal}>
-        <div className={css.href}>Есть учетная запись? Войти</div>
         <div className={authError ? css.authError : css.auth}>Регистрация</div>
         {authError && (
           <Card width="100%" type={`${'error'}`} className={css.error}>

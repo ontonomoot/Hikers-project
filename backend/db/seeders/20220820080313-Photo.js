@@ -297,16 +297,212 @@ module.exports = {
       title: '/images/camping/beli3.jpg',
     },
     {
-      place_id: 25,
-      title: '/images/camping/fabrika1.jpg',
+      place_id: 24,
+      title: '/images/camping/fabrika1.jpeg',
+    },
+    {
+      place_id: 24,
+      title: '/images/camping/fabrika2.jpeg',
+    },
+    {
+      place_id: 24,
+      title: '/images/camping/fabrika3.jpeg',
     },
     {
       place_id: 25,
-      title: '/images/camping/fabrika2.jpg',
+      title: '/images/downhill/bike1.jpg',
     },
     {
       place_id: 25,
-      title: '/images/camping/fabrika3.jpg',
+      title: '/images/downhill/bike2.jpg',
+    },
+    {
+      place_id: 25,
+      title: '/images/downhill/bike3.jpg',
+    },
+    {
+      place_id: 26,
+      title: '/images/downhill/dschool1.jpg',
+    },
+    {
+      place_id: 26,
+      title: '/images/downhill/dschool2.jpg',
+    },
+    {
+      place_id: 26,
+      title: '/images/downhill/dschool3.jpg',
+    },
+    {
+      place_id: 27,
+      title: '/images/downhill/tirol1.jpg',
+    },
+    {
+      place_id: 27,
+      title: '/images/downhill/tirol2.jpg',
+    },
+    {
+      place_id: 27,
+      title: '/images/downhill/tirol3.jpg',
+    },
+    {
+      place_id: 28,
+      title: '/images/downhill/krum1.jpg',
+    },
+    {
+      place_id: 28,
+      title: '/images/downhill/krum2.jpg',
+    },
+    {
+      place_id: 28,
+      title: '/images/downhill/krum3.jpg',
+    },
+    {
+      place_id: 29,
+      title: '/images/downhill/ddut1.jpeg',
+    },
+    {
+      place_id: 29,
+      title: '/images/downhill/ddut2.jpg',
+    },
+    {
+      place_id: 29,
+      title: '/images/downhill/ddut3.jpg',
+    },
+    {
+      place_id: 30,
+      title: '/images/alpinism/beluha1.jpg',
+    },
+    {
+      place_id: 30,
+      title: '/images/alpinism/beluha2.jpg',
+    },
+    {
+      place_id: 30,
+      title: '/images/alpinism/beluha3.jpg',
+    },
+    {
+      place_id: 31,
+      title: '/images/alpinism/elbrus1.jpg',
+    },
+    {
+      place_id: 31,
+      title: '/images/alpinism/elbrus2.jpg',
+    },
+    {
+      place_id: 31,
+      title: '/images/alpinism/elbrus3.jpg',
+    },
+    {
+      place_id: 32,
+      title: '/images/alpinism/sopka1.jpg',
+    },
+    {
+      place_id: 32,
+      title: '/images/alpinism/sopka2.jpg',
+    },
+    {
+      place_id: 32,
+      title: '/images/alpinism/sopka3.jpg',
+    },
+    {
+      place_id: 33,
+      title: '/images/alpinism/thach1.jpg',
+    },
+    {
+      place_id: 33,
+      title: '/images/alpinism/thach2.jpg',
+    },
+    {
+      place_id: 33,
+      title: '/images/alpinism/thach3.jpg',
+    },
+    {
+      place_id: 34,
+      title: '/images/alpinism/lenin1.jpeg',
+    },
+    {
+      place_id: 34,
+      title: '/images/alpinism/lenin3.jpg',
+    },
+    {
+      place_id: 35,
+      title: '/images/alpinism/ararat1.jpg',
+    },
+    {
+      place_id: 35,
+      title: '/images/alpinism/ararat2.jpg',
+    },
+    {
+      place_id: 35,
+      title: '/images/alpinism/ararat3.jpg',
+    },
+    {
+      place_id: 36,
+      title: '/images/hiking/hiking1.jpg',
+    },
+    {
+      place_id: 36,
+      title: '/images/hiking/hiking2.jpg',
+    },
+    {
+      place_id: 36,
+      title: '/images/hiking/hiking3.jpg',
+    },
+    {
+      place_id: 37,
+      title: '/images/hiking/divn1.jpg',
+    },
+    {
+      place_id: 37,
+      title: '/images/hiking/divn3.jpg',
+    },
+    {
+      place_id: 38,
+      title: '/images/hiking/kisl1.jpg',
+    },
+    {
+      place_id: 38,
+      title: '/images/hiking/kisl2.jpg',
+    },
+    {
+      place_id: 38,
+      title: '/images/hiking/kisl3.jpg',
+    },
+    {
+      place_id: 39,
+      title: '/images/hiking/nalych1.jpg',
+    },
+    {
+      place_id: 39,
+      title: '/images/hiking/nalych2.jpg',
+    },
+    {
+      place_id: 39,
+      title: '/images/hiking/nalych3.jpg',
+    },
+    {
+      place_id: 40,
+      title: '/images/hiking/sof1.jpg',
+    },
+    {
+      place_id: 40,
+      title: '/images/hiking/sof2.jpg',
+    },
+    {
+      place_id: 40,
+      title: '/images/hiking/sof3.jpg',
+    },
+    {
+      place_id: 41,
+      title: '/images/hiking/kosa1.jpeg',
+    },
+    {
+      place_id: 41,
+      title: '/images/hiking/kosa2.jpg',
+    },
+    {
+      place_id: 41,
+      title: '/images/hiking/kosa3.jpg',
     },
     ], {});
   },

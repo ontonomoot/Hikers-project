@@ -12,7 +12,7 @@ import { selectorEditProfile,
   selectorFriends,
   getSubscribeThunk, } from './profileSlice';
 import EditProfile from './editProfile/editProfile';
-import { selectorUserSession } from '../main/auth';
+import { selectorUserSession } from '../main/authSlice';
 import './Profile.css';
 
 function Profile() {
@@ -21,20 +21,29 @@ function Profile() {
   const profileData = useSelector(selectorEditProfile);
   const userSession = useSelector(selectorUserSession);
   const profile = useSelector(selectorProfile);
+
   const list = useSelector(selectorFriends);
   // console.log(list, 'list');
   const follow = userSession && list.length && list.filter((el) =>
   (el.user_id === userSession.id && (el.friend_id === Number(id))));
   // console.log(follow, 'follow');
   useEffect(() => {
-    // dispatch(getSubscribeThunk());
     dispatch(getProfileThunk(id));
+    // dispatch(getSubscribeThunk(id));
   }, [userSession, id]);
 
   if (!userSession) return <div>oops</div>;
 
   return (
-    <div className="profile-page">
+    <div
+      style={{
+      position: 'relative',
+      minHeight: '83vh',
+      maxHeight: '100%',
+      marginBottom: '100px'
+      }}
+      className="profile-page"
+    >
       <div className="profile-photo">
         <img src={`/images/${profile.ava}`} alt="img" id="profile-img" />
         {/* <Form.Control type="file" name="photos" onChange={sendFiles} autoComplete="off" /> */}

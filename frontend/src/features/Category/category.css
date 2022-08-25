@@ -34,7 +34,7 @@
 #placesContainer{
   max-height: 450px;
   width: 300px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .ratingNum {

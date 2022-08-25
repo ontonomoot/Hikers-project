@@ -8,7 +8,7 @@ import init from './apiMap';
 import {
   categoryThunk, selectorCategory
 } from './categorySlice';
-import { categoriesThunk, selectorCategories } from '../main/mainPage';
+import { categoriesThunk, selectorCategories } from '../main/mainPageSlice';
 import {
   placeThunk, selectorPlaces
 } from './placesSlice';
@@ -20,7 +20,7 @@ export default function Category() {
   const { id } = useParams();
 
   const places = useSelector(selectorPlaces);
-  console.log(places);
+  // console.log(places);
   const allCategories = useSelector(selectorCategories);
   const categories = allCategories ? allCategories.find((el) => el.id === Number(id)) : null;
 
@@ -41,7 +41,7 @@ export default function Category() {
       newMap.style.width = '600px';
       newMap.style.height = '450px';
       daddy.insertAdjacentElement('afterBegin', newMap);
-      console.log(newMap);
+      // console.log(newMap);
       winFunc();
     }, 1000);
     dispatch(categoriesThunk());
@@ -52,10 +52,17 @@ export default function Category() {
   if (!categories) return <div>Loading</div>;
 
   return (
-    <div className="categoriesBox">
+    <div
+      style={{
+      position: 'relative',
+      minHeight: '83vh',
+      maxHeight: '100%',
+      marginBottom: '100px'
+      }}
+      className="categoriesBox"
+    >
       <div className="placeTitleBox">
         {categories && <h1 id={id} className="category">{categories.title}</h1>}
-        <p className="placesListTitle">Список мест для <span className="placesPlusListTitle">{categories.title}а </span></p>
       </div>
       <div id="daddy">
         <div id="map" style={{ width: 600, height: 450 }} />

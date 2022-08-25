@@ -25,7 +25,7 @@ export default async function init() {
 
   const placesDB = await response.json();
 
-  console.log('apiMap', placesDB);
+  // console.log('apiMap', placesDB);
 
   const geocoder = [];
   placesDB.forEach((place, i) => {

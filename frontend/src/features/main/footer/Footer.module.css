@@ -3,6 +3,9 @@
   height: 450px;
   background-color: black;
   color: white;
+  /* position: relative;
+  left: 0;
+  bottom: 0; */
 }
 
 .mainMarqAll {
@@ -61,13 +64,13 @@
   color: rgb(202, 202, 202);
   cursor: pointer;
 }
-
+/* 
 .mainMarqAll .oneP:hover  {
   color: white;
   transition: 1s;
   font-size: 40px;
   opacity: 1;
-}
+} */
 
 .one:hover .oneImg {
   transition: 1.5s;
@@ -77,7 +80,7 @@
 .one:hover .oneP {
   color: white;
   transition: 1.5s;
-  font-size: 40px;
+  font-size: 34px;
 }
 
 

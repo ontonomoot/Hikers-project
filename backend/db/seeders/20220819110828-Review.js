@@ -176,6 +176,14 @@ module.exports = {
       rating: 3,
     },
     {
+      place_id: 19,
+      user_id: 3,
+      title: 'test',
+      description: 'just some text about this place',
+      date: '2022-10-19',
+      rating: 3,
+    },
+    {
       place_id: 20,
       user_id: 3,
       title: 'test',
