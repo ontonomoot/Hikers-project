@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '@geist-ui/core';
 import Form from 'react-bootstrap/Form';
 import css from './Edit.module.css';
-import { addPhotoProfile, editProfile, newProfile, selectorEditProfile, selectorProfile } from '../profile';
+import { addPhotoProfile, editProfile, newProfile, selectorEditProfile, selectorProfile } from '../profileSlice';
 import { editProfileThunk, selectorUserSession } from '../../main/auth';
 
 export default function EditProfile({ id }) {
