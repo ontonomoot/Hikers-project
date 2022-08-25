@@ -77,7 +77,8 @@ function Profile() {
             </div>
           </div>
           <div className="profile-string">
-            {profile && <h6>{profile.link}</h6>}
+            <a href={profile.link}>{profile.link}</a>
+            {/* {profile && <h6>{profile.link}</h6>} */}
           </div>
           <div className="profile-edit-btn" />
         </div>
