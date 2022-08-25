@@ -260,6 +260,54 @@ module.exports = {
       place_id: 20,
       title: '/images/camping/baikal3.jpg',
     },
+    {
+      place_id: 21,
+      title: '/images/camping/solnech1.jpg',
+    },
+    {
+      place_id: 21,
+      title: '/images/camping/solnech2.jpg',
+    },
+    {
+      place_id: 21,
+      title: '/images/camping/solnech3.jpg',
+    },
+    {
+      place_id: 22,
+      title: '/images/camping/rauta1.jpg',
+    },
+    {
+      place_id: 22,
+      title: '/images/camping/rauta2.jpg',
+    },
+    {
+      place_id: 22,
+      title: '/images/camping/rauta3.jpg',
+    },
+    {
+      place_id: 23,
+      title: '/images/camping/beli1.jpg',
+    },
+    {
+      place_id: 23,
+      title: '/images/camping/beli2.jpg',
+    },
+    {
+      place_id: 23,
+      title: '/images/camping/beli3.jpg',
+    },
+    {
+      place_id: 25,
+      title: '/images/camping/fabrika1.jpg',
+    },
+    {
+      place_id: 25,
+      title: '/images/camping/fabrika2.jpg',
+    },
+    {
+      place_id: 25,
+      title: '/images/camping/fabrika3.jpg',
+    },
     ], {});
   },
 
