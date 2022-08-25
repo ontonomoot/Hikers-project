@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { ButtonDropdown, Loading } from '@geist-ui/core';
+import { ButtonDropdown, Loading, Spacer } from '@geist-ui/core';
 import css from './Navbar.module.css';
 import {
   selectorAuthLogin,
@@ -44,13 +44,14 @@ export default function Navbar() {
       {userSession ? (
         <nav id={css.navbar}>
           <div className={css.left}>
+            <Spacer w={1} />
             <div
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 setGetCat(null);
                 navigate('/');
               }}
-            >logo
+            ><img src="/images/icon/Hikers_logo.png" alt="logo" style={{ maxHeight: 60 }} />
             </div>
           </div>
           <div className={css.categoryMain}>

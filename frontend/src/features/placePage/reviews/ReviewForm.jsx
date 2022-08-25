@@ -49,7 +49,7 @@ function ReviewForm() {
 
   return (
     <>
-      <Button id="reviewBtn" onClick={handler}>Добавить свой отзыв о месте</Button>
+      <Button id="reviewBtn" style={{ boxShadow: '0 0 10px rgba(0,0,0,0.2)' }} onClick={handler}>Добавить свой отзыв о месте</Button>
       <Modal visible={state} onClose={closeHandler}>
         <Text h5>Добавить свой отзыв о месте</Text>
         <Modal.Content>
