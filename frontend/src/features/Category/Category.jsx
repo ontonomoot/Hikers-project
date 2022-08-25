@@ -1,8 +1,9 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card, Text, Divider, Button } from '@geist-ui/core';
+import { Card, Text, Divider, Button, Loading } from '@geist-ui/core';
 import Star from '@geist-ui/icons/star';
 import init from './apiMap';
 import {
@@ -24,7 +25,7 @@ export default function Category() {
   const allCategories = useSelector(selectorCategories);
   const categories = allCategories ? allCategories.find((el) => el.id === Number(id)) : null;
 
-  // console.log('places', places);
+  const [load, setLoad] = useState(false);
 
   const dispatch = useDispatch();
   // Функция ymaps.ready() будет вызвана, когда
@@ -41,42 +42,46 @@ export default function Category() {
       newMap.style.width = '600px';
       newMap.style.height = '450px';
       daddy.insertAdjacentElement('afterBegin', newMap);
-      // console.log(newMap);
       winFunc();
     }, 1000);
+    console.log(456789098765);
     dispatch(categoriesThunk());
     dispatch(placeThunk(id));
   }, [dispatch, id]);
 
-  if (!allCategories) return <div>Loading</div>;
-  if (!categories) return <div>Loading</div>;
+  useEffect(() => {
+    setTimeout(() => {
+      setLoad(() => true);
+    }, 1500);
+  }, []);
 
   return (
-    <div
-      style={{
+    <>
+      {!load && <Loading style={{ width: '100%', position: 'absolute', minHeight: '83vh', maxHeight: '100%', backgroundColor: 'white' }}>Loading</Loading>}
+      <div
+        className={load ? 'categoriesBox' : 'bad'}
+        style={{
       position: 'relative',
       minHeight: '83vh',
       maxHeight: '100%',
       marginBottom: '100px'
       }}
-      className="categoriesBox"
-    >
-      <div className="placeTitleBox">
-        {categories && <h1 id={id} className="category">{categories.title}</h1>}
-      </div>
-      <div id="daddy">
-        <div id="map" style={{ width: 600, height: 450 }} />
-        <div id="placeFilter">
-          <div className="placesContainer" id="placesContainer">
-            {
+      >
+        <div className="placeTitleBox">
+          {categories && <h1 id={id} className="category">{categories.title}</h1>}
+        </div>
+        <div id="daddy">
+          <div id="map" style={{ width: 600, height: 450 }} />
+          <div id="placeFilter">
+            <div className="placesContainer" id="placesContainer">
+              {
               places &&
               places.map((place, i) => <Place key={`${i + 1}`} place={place} placeID={place.id} />)
             }
+            </div>
           </div>
         </div>
       </div>
-
-    </div>
-
+    </>
   );
 }

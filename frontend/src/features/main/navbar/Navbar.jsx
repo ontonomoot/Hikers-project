@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { ButtonDropdown } from '@geist-ui/core';
+import { ButtonDropdown, Loading } from '@geist-ui/core';
 import css from './Navbar.module.css';
 import {
   selectorAuthLogin,
@@ -37,7 +37,7 @@ export default function Navbar() {
     if (url === `/categories/${Number(id)}`) setGetCat(Number(id));
   }, [url]);
 
-  if (!categories) return <div>Loading...</div>;
+  if (!categories) return <div />;
 
   return (
     <div>
