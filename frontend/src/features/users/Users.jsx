@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { selectorFriends, getFriendsThunk } from '../friends/friendsSlice';
 
 import './Users.css';
@@ -12,7 +12,7 @@ function Users() {
   const usersList = users && users.users;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  console.log(usersList);
+  // console.log(usersList);
 
   useEffect(() => {
     dispatch(getFriendsThunk());
