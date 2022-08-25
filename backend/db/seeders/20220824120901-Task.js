@@ -5,6 +5,9 @@ module.exports = {
         place_id: 1, user_id: 1, task: 'рюкзак', done: false,
       },
       {
+        place_id: 1, user_id: 1, task: 'термос', done: true,
+      },
+      {
         place_id: 1, user_id: 2, task: 'рюкзак', done: false,
       },
       {
@@ -18,6 +21,9 @@ module.exports = {
       },
       {
         place_id: 3, user_id: 3, task: 'термос', done: false,
+      },
+      {
+        place_id: 3, user_id: 3, task: 'сноуборд', done: true,
       },
       {
         place_id: 4, user_id: 4, task: 'термос', done: false,
