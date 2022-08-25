@@ -1,5 +1,13 @@
+.bad {
+  position: relative;
+  min-height: 0vh;
+  max-height: 0%;
+  margin-bottom: 0px;
+  opacity: 0;
+}
 
 .categoriesBox {
+  opacity: 1;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;

@@ -3,6 +3,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { Loading } from '@geist-ui/core';
 import { selectorCategories } from '../mainPageSlice';
 
 import css from './Footer.module.css';
@@ -11,7 +12,7 @@ export default function FooterMain() {
   const categories = useSelector(selectorCategories);
   const navigate = useNavigate();
 
-  if (!categories) return <div>Loading...</div>;
+  if (!categories) return <div />;
 
   return (
     <footer id={css.footerMain}>
