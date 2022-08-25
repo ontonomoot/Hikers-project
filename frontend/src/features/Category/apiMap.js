@@ -3,7 +3,7 @@ export default async function init() {
   const myMap = new window.ymaps.Map('map', {
     // Координаты центра карты.
     // Порядок по умолчанию: «широта, долгота».
-    center: [59.93139123904442, 30.41594565054736],
+    center: [53.46375510022058, 92.04012278515626],
     // Уровень масштабирования.
     zoom: 3
   }, {
@@ -59,8 +59,7 @@ export default async function init() {
         // class="yandexTitle">
         // Подробнее</a></button>`
         // balloonContentHeader:
-        balloonContentBody:
-        `<div className="modal">
+        balloonContentBody: `<div className="modal">
           <div>
             <img src=${geo[4][0]} id="yandexImage">
           </div>

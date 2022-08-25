@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import {
   favouritesThunk, selectorFavourites
   // eslint-disable-next-line import/no-useless-path-segments
@@ -31,7 +32,8 @@ export default function Favourites() {
     >
       <h1>Избранное</h1>
       {
-        favPlaces && favPlaces.map((favPlace, i) => <FavPlace key={`${i + 1}`} favPlace={favPlace} />)
+        favPlaces &&
+        favPlaces.map((favPlace, i) => <FavPlace key={uuidv4()} favPlace={favPlace} />)
       }
     </div>
   );
