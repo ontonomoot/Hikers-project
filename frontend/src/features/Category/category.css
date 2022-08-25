@@ -11,8 +11,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  width: 1000px;
-  margin: 0 auto;
+  position: absolute;
 }
 
 .categoriesBox > div {
@@ -21,8 +20,16 @@
 }
 
 .placeTitleBox {
-  display: flex;
-  gap: 490px;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  z-index: 2;
+  background-color: white;
+  padding: 20px;
+  border-radius: 0px 0px 10px 0px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: -40px;
 }
 
 .placesListTitle {
@@ -35,14 +42,20 @@
   font-size: 1.8rem;
 }
 
-#placeFilter {
-  margin:0 auto;
+#placeFilter  {
+  position: absolute;
+  min-height: 700px !important;
+  right: 0;
+  width: 320px;
+  background-color: white;
+  margin-top: -40px;
 }
 
 #placesContainer{
-  max-height: 450px;
-  width: 300px;
+  max-height: 700px;
+  width: 100%;
   overflow-y: scroll;
+
 }
 
 .ratingNum {
@@ -51,7 +64,6 @@
 
 #yandexImage {
   width: 200px;
-  /* height: 200px; */
   border: 1px solid #0d071c;
   border-radius: 5px;
 }
@@ -62,11 +74,11 @@
 }
 
 .yandexButton {
+  height: 40px;
   border: 1px solid #ffffff;
   border-radius: 25px;
   background-color: #ffffff;
   margin: 30px;
-
 }
 
 .yandexButton > a {
@@ -74,9 +86,7 @@
   background-color: white;
   border: 10px solid #ffffff;
   border-radius: 25px;
-
   font-size: 15px;
-  /* margin: 30px; */
 
 }
 
@@ -85,25 +95,38 @@
   background-color: rgb(0, 0, 0);
   border: 10px solid #000000;
   border-radius: 25px;
-  /* padding: 5px; */
   background-color: #000000;
-
-  /* text-decoration: underline; */
-  /* margin: 30px; */
-
 }
 
-.yandexPlaceTitle {
-  font-size: 1.2rem;
-  margin: 50px;
+#yandexPlaceTitle {
+  margin-top: 10px;
+  font-size: 1.5rem;
 }
 
 .yandexStar {
   color: #ffc107;
-  width: 30px;
-  height: 40px;
-  font-size: 25px;
-  margin: 50px;
+  width: 40px;
+  height: 50px;
+  font-size: 35px;
+  margin-top: 40px;
+}
+
+#cardPlace  {
+  position: relative;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  }
+
+.bottomBlock {
+  position: absolute;
+  z-index: 1;
+ background-color:white;
+ opacity: 0.6;
+}
+
+.bottomBlock:hover #cardPlace {
+  background-color:white;
 }
 
 #cardPlace:hover {
@@ -115,7 +138,15 @@
 
 .modal {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 200px;
+  justify-content: center;
+}
+
+.imgTop {
+  border-radius: 10px;
 }
 
 

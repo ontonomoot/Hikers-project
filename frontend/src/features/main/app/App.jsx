@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Provider, useDispatch } from 'react-redux';
 // eslint-disable-next-line import/extensions
-import Category from '../../Category/Category.jsx';
+import Category from '../../Category/Category';
 // import Categories from '../../Category/Categories';
 import './App.css';
 import MainPage from '../MainPage';

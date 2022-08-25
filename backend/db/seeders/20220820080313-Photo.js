@@ -274,11 +274,11 @@ module.exports = {
     },
     {
       place_id: 22,
-      title: '/images/camping/rauta1.jpg',
+      title: '/images/camping/rauta1.jpeg',
     },
     {
       place_id: 22,
-      title: '/images/camping/rauta2.jpg',
+      title: '/images/camping/rauta2.jpeg',
     },
     {
       place_id: 22,
@@ -286,7 +286,7 @@ module.exports = {
     },
     {
       place_id: 23,
-      title: '/images/camping/beli1.jpg',
+      title: '/images/camping/beli1.jpeg',
     },
     {
       place_id: 23,
