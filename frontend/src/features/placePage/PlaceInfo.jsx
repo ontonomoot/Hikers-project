@@ -83,7 +83,7 @@ function PlaceInfo() {
           <Drawer visible={state} onClose={() => setState(false)} placement="top">
             <Weather geo={place && place.geo} />
           </Drawer>
-          {checkFavPlace ? (
+          {user && (checkFavPlace ? (
             // eslint-disable-next-line react/jsx-indent
             <Button
               disabled
@@ -95,7 +95,7 @@ function PlaceInfo() {
               onClick={handleFavourite}
             > В избранное
             </Button>
-          )}
+          ))}
         </Card.Footer>
       </Card>
     </div>

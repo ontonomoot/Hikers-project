@@ -21,15 +21,19 @@ function Profile() {
   const profileData = useSelector(selectorEditProfile);
   const userSession = useSelector(selectorUserSession);
   const profile = useSelector(selectorProfile);
+
   const list = useSelector(selectorFriends);
   // console.log(list, 'list');
   const follow = userSession && list.length && list.filter((el) =>
   (el.user_id === userSession.id && (el.friend_id === Number(id))));
   // console.log(follow, 'follow');
   useEffect(() => {
-    // dispatch(getSubscribeThunk());
     dispatch(getProfileThunk(id));
   }, [userSession, id]);
+
+  useEffect(() => {
+    // dispatch(getSubscribeThunk());
+  }, []);
 
   if (!userSession) return <div>oops</div>;
 
@@ -73,7 +77,8 @@ function Profile() {
             </div>
           </div>
           <div className="profile-string">
-            {profile && <h6>{profile.link}</h6>}
+            <a href={profile.link}>{profile.link}</a>
+            {/* {profile && <h6>{profile.link}</h6>} */}
           </div>
           <div className="profile-edit-btn" />
         </div>

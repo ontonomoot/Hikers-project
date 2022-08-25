@@ -21,39 +21,38 @@ function Subscribers() {
     const filter = users.find((user) => user.id === el);
     subscribers.push(filter);
   });
-  // console.log(subscribers, 'мои подписчики');
+  console.log(subscribers, 'мои подписчики');
   useEffect(() => {
     dispatch(getFriendsThunk(),);
   }, [userSession, dispatch]);
   return (
-    <div>
-      <div>
-        <h4> Мои подписчики</h4>
+    <div className="friends">
+      <div className="friends-title">
+        Мои подписчики
       </div>
       <div>
         {
           subscribers && subscribers.map((friend) => (
             <div key={friend.id} className="friend">
               <div>
-                <img src={`${friend['User.user_ava']}`} alt="img" />
+                <img src={`/images/${friend.ava}`} alt="img" id="ava-img" />
               </div>
-              <div>
-                {friend.user_name}
-              </div>
-              <div>
-                {friend.city}
-              </div>
-              <div>
-                {friend.email}
-              </div>
-              <div>
-                {friend.link}
-              </div>
-              <div>
-                {friend.favorite_cat}
-              </div>
-              <div>
-                {friend.email}
+              <div className="friends-info">
+                <div>
+                  {friend.user_name}
+                </div>
+                <div>
+                  {friend.city}
+                </div>
+                <div>
+                  {friend.email}
+                </div>
+                <div>
+                  <a href={friend.link}>{friend.link}</a>
+                </div>
+                <div>
+                  {friend.favorite_cat}
+                </div>
               </div>
             </div>
           ))
