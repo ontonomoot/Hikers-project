@@ -36,7 +36,7 @@ function TodoList({ place }) {
           <TodoForm placeId={place.place_id} />
           {tasks && tasks
           .filter((el) => el.place_id === place.place_id)
-          .map((task) => <TodoItem task={task} />)}
+          .map((task) => <TodoItem key={task.id} task={task} />)}
         </Modal.Content>
         <Modal.Action passive onClick={() => setState(false)}>Закрыть</Modal.Action>
       </Modal>
