@@ -67,13 +67,13 @@ export default function Category() {
           maxHeight: '100%',
         }}
       >
-        <div className="placeTitleBox">
+        <div className="placeTitleBox" style={{ boxShadow: '0 0 10px rgba(0,0,0,0.5)' }}>
           {categories && <h1 id={id} className="category">{categories.title}</h1>}
         </div>
         <div id="daddy">
           <div id="map" style={{ width: 500, height: 600 }} />
           <div id="placeFilter">
-            <div className="placesContainer" id="placesContainer">
+            <div className="placesContainer" id="placesContainer" style={{ boxShadow: '0 0 10px rgba(0,0,0,0.5)' }}>
               {
                 places &&
                 places.map((place, i) => <Place key={`${i + 1}`} place={place} placeID={place.id} />)

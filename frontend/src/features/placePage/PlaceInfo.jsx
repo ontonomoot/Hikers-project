@@ -51,17 +51,28 @@ function PlaceInfo() {
       await window.ymaps.ready(initMap(num));
     }
     if (place) {
-      // console.log(1);
-      winFunc(place);
+      // winFunc(place);
+      setTimeout(() => {
+        const daddy = document.querySelector('#placeMap').closest('.info-container');
+        document.querySelector('#placeMap').remove();
+        const newMap = document.createElement('div');
+        newMap.id = 'placeMap';
+        newMap.style.width = '100%';
+        newMap.style.height = '550px';
+        newMap.style.border = 'solid 1px grey';
+        newMap.style.borderRadius = 8;
+        daddy.insertAdjacentElement('afterBegin', newMap);
+        winFunc(place);
+      }, 1000);
     }
   }, [dispatch, id, placeid, place === undefined]);
 
   if (!place) return <div>load</div>;
 
   return (
-    <div className="info-container">
-      <div id="placeMap" style={{ width: 500, height: 350, border: 'double grey', borderRadius: 8 }} />
-      <Card width="600px">
+    <div className="info-container" style={{ position: 'relative' }}>
+      <div id="placeMap" style={{ width: '100%', height: 550, border: 'solid 1px grey', borderRadius: 8 }} />
+      <Card style={{ position: 'absolute', right: 50, top: 5, boxShadow: '0 0 10px rgba(0,0,0,0.5)' }} width="600px">
         <Card.Content>
           <Text b my={0}>{place && place.title}</Text>
         </Card.Content>
@@ -81,12 +92,14 @@ function PlaceInfo() {
             // eslint-disable-next-line react/jsx-indent
             <Button
               disabled
+              style={{ textTransform: 'none' }}
             >
               Уже в избранном
             </Button>
           ) : (
             <Button
               onClick={handleFavourite}
+              style={{ textTransform: 'none' }}
             > В избранное
             </Button>
           ))}

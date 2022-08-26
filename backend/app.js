@@ -25,6 +25,7 @@ const favouritesRouter = require('./routes/api/favouritesRouter');
 const chatRoute = require('./routes/api/chatRoute');
 const friendsRouter = require('./routes/api/friendsRouter');
 const todoRouter = require('./routes/api/todoRouter');
+const newCardApi = require('./routes/api/newCardApi');
 
 // Подключаем use
 app.use('/api', authLoginApi);
@@ -37,6 +38,7 @@ app.use('/api', favouritesRouter);
 app.use('/api', chatRoute);
 app.use('/api', friendsRouter);
 app.use('/api', todoRouter);
+app.use('/api', newCardApi);
 
 app.get('*', (req, res) => (res.sendFile(path.resolve('../frontend/build/index.html'))));
 
