@@ -46,7 +46,7 @@ const getSubscribeThunk = createAsyncThunk(
         })
       });
       const data = await response.json();
-      console.log(data, 'subscribe thunk');
+      // console.log(data, 'subscribe thunk');
     return data;
   }
 );

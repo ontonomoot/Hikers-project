@@ -15,7 +15,7 @@ import EditProfile from './editProfile/editProfile';
 import { selectorUserSession } from '../main/authSlice';
 import './Profile.css';
 import { getFriendsThunk } from '../friends/friendsSlice';
-import { openAddNewCard, selectorAddNewCard } from './newCardSlice';
+import { openAddNewCard, selectorAddNewCard } from './cardSlice';
 import NewCard from './createnewcard/editProfile';
 
 function Profile() {
@@ -96,11 +96,11 @@ function Profile() {
                 : <>Подписаться</>}
               </Button>
           )}
-          {userSession && userSession.admin && (
+          {userSession && userSession.admin && userSession.id === Number(id) && (
           <>
             <br />
             <br />
-            <Button style={{ backgroundColor: 'red' }} type="button" onClick={() => dispatch(openAddNewCard())}>Добавить карточку</Button>
+            <Button style={{ backgroundColor: '#bbd7f6' }} type="button" onClick={() => dispatch(openAddNewCard())}>Добавить карточку</Button>
           </>
         )}
         </div>

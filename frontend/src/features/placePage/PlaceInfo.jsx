@@ -4,7 +4,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card, Text, Divider, Drawer, Button } from '@geist-ui/core';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { selectorUserSession } from '../main/authSlice';
 import './PlacePage.css';
@@ -13,18 +13,29 @@ import Weather from '../weather/Weather.jsx';
 import { placeThunk, selectorPlaces } from '../Category/placesSlice';
 import { addFavPlaceThunk, selectorFavourites, favouritesThunk } from '../Favourites/favouritesSlice';
 import initMap from './placeMapApi';
+import { deleteCardThunk, openUpdateCard, selectorUpdateCard, selectorUpdateCardBack, selectorUpdateStatus } from '../profile/cardSlice';
+import EditCard from './updatecard/EditCard';
 
 function PlaceInfo() {
   const [state, setState] = React.useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const user = useSelector(selectorUserSession);
   const arrPlaces = useSelector(selectorPlaces);
   const favPlace = useSelector(selectorFavourites);
+
+  const editCard = useSelector(selectorUpdateCard);
+  const editStatus = useSelector(selectorUpdateStatus);
+  const udateCard = useSelector(selectorUpdateCardBack);
+
   const { id, placeid } = useParams();
-  const place = arrPlaces && arrPlaces.find((el) => el.id === Number(placeid));
-  // console.log('place', place);
-  console.log(user);
+
+  let place;
+  if (!editStatus) {
+    place = arrPlaces && arrPlaces.find((el) => el.id === Number(placeid));
+  }
+
   let checkFavPlace;
   if (user) {
     if (favPlace) {
@@ -35,6 +46,16 @@ function PlaceInfo() {
   function handleFavourite() {
     dispatch(addFavPlaceThunk(placeid));
   }
+
+  useEffect(() => {
+    console.log('edit', editStatus);
+    if (editStatus && udateCard) {
+      console.log('udateCard', udateCard);
+      place = udateCard;
+    console.log('update', place);
+    }
+  }, [editStatus, udateCard]);
+  console.log(udateCard);
 
   useEffect(() => {
     dispatch(placeThunk(id));
@@ -73,8 +94,18 @@ function PlaceInfo() {
     <div className="info-container" style={{ position: 'relative' }}>
       <div id="placeMap" style={{ width: '100%', height: 550, border: 'solid 1px grey', borderRadius: 8 }} />
       <Card style={{ position: 'absolute', right: 50, top: 5, boxShadow: '0 0 10px rgba(0,0,0,0.5)' }} width="600px">
-        <Card.Content>
+        <Card.Content style={{ position: 'relative' }}>
           <Text b my={0}>{place && place.title}</Text>
+          {user && user.admin && (
+            <Button
+              style={{ position: 'absolute', backgroundColor: '#f6cfd6', textTransform: 'none', right: '20px', bottom: '8px' }}
+              onClick={() => {
+                  dispatch(deleteCardThunk(place.id));
+                  navigate('/');
+                }}
+            > Скрыть
+            </Button>
+        )}
         </Card.Content>
         <Divider h="1px" my={0} />
         <Card.Content>
@@ -105,6 +136,7 @@ function PlaceInfo() {
           ))}
         </Card.Footer>
       </Card>
+      {/* {editCard && <EditCard place={place} />} */}
     </div>
   );
 }

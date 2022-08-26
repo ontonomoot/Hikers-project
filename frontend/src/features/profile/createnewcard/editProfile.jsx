@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '@geist-ui/core';
 import Form from 'react-bootstrap/Form';
 import css from './Edit.module.css';
-import { newCardThunk, openAddNewCard, selectorAddNewCard } from '../newCardSlice';
+import { newCardThunk, openAddNewCard, selectorAddNewCard } from '../cardSlice';
 
 export default function NewCard() {
   const dispatch = useDispatch();
