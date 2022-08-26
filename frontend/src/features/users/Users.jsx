@@ -58,7 +58,7 @@ function Users() {
                     {user.email}
                   </div>
                   <div>
-                    <img src="/images/icon/fb.png" alt="email" className="icons" />
+                    <img src="/images/icon/link.png" alt="" className="icons" />
                     <a href={user.link}>{user.link}</a>
                   </div>
                 </div>

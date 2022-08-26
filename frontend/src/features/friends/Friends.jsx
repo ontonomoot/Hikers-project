@@ -106,7 +106,7 @@ function Friends() {
                     {friend['User.favorite_cat']}
                   </div>
                   <div>
-                    <img src="/images/icon/fb.png" alt="email" className="icons" />
+                    <img src="/images/icon/link.png" alt="email" className="icons" />
                     <a href={friend['User.link']}>{friend['User.link']}</a>
                   </div>
                   <div>
