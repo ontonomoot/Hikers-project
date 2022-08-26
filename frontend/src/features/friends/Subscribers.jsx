@@ -58,6 +58,8 @@ function Subscribers() {
                   {friend.email}
                 </div>
                 <div>
+                  <img src="/images/icon/link.png" alt="email" className="icons" />
+
                   <a href={friend.link}>{friend.link}</a>
                 </div>
                 <div>
