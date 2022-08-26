@@ -135,10 +135,14 @@ export default function Navbar() {
     : (
       <nav id={css.navbar}>
         <div className={css.left}>
+          <Spacer w={1} />
           <div
             style={{ cursor: 'pointer' }}
-            onClick={() => navigate('/')}
-          >logo
+            onClick={() => {
+              setGetCat(null);
+              navigate('/');
+            }}
+          ><img src="/images/icon/Hikers_logo.png" alt="logo" style={{ maxHeight: 60 }} />
           </div>
         </div>
         <div className={css.categoryMain}>
