@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@geist-ui/core';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 import { selectorEditProfile,
   editProfile,
@@ -58,34 +60,66 @@ function Profile() {
       <div className="profile-block-btn">
         <div className="profile-info">
           {profile && (
-          <div className="profile-string">
-            <h5>{profile.user_name}</h5>
-          </div>
+          <InputGroup className="mb-3">
+            <InputGroup.Text id="inputGroup-sizing-default">
+              Имя
+            </InputGroup.Text>
+            <Form.Control
+              disabled
+              defaultValue={profile.user_name}
+              aria-label="Default"
+              aria-describedby="inputGroup-sizing-default"
+            />
+          </InputGroup>
           )}
           {profile && (
-          <div className="profile-string">
-            <h6>Город: {profile.city}</h6>
-          </div>
+          <InputGroup className="mb-3">
+            <InputGroup.Text id="inputGroup-sizing-default">
+              Город
+            </InputGroup.Text>
+            <Form.Control
+              disabled
+              defaultValue={profile.city}
+              aria-label="Default"
+              aria-describedby="inputGroup-sizing-default"
+            />
+          </InputGroup>
           )}
-          <div className="profile-string">
-            <h6>Активность:</h6>
-            <div>
-              {
-              profile && profile.favorite_cat && <h6> {profile.favorite_cat}</h6>
-            }
-            </div>
-          </div>
+          <InputGroup className="mb-3">
+            <InputGroup.Text id="inputGroup-sizing-default">
+              Любимая категория
+            </InputGroup.Text>
+            <Form.Control
+              disabled
+              defaultValue={profile && profile.favorite_cat ? profile.favorite_cat : 'не выбрано'}
+              aria-label="Default"
+              aria-describedby="inputGroup-sizing-default"
+            />
+          </InputGroup>
           {profile && (
-          <div className="profile-string">
-            <img src="/images/icon/email.png" alt="email" className="icons" />
-            <h6>email: {profile.email}</h6>
-          </div>
+          <InputGroup className="mb-3">
+            <InputGroup.Text id="inputGroup-sizing-default">
+              <img src="/images/icon/email.png" alt="email" className="icons" />
+            </InputGroup.Text>
+            <Form.Control
+              disabled
+              defaultValue={profile.email}
+              aria-label="Default"
+              aria-describedby="inputGroup-sizing-default"
+            />
+          </InputGroup>
           )}
-          <div className="profile-string">
-            <img src="/images/icon/fb.png" alt="email" className="icons" />
-            <a href={profile.link}>{profile.link}</a>
-          </div>
-          <div className="profile-edit-btn" />
+          <InputGroup className="mb-3">
+            <InputGroup.Text id="inputGroup-sizing-default">
+              <img src="/images/icon/link.png" alt="email" className="icons" />
+            </InputGroup.Text>
+            <Form.Control
+              disabled
+              defaultValue={profile.link}
+              aria-label="Default"
+              aria-describedby="inputGroup-sizing-default"
+            />
+          </InputGroup>
         </div>
         <div className="edit-btn">
           {profile && userSession && (profile.id === userSession.id) ?
