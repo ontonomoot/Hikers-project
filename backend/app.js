@@ -1,6 +1,7 @@
 /* eslint-disable import/no-unresolved */
 require('@babel/register');
 require('dotenv').config();
+const path = require('path');
 
 const express = require('express');
 
@@ -37,5 +38,9 @@ app.use('/api', chatRoute);
 app.use('/api', friendsRouter);
 app.use('/api', todoRouter);
 app.use('/api', newCardApi);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+});
 
 app.listen(PORT, async () => console.log('\x1b[45m%s\x1b[0m', `Server started at ${PORT} port`));
