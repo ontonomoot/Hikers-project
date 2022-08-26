@@ -12,7 +12,7 @@ function PlaceGallery() {
   const place = arrPlaces && arrPlaces.find((el) => el.id === Number(placeid));
 
   return (
-    <Carousel fade>
+    <Carousel fade interval={2000}>
       {place && place.Photos.map((el) => (
         <Carousel.Item key={uuidv4()}>
           <img
